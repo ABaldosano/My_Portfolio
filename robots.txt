@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abaldosano.github.io/My_Portfolio/sitemap.xml
