@@ -1227,13 +1227,13 @@ footer p {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border);
+  color: var(--muted);
   transition: color 0.2s, border-color 0.2s, transform 0.2s;
 }
 .footer-icon-link:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--text);
+  border-color: var(--gold);
   transform: translateY(-2px);
 }
 
