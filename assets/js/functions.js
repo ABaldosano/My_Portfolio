@@ -1,5 +1,10 @@
-// THEME TOGGLE
-const html = document.documentElement;
+/* ==========================================================================
+   PORTFOLIO — functions.js
+   Single source of truth for all global JS. Loaded on every page.
+   ========================================================================== */
+
+// ── 1. THEME TOGGLE ──────────────────────────────────────────────────────────
+const html     = document.documentElement;
 const themeBtn = document.getElementById('themeToggle');
 html.setAttribute('data-theme', localStorage.getItem('portfolio-theme') || 'light');
 themeBtn.addEventListener('click', () => {
@@ -8,7 +13,7 @@ themeBtn.addEventListener('click', () => {
   localStorage.setItem('portfolio-theme', next);
 });
 
-// HAMBURGER MENU
+// ── 2. HAMBURGER / MOBILE NAV ─────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
 
@@ -16,15 +21,57 @@ function closeMobileNav() {
   hamburger.classList.remove('open');
   mobileNav.classList.remove('open');
   document.body.style.overflow = '';
+  window._navScrollUnlock && window._navScrollUnlock();
 }
 
 hamburger.addEventListener('click', () => {
   const isOpen = hamburger.classList.toggle('open');
   mobileNav.classList.toggle('open', isOpen);
   document.body.style.overflow = isOpen ? 'hidden' : '';
+  // Prevent nav from hiding while mobile menu is open
+  if (isOpen) {
+    window._navScrollLock && window._navScrollLock();
+    document.querySelector('nav').classList.remove('header-hidden');
+  } else {
+    window._navScrollUnlock && window._navScrollUnlock();
+  }
 });
 
-// CUSTOM CURSOR (desktop only)
+// ── 3. STICKY NAVBAR — AUTO-HIDE ON SCROLL DOWN, SHOW ON SCROLL UP ───────────
+(function initNavScroll() {
+  const navEl   = document.querySelector('nav');
+  let lastY     = window.scrollY;
+  let ticking   = false;
+  let navLocked = false;
+
+  window._navScrollLock   = function () { navLocked = true; };
+  window._navScrollUnlock = function () { navLocked = false; };
+
+  window.addEventListener('scroll', () => {
+    if (ticking || navLocked) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const currentY = window.scrollY;
+      const diff     = currentY - lastY;
+
+      if (currentY <= 8) {
+        navEl.classList.remove('header-hidden');
+        lastY   = currentY;
+        ticking = false;
+        return;
+      }
+
+      if (Math.abs(diff) >= 2) {
+        navEl.classList.toggle('header-hidden', diff > 0);
+      }
+
+      lastY   = currentY;
+      ticking = false;
+    });
+  }, { passive: true });
+})();
+
+// ── 4. CUSTOM CURSOR (desktop with fine pointer only) ────────────────────────
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursorRing');
 if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
@@ -53,7 +100,7 @@ if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   });
 }
 
-// SCROLL REVEAL
+// ── 5. SCROLL REVEAL (IntersectionObserver) ───────────────────────────────────
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
@@ -61,17 +108,14 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
 
-// NAV ACTIVE — path-based (works for both homepage and sub-pages)
+// ── 6. NAV ACTIVE STATE — path-based ─────────────────────────────────────────
 (function () {
   const path = window.location.pathname;
-
-  // Determine which page we're on
   let activePage = 'home';
-  if (path.includes('projects'))      activePage = 'projects';
+  if      (path.includes('projects'))      activePage = 'projects';
   else if (path.includes('certifications')) activePage = 'certifications';
-  else if (path.includes('contact'))  activePage = 'contact';
+  else if (path.includes('contact'))       activePage = 'contact';
 
-  // Map each nav link by its text content and highlight the matching one
   document.querySelectorAll('.nav-links a').forEach(a => {
     const text = a.textContent.trim().toLowerCase();
     const isActive =
@@ -79,13 +123,7 @@ document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
       (activePage === 'projects'       && text === 'projects') ||
       (activePage === 'certifications' && text === 'certifications') ||
       (activePage === 'contact'        && text === 'contact');
-
-    if (isActive) {
-      a.style.color = 'var(--gold)';
-      a.classList.add('active');
-    } else {
-      a.style.color = '';
-      a.classList.remove('active');
-    }
+    a.style.color = isActive ? 'var(--gold)' : '';
+    a.classList.toggle('active', isActive);
   });
 })();

@@ -46,8 +46,12 @@
 }
 
 html { 
-  scroll-behavior: smooth; 
+  scroll-behavior: smooth;
+  /* hide scrollbar, keep scroll functional */
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge */
 }
+html::-webkit-scrollbar { display: none; } /* Chrome/Safari/Opera */
 
 body {
   background: var(--bg);
@@ -176,7 +180,10 @@ nav {
   background: var(--nav-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  transition: background 0.4s, border-color 0.4s;
+  transition: background 0.4s, border-color 0.4s, transform 0.35s ease;
+}
+nav.header-hidden {
+  transform: translateY(-110%);
 }
 
 .nav-logo {
