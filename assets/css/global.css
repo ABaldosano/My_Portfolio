@@ -785,8 +785,8 @@ nav.header-hidden {
 
 .projects-card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
   margin-bottom: 16px;
 }
 
@@ -1272,7 +1272,7 @@ footer p {
   .project-featured-content { padding: 36px; }
   .about-grid { gap: 48px; }
   .featured-title { font-size: 1.5rem; }
-  .projects-card-grid { grid-template-columns: repeat(2, 1fr); }
+  /* 2-col is already the desktop default; maintain it down to 860px */
 }
 
 /* Phablet and Mid-Scale Viewports */
@@ -1280,6 +1280,7 @@ footer p {
   .contact-page-grid { grid-template-columns: 1fr; gap: 40px; }
   .inquiry-card { padding: 28px 20px; }
   .socials-card { padding: 24px 20px; }
+  .projects-card-grid { grid-template-columns: 1fr; }
 }
 
 /* Universal Mobile Viewports */
@@ -1324,7 +1325,6 @@ footer p {
 
 /* Standardized Compact Mobile Breakpoints */
 @media (max-width: 640px) {
-  .projects-card-grid { grid-template-columns: 1fr; }
   .proj-card-img { height: 200px; }
   .proj-card-body { padding: 22px 20px 26px; }
 }
