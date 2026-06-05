@@ -13,6 +13,121 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="/assets/images/favicon.png">
   <link rel="stylesheet" href="../assets/css/global.css" />
+  <style>
+    /* ── Projects page card grid ── */
+    .projects-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+
+    /* Each card: image top, content bottom */
+    .proj-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      transition: background 0.4s, border-color 0.4s, transform 0.25s, box-shadow 0.25s;
+      cursor: default;
+    }
+    .proj-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    [data-theme="dark"] .proj-card:hover {
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+
+    /* Thesis card accent */
+    .proj-card.thesis-card { border-color: var(--gold-dim); }
+
+    /* Image area */
+    .proj-card-img {
+      width: 100%;
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg2);
+      flex-shrink: 0;
+    }
+    .proj-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .proj-card:hover .proj-card-img img { transform: scale(1.04); }
+
+    /* Content area */
+    .proj-card-body {
+      padding: 28px 28px 32px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .proj-card-badge {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+    .proj-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .proj-card-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      flex: 1;
+      /* clamp to keep cards even height */
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .proj-card-tags {
+      display: flex; flex-wrap: wrap;
+      gap: 6px; margin-bottom: 24px;
+    }
+    .proj-card-links {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-top: auto;
+    }
+    .proj-card-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--gold); text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: gap 0.3s;
+    }
+    .proj-card-link:hover { gap: 14px; }
+    .proj-card-link.dim { opacity: 0.5; }
+
+    /* Group section */
+    .proj-group { margin-bottom: 80px; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .projects-card-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .projects-card-grid { grid-template-columns: 1fr; }
+      .proj-card-img { height: 200px; }
+      .proj-card-body { padding: 22px 20px 26px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -33,7 +148,7 @@
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="certifications.html">Certifications</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -67,285 +182,263 @@
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects">
+  <section id="projects" style="padding: 60px 0 100px; background: var(--bg);">
     <div class="container">
 
       <!-- ── GROUP: TOP LIVE PROJECTS ── -->
-      <div class="project-group reveal">
-        <p class="project-group-label">Top Live Projects</p>
+      <div class="proj-group">
+        <p class="project-group-label reveal">Top Live Projects</p>
+        <div class="projects-card-grid">
 
-        <!-- PROJECT 1: IARMS Thesis -->
-        <div class="project-featured thesis-card reveal">
-          <div class="project-featured-img">
-            <img src="../assets/images/IARMS.png" alt="IARMS - Intelligent Academic Resource Management System" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">Primary Featured Project · Undergraduate Thesis Proposal</p>
-            <h3 class="featured-title">Intelligent Academic Resource Management System</h3>
-            <p class="featured-desc">
-              AI-powered academic resource platform built for PSU's College of Sciences IT Students,
-              developed as a significant improvement over Buzy Reviewer. Students and faculty can upload documents
-              and receive AI-generated summaries, flashcards, quizzes, glossary, and key concept breakdowns. The full backend,
-              powered by Ollama (Llama3 LLM Model), runs only within the local development environment.
-              The live GitHub deployment provides the frontend interface only, with GPT-5 Mini API planned for
-              the full production build.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">Python</span>
-              <span class="tag">FastAPI</span>
-              <span class="tag">Ollama LLM</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Prototype</span>
-              <span class="tag">Thesis</span>
+          <!-- IARMS -->
+          <div class="proj-card thesis-card reveal">
+            <div class="proj-card-img">
+              <img src="../assets/images/IARMS.png" alt="IARMS" />
             </div>
-            <div class="featured-links">
-              <a href="https://abaldosano.github.io/PSU_AcadRes/" target="_blank" class="featured-link">View Prototype <span>→</span></a>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">Primary Featured · Thesis</p>
+              <h3 class="proj-card-title">Intelligent Academic Resource Management System</h3>
+              <p class="proj-card-desc">
+                AI-powered academic resource platform for PSU's BSIT students. Generates summaries, flashcards, quizzes, glossary, and key concepts from uploaded documents. Backend runs Ollama (Llama3) locally; GPT-5 Mini API planned for production.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">Python</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Ollama LLM</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Thesis</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://abaldosano.github.io/PSU_AcadRes/" target="_blank" class="proj-card-link">View Prototype <span>→</span></a>
+              </div>
             </div>
           </div>
+
+          <!-- Faculty Workload -->
+          <div class="proj-card reveal reveal-delay-1">
+            <div class="proj-card-img">
+              <img src="../assets/images/fwb.png" alt="Faculty Workload Balancing System" />
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">01 — Live Project</p>
+              <h3 class="proj-card-title">Faculty Workload Balancing System</h3>
+              <p class="proj-card-desc">
+                Web-based system for organizing and balancing faculty workloads at PSU. Uses a high-constraint Genetic Algorithm factoring in specializations, time constraints, max teaching loads, and schedule conflicts.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://abaldosano.github.io/Updated-Faculty-Workload-Balancing-System/index.html" target="_blank" class="proj-card-link">Live Demo <span>→</span></a>
+                <a href="https://github.com/ABaldosano" target="_blank" class="proj-card-link dim">GitHub <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PinnedPicks -->
+          <div class="proj-card reveal reveal-delay-2">
+            <div class="proj-card-img">
+              <img src="../assets/images/pinned.png" alt="PinnedPicks" />
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">02 — Live Business</p>
+              <h3 class="proj-card-title">PinnedPicks Affiliate Platform</h3>
+              <p class="proj-card-desc">
+                Independently owned affiliate e-commerce platform curating picks across Shopee, Amazon, and SHEIN. Built from scratch on GitHub Pages. Traffic driven through a Pinterest-based social content strategy.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">E-Commerce</span>
+                <span class="tag">Affiliate</span>
+                <span class="tag">Web Design</span>
+                <span class="tag">Social Strategy</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://www.pinnedpicks.gt.tc/" target="_blank" class="proj-card-link">Visit Platform <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- CrypStockDash -->
+          <div class="proj-card reveal">
+            <div class="proj-card-img">
+              <img src="../assets/images/SD.png" alt="CrypStockDash" />
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">03 — Live Project</p>
+              <h3 class="proj-card-title">CrypStockDash</h3>
+              <p class="proj-card-desc">
+                Lightweight, no-login stock market viewer for instant access to real-time market data. Search any ticker symbol and view live info without creating an account. Built on the principle that financial data should be frictionless.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Finance</span>
+                <span class="tag">API</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://www.crypstockdash.page.gd/" target="_blank" class="proj-card-link">Visit StockDash <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buzy Reviewer -->
+          <div class="proj-card reveal reveal-delay-1">
+            <div class="proj-card-img">
+              <img src="../assets/images/br.png" alt="Buzy Reviewer" />
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">04 — Live Project</p>
+              <h3 class="proj-card-title">Buzy Reviewer</h3>
+              <p class="proj-card-desc">
+                The direct predecessor to IARMS. Built as a foundational school project exploring interactive study tools. Served its academic purpose and directly informed the architecture and design decisions behind IARMS.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://abaldosano.github.io/Buzy-Reviewer/index.html" target="_blank" class="proj-card-link">Live Demo <span>→</span></a>
+                <a href="https://github.com/ABaldosano" target="_blank" class="proj-card-link dim">GitHub <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
         </div>
-
-        <!-- PROJECT 2: Faculty Workload -->
-        <div class="project-featured reveal reveal-delay-1">
-          <div class="project-featured-img">
-            <img src="../assets/images/fwb.png" alt="Faculty Workload Balancing System" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">01 - Live Project</p>
-            <h3 class="featured-title">Faculty Workload Balancing System</h3>
-            <p class="featured-desc">
-              A web-based system designed to organize and balance faculty workloads at PSU, addressing a
-              genuine institutional need. Using a high-constraint Genetic Algorithm to further curate 
-              and consider faculty specializations, time constraints, maximum teaching loads, and hourly 
-              schedule conflicts. The live GitHub deployment is frontend-only. The complete backend, which 
-              handles workload computation and data management, runs exclusively within the local development 
-              environment.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-            </div>
-            <div class="featured-links">
-              <a href="https://abaldosano.github.io/Updated-Faculty-Workload-Balancing-System/index.html" target="_blank" class="featured-link">Live Demo <span>→</span></a>
-              <a href="https://github.com/ABaldosano" target="_blank" class="featured-link" style="opacity:0.6;">GitHub <span>→</span></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROJECT 3: PinnedPicks -->
-        <div class="project-featured reveal reveal-delay-2">
-          <div class="project-featured-img">
-            <img src="../assets/images/pinned.png" alt="PinnedPicks Affiliate Commerce Platform" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">02 - Live Business</p>
-            <h3 class="featured-title">PinnedPicks Affiliate Platform</h3>
-            <p class="featured-desc">
-              PinnedPicks is an independently owned affiliate e-commerce platform I designed, built, and operate. 
-              It curates product picks across Shopee, Amazon, and SHEIN covering Fashion, Electronics, Health and 
-              Beauty, and Trending categories, presented in a clean discovery layout without requiring users to create accounts. <br>
-              Built entirely from scratch and deployed on GitHub Pages. Traffic is driven through a Pinterest-based social content 
-              strategy running alongside the platform. This project demonstrates full product ownership: concept, 
-              development, deployment, and ongoing marketing, not just the build.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">E-Commerce</span>
-              <span class="tag">Affiliate Marketing</span>
-              <span class="tag">Web Design</span>
-              <span class="tag">Social Strategy</span>
-            </div>
-            <div class="featured-links">
-              <a href="https://www.pinnedpicks.gt.tc/" target="_blank" class="featured-link">Visit Platform <span>→</span></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROJECT: CrypStockDash -->
-        <div class="project-featured reveal reveal-delay-3">
-          <div class="project-featured-img">
-            <img src="../assets/images/SD.png" alt="StockDash - Stock Market Viewer" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">03 - Live Project</p>
-            <h3 class="featured-title">CrypStockDash</h3>
-            <p class="featured-desc">
-              A lightweight, no-login stock market viewer built for instant access to real-time market data.
-              Users can search any ticker symbol and view live stock information without creating an account
-              or entering any personal information. Built around the principle that financial data should be
-              frictionless to access. Clean interface, fast lookup, and zero barriers.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Finance</span>
-              <span class="tag">API</span>
-            </div>
-            <div class="featured-links">
-              <a href="https://www.crypstockdash.page.gd/" target="_blank" class="featured-link">Visit StockDash <span>→</span></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- PROJECT 4: Buzy Reviewer -->
-        <div class="project-featured reveal reveal-delay-4">
-          <div class="project-featured-img">
-            <img src="../assets/images/br.png" alt="Buzy Reviewer" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">04 - Live Project</p>
-            <h3 class="featured-title">Buzy Reviewer</h3>
-            <p class="featured-desc">
-              The direct predecessor to IARMS, Buzy Reviewer was built as a foundational school project
-              exploring interactive study tools. It served its academic purpose and informed the development
-              of IARMS, but was not designed as a public or production-ready platform.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-            </div>
-            <div class="featured-links">
-              <a href="https://abaldosano.github.io/Buzy-Reviewer/index.html" target="_blank" class="featured-link">Live Demo <span>→</span></a>
-              <a href="https://github.com/ABaldosano" target="_blank" class="featured-link" style="opacity:0.6;">GitHub <span>→</span></a>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /.project-group top live -->
-
+      </div>
 
       <!-- ── GROUP: FREELANCING PROJECTS ── -->
-      <div class="project-group">
+      <div class="proj-group">
         <p class="project-group-label reveal">Freelancing Projects</p>
+        <div class="projects-card-grid">
 
-        <!-- Paid: Class & School Website -->
-        <div class="project-featured reveal reveal-delay-1">
-          <div class="project-featured-img">
-            <img src="../assets/images/schoolsite.png" alt="Class and School Website" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">05 - Freelance</p>
-            <h3 class="featured-title">Class and School Website</h3>
-            <p class="featured-desc">
-              A complete class and school website delivered for a paying client using Google Sites.
-              Covers all required content areas with clear navigation, organized layout, and a professional finish suited for an academic audience.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">Freelance</span>
-              <span class="tag">Google Sites</span>
-              <span class="tag">Paid</span>
+          <!-- Class & School Website -->
+          <div class="proj-card reveal">
+            <div class="proj-card-img">
+              <img src="../assets/images/schoolsite.png" alt="Class and School Website" />
             </div>
-            <div class="featured-links">
-              <a href="https://sites.google.com/view/helenbaldosano-schoolandclass?usp=sharing" target="_blank" class="featured-link">Visit Site <span>→</span></a>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">05 — Freelance · Paid</p>
+              <h3 class="proj-card-title">Class and School Website</h3>
+              <p class="proj-card-desc">
+                Complete class and school website delivered for a paying client using Google Sites. Covers all required content areas with clear navigation, organized layout, and a professional finish suited for an academic audience.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">Freelance</span>
+                <span class="tag">Google Sites</span>
+                <span class="tag">Paid</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://sites.google.com/view/helenbaldosano-schoolandclass?usp=sharing" target="_blank" class="proj-card-link">Visit Site <span>→</span></a>
+              </div>
             </div>
           </div>
+
+          <!-- Product Discovery Format 1 -->
+          <div class="proj-card reveal reveal-delay-1">
+            <div class="proj-card-img">
+              <img src="../assets/images/PDF1.png" alt="Product Discovery Format 1" />
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">06 — Freelance</p>
+              <h3 class="proj-card-title">Product Discovery Website Format 1</h3>
+              <p class="proj-card-desc">
+                Client-facing product discovery layout built as a freelance deliverable. Format 1 explores a structured editorial approach to product presentation, designed for clarity, ease of browsing, and clean visual hierarchy.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Freelance</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://abaldosano.github.io/productdiscoveryformat1/" target="_blank" class="proj-card-link">View Project <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Discovery Format 2 -->
+          <div class="proj-card reveal reveal-delay-2">
+            <div class="proj-card-img">
+              <img src="../assets/images/PDF2.png" alt="Product Discovery Format 2" />
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">07 — Freelance</p>
+              <h3 class="proj-card-title">Product Discovery Website Format 2</h3>
+              <p class="proj-card-desc">
+                Second iteration of the product discovery web format, exploring an alternative visual and structural direction. Format 2 refines layout density, browsing flow, and interaction patterns as a comparative freelance study.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Freelance</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://abaldosano.github.io/productdiscoveryformat2/" target="_blank" class="proj-card-link">View Project <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
         </div>
-
-        <!-- Freelance: Product Discovery Format 1 -->
-        <div class="project-featured reveal reveal-delay-2">
-          <div class="project-featured-img">
-            <img src="../assets/images/PDF1.png" alt="Product Discovery 1" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">06 - Freelance</p>
-            <h3 class="featured-title">Product Discovery Website Format 1</h3>
-            <p class="featured-desc">
-              A client-facing product discovery web layout built as a freelance deliverable. Format 1 explores a structured editorial approach to product presentation, designed for clarity, ease of browsing, and clean visual hierarchy.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Freelance</span>
-            </div>
-            <div class="featured-links">
-              <a href="https://abaldosano.github.io/productdiscoveryformat1/" target="_blank" class="featured-link">View Project <span>→</span></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Freelance: Product Discovery Format 2 -->
-        <div class="project-featured reveal reveal-delay-3">
-          <div class="project-featured-img">
-            <img src="../assets/images/PDF2.png" alt="Product Discovery 2" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">07 - Freelance</p>
-            <h3 class="featured-title">Product Discovery Website Format 2</h3>
-            <p class="featured-desc">
-              A second iteration of the product discovery web format, exploring an alternative visual and structural direction. Format 2 refines layout density, browsing flow, and interaction patterns as a comparative freelance study.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Freelance</span>
-            </div>
-            <div class="featured-links">
-              <a href="https://abaldosano.github.io/productdiscoveryformat2/" target="_blank" class="featured-link">View Project <span>→</span></a>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /.project-group freelancing -->
-
+      </div>
 
       <!-- ── GROUP: FOR FUN PROJECTS ── -->
-      <div class="project-group">
+      <div class="proj-group">
         <p class="project-group-label reveal">For Fun Projects</p>
+        <div class="projects-card-grid">
 
-        <div class="project-featured reveal reveal-delay-1">
-          <div class="project-featured-img">
-            <img src="../assets/images/CP2077.png" alt="Cyberpunk 2077" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">08 - Personal · For Fun</p>
-            <h3 class="featured-title">Cyberpunk 2077 Themed Landing Page</h3>
-            <p class="featured-desc">
-              A creative frontend build inspired by Cyberpunk 2077, exploring immersive UI design, 
-              dynamic visual elements, and game-inspired interaction patterns. Built to push the 
-              boundaries of expressive frontend design using HTML, CSS, and JavaScript, with no framework dependencies.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Creative</span>
-              <span class="tag">Personal</span>
+          <!-- Cyberpunk 2077 -->
+          <div class="proj-card reveal">
+            <div class="proj-card-img">
+              <img src="../assets/images/CP2077.png" alt="Cyberpunk 2077 Landing Page" />
             </div>
-            <div class="featured-links">
-              <a href="https://abaldosano.github.io/Cyberpunk2077/" target="_blank" class="featured-link">View Project <span>→</span></a>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">08 — Personal · For Fun</p>
+              <h3 class="proj-card-title">Cyberpunk 2077 Themed Landing Page</h3>
+              <p class="proj-card-desc">
+                Creative frontend build inspired by Cyberpunk 2077, exploring immersive UI design, dynamic visual elements, and game-inspired interaction patterns. Pure HTML, CSS, and JavaScript — no framework dependencies.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Creative</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://abaldosano.github.io/Cyberpunk2077/" target="_blank" class="proj-card-link">View Project <span>→</span></a>
+              </div>
             </div>
           </div>
+
+          <!-- Death Stranding -->
+          <div class="proj-card reveal reveal-delay-1">
+            <div class="proj-card-img">
+              <img src="../assets/images/DS.png" alt="Death Stranding Landing Page" />
+            </div>
+            <div class="proj-card-body">
+              <p class="proj-card-badge">09 — Personal · For Fun</p>
+              <h3 class="proj-card-title">Death Stranding Themed Landing Page</h3>
+              <p class="proj-card-desc">
+                Creative frontend build inspired by Death Stranding, experimenting with atmospheric visual design, layered UI elements, and game-inspired interaction flow. A deliberate exploration of mood-driven frontend aesthetics.
+              </p>
+              <div class="proj-card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Creative</span>
+              </div>
+              <div class="proj-card-links">
+                <a href="https://abaldosano.github.io/deathstranding/" target="_blank" class="proj-card-link">View Project <span>→</span></a>
+              </div>
+            </div>
+          </div>
+
         </div>
-
-        <div class="project-featured reveal reveal-delay-2">
-          <div class="project-featured-img">
-            <img src="../assets/images/DS.png" alt="Death Stranding" class="featured-screenshot" />
-          </div>
-          <div class="project-featured-content">
-            <p class="featured-badge">09 - Personal · For Fun</p>
-            <h3 class="featured-title">Death Stranding Themed Landing Page</h3>
-            <p class="featured-desc">
-              A creative frontend build inspired by Death Stranding, experimenting with atmospheric visual design, 
-              layered UI elements, and game-inspired interaction flow. Built entirely in HTML, CSS, and JavaScript as 
-              a deliberate exploration of mood-driven frontend aesthetics.
-            </p>
-            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Creative</span>
-              <span class="tag">Personal</span>
-            </div>
-            <div class="featured-links">
-              <a href="https://abaldosano.github.io/deathstranding/" target="_blank" class="featured-link">View Project <span>→</span></a>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /.project-group for fun -->
+      </div>
 
     </div>
   </section>
