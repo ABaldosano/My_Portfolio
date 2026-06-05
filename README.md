@@ -6,7 +6,7 @@
 
 **Full-Stack Developer · E-Commerce Builder · PSU-SITE President · Puerto Princesa, Palawan**
 
-*Building custom web systems, AI-powered academic tools, and e-commerce platforms from scratch — no templates.*
+*Building custom web systems, AI-powered academic tools, and e-commerce platforms from scratch. No templates.*
 
 [![Status](https://img.shields.io/badge/status-active%20development-c9a96e?style=flat-square)](https://www.arthurr.gt.tc/)
 [![Built With](https://img.shields.io/badge/built%20with-HTML%20%7C%20CSS%20%7C%20Vanilla%20JS-4a90d9?style=flat-square)](#technologies)
@@ -22,13 +22,13 @@
 
 ## What Is This?
 
-This is the personal portfolio of **Arthur Baldosano Jr.** — a Full-Stack Web Developer and IT student at Palawan State University (PSU), currently serving as President of PSU-SITE. The portfolio documents real, shipped projects: custom web systems, AI-powered academic tools, e-commerce platforms, and freelance deliverables — all built from scratch, none from templates.
+This is the personal portfolio of **Arthur Baldosano Jr.**, a Full-Stack Web Developer and IT student at Palawan State University (PSU), currently serving as President of PSU-SITE. The portfolio documents real, shipped projects: custom web systems, AI-powered academic tools, e-commerce platforms, and freelance deliverables. All built from scratch, none from templates.
 
 ---
 
 ## About
 
-Arthur is a web developer and systems builder based in Puerto Princesa, Palawan. He specializes in full-stack web applications, e-commerce platforms, and academic systems — available for freelance projects in web development, e-commerce, and custom web systems, working remotely with clients worldwide.
+Arthur is a web developer and systems builder based in Puerto Princesa, Palawan. He specializes in full-stack web applications, e-commerce platforms, and academic systems. Available for freelance projects in web development, e-commerce, and custom web systems, working remotely with clients worldwide.
 
 **Skills & Expertise**
 
@@ -54,73 +54,73 @@ Arthur is a web developer and systems builder based in Puerto Princesa, Palawan.
 
 ### Top Live Projects
 
-**01 · Intelligent Academic Resource Management System (IARMS)** — *Primary Featured · Thesis*
+**01 · Intelligent Academic Resource Management System (IARMS)** · *Primary Featured · Thesis*
 AI-powered academic resource platform for PSU's BSIT students. Generates summaries, flashcards, quizzes, glossary, and key concepts from uploaded documents. Backend runs Ollama (Llama3) locally; GPT-5 Mini API planned for production.
 `Python` `FastAPI` `Ollama LLM` `JavaScript` `Thesis`
-→ [View Prototype](https://abaldosano.github.io/PSU_AcadRes/)
+[View Prototype](https://abaldosano.github.io/PSU_AcadRes/)
 
 ---
 
-**02 · Faculty Workload Balancing System** — *Live Project*
+**02 · Faculty Workload Balancing System** · *Live Project*
 Web-based system for organizing and balancing faculty workloads at PSU. Uses a high-constraint Genetic Algorithm factoring in specializations, time constraints, max teaching loads, and schedule conflicts.
 `HTML` `CSS` `JavaScript`
-→ [Live Demo](https://abaldosano.github.io/Updated-Faculty-Workload-Balancing-System/index.html) · [GitHub](https://github.com/ABaldosano)
+[Live Demo](https://abaldosano.github.io/Updated-Faculty-Workload-Balancing-System/index.html) · [GitHub](https://github.com/ABaldosano)
 
 ---
 
-**03 · PinnedPicks Affiliate Platform** — *Live Business*
+**03 · PinnedPicks Affiliate Platform** · *Live Business*
 Independently owned affiliate e-commerce platform curating picks across Shopee, Amazon, and SHEIN. Built from scratch on GitHub Pages. Traffic driven through a Pinterest-based social content strategy.
 `HTML` `CSS` `JavaScript` `E-Commerce` `Affiliate` `Web Design` `Social Strategy`
-→ [Visit Platform](https://www.pinnedpicks.gt.tc/)
+[Visit Platform](https://www.pinnedpicks.gt.tc/)
 
 ---
 
-**04 · CrypStockDash** — *Live Project*
+**04 · CrypStockDash** · *Live Project*
 Lightweight, no-login stock market viewer for instant access to real-time market data. Search any ticker symbol and view live info without creating an account. Built on the principle that financial data should be frictionless.
 `HTML` `CSS` `JavaScript` `Finance` `API`
-→ [Visit CrypStockDash](https://www.crypstockdash.page.gd/)
+[Visit CrypStockDash](https://www.crypstockdash.page.gd/)
 
 ---
 
-**05 · Buzy Reviewer** — *Live Project*
+**05 · Buzy Reviewer** · *Live Project*
 The direct predecessor to IARMS. Built as a foundational school project exploring interactive study tools. Served its academic purpose and directly informed the architecture and design decisions behind IARMS.
 `HTML` `CSS` `JavaScript`
-→ [Live Demo](https://abaldosano.github.io/Buzy-Reviewer/index.html) · [GitHub](https://github.com/ABaldosano)
+[Live Demo](https://abaldosano.github.io/Buzy-Reviewer/index.html) · [GitHub](https://github.com/ABaldosano)
 
 ---
 
-**06 · Class and School Website** — *Freelance · Paid*
+**06 · Class and School Website** · *Freelance · Paid*
 Complete class and school website delivered for a paying client using Google Sites. Covers all required content areas with clear navigation, organized layout, and a professional finish suited for an academic audience.
 `Freelance` `Google Sites` `Paid`
-→ [Visit Site](https://sites.google.com/view/helenbaldosano-schoolandclass?usp=sharing)
+[Visit Site](https://sites.google.com/view/helenbaldosano-schoolandclass?usp=sharing)
 
 ---
 
-**07 · Product Discovery Website Format 1** — *Freelance*
+**07 · Product Discovery Website Format 1** · *Freelance*
 Client-facing product discovery layout built as a freelance deliverable. Format 1 explores a structured editorial approach to product presentation, designed for clarity, ease of browsing, and clean visual hierarchy.
 `HTML` `CSS` `JavaScript` `Freelance`
-→ [View Project](https://abaldosano.github.io/productdiscoveryformat1/)
+[View Project](https://abaldosano.github.io/productdiscoveryformat1/)
 
 ---
 
-**08 · Product Discovery Website Format 2** — *Freelance*
+**08 · Product Discovery Website Format 2** · *Freelance*
 Second iteration of the product discovery web format, exploring an alternative visual and structural direction. Format 2 refines layout density, browsing flow, and interaction patterns as a comparative freelance study.
 `HTML` `CSS` `JavaScript` `Freelance`
-→ [View Project](https://abaldosano.github.io/productdiscoveryformat2/)
+[View Project](https://abaldosano.github.io/productdiscoveryformat2/)
 
 ---
 
-**09 · Cyberpunk 2077 Themed Landing Page** — *Personal · For Fun*
+**09 · Cyberpunk 2077 Themed Landing Page** · *Personal · For Fun*
 Creative frontend build inspired by Cyberpunk 2077, exploring immersive UI design, dynamic visual elements, and game-inspired interaction patterns. Built entirely in pure HTML, CSS, and JavaScript, no framework dependencies.
 `HTML` `CSS` `JavaScript`
-→ [View Project](https://abaldosano.github.io/Cyberpunk2077/)
+[View Project](https://abaldosano.github.io/Cyberpunk2077/)
 
 ---
 
-**10 · Death Stranding Themed Landing Page** — *Personal · For Fun*
+**10 · Death Stranding Themed Landing Page** · *Personal · For Fun*
 Creative frontend build inspired by Death Stranding, experimenting with atmospheric visual design, layered UI elements, and game-inspired interaction flow. A deliberate exploration of mood-driven frontend aesthetics.
 `HTML` `CSS` `JavaScript`
-→ [View Project](https://abaldosano.github.io/deathstranding/)
+[View Project](https://abaldosano.github.io/deathstranding/)
 
 ---
 
@@ -135,13 +135,13 @@ Certifications and credentials are currently in progress. Actively pursuing cred
 | IT & Systems | Networking, Security & Infrastructure |
 | Leadership & Others | Leadership Trainings, Marketing & Freelancing |
 
-→ [View Certifications Page](https://www.arthurr.gt.tc/pages/certifications.html)
+[View Certifications Page](https://www.arthurr.gt.tc/pages/certifications.html)
 
 ---
 
 ## Technologies
 
-The portfolio is intentionally lightweight — no frameworks, no backend, no build step.
+The portfolio is intentionally lightweight. No frameworks, no backend, no build step.
 
 | Layer | Technology |
 |-------|-----------|
@@ -188,7 +188,7 @@ No external UI frameworks. No npm dependencies. No server-side rendering.
 
 ### ✉️ Contact Form
 - Inquiry form (Name, Email, Subject, Message) on `contact.html`
-- Submits via `mailto:` — no backend or third-party form service required
+- Submits via `mailto:` with no backend or third-party form service required
 
 ---
 
