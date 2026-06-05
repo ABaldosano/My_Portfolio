@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WHQ474NX');</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Arthur Baldosano Jr.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+  <link rel="stylesheet" href="../assets/css/global.css" />
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html" onclick="closeMobileNav()">Home</a>
+    <a href="projects.html" onclick="closeMobileNav()">Projects</a>
+    <a href="certifications.html" onclick="closeMobileNav()">Certifications</a>
+    <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../index.html" class="nav-logo">A.B.Jr</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" title="Toggle dark / light mode">
+        <div class="toggle-thumb"></div>
+        <span class="t-icon t-sun">☀</span>
+        <span class="t-icon t-moon">☽</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-sep">→</span>
+        <span>Projects</span>
+      </nav>
+      <div class="page-header-content reveal">
+        <p class="section-label">Selected Work</p>
+        <h1 class="section-title">Projects and<br><em>Accomplishments</em></h1>
+        <p class="page-header-desc">
+          A curated selection of custom-built web systems, full-stack applications, and independently operated digital platforms. Delivered for real clients, real institutions, and real users.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+
+      <!-- ── GROUP: TOP LIVE PROJECTS ── -->
+      <div class="project-group reveal">
+        <p class="project-group-label">Top Live Projects</p>
+
+        <!-- PROJECT 1: IARMS Thesis -->
+        <div class="project-featured thesis-card reveal">
+          <div class="project-featured-img">
+            <img src="../assets/images/IARMS.png" alt="IARMS - Intelligent Academic Resource Management System" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">Primary Featured Project · Undergraduate Thesis Proposal</p>
+            <h3 class="featured-title">Intelligent Academic Resource Management System</h3>
+            <p class="featured-desc">
+              AI-powered academic resource platform built for PSU's College of Sciences IT Students,
+              developed as a significant improvement over Buzy Reviewer. Students and faculty can upload documents
+              and receive AI-generated summaries, flashcards, quizzes, glossary, and key concept breakdowns. The full backend,
+              powered by Ollama (Llama3 LLM Model), runs only within the local development environment.
+              The live GitHub deployment provides the frontend interface only, with GPT-5 Mini API planned for
+              the full production build.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">Python</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">Ollama LLM</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Prototype</span>
+              <span class="tag">Thesis</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://abaldosano.github.io/PSU_AcadRes/" target="_blank" class="featured-link">View Prototype <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: Faculty Workload -->
+        <div class="project-featured reveal reveal-delay-1">
+          <div class="project-featured-img">
+            <img src="../assets/images/fwb.png" alt="Faculty Workload Balancing System" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">01 - Live Project</p>
+            <h3 class="featured-title">Faculty Workload Balancing System</h3>
+            <p class="featured-desc">
+              A web-based system designed to organize and balance faculty workloads at PSU, addressing a
+              genuine institutional need. Using a high-constraint Genetic Algorithm to further curate 
+              and consider faculty specializations, time constraints, maximum teaching loads, and hourly 
+              schedule conflicts. The live GitHub deployment is frontend-only. The complete backend, which 
+              handles workload computation and data management, runs exclusively within the local development 
+              environment.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://abaldosano.github.io/Updated-Faculty-Workload-Balancing-System/index.html" target="_blank" class="featured-link">Live Demo <span>→</span></a>
+              <a href="https://github.com/ABaldosano" target="_blank" class="featured-link" style="opacity:0.6;">GitHub <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 3: PinnedPicks -->
+        <div class="project-featured reveal reveal-delay-2">
+          <div class="project-featured-img">
+            <img src="../assets/images/pinned.png" alt="PinnedPicks Affiliate Commerce Platform" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">02 - Live Business</p>
+            <h3 class="featured-title">PinnedPicks Affiliate Platform</h3>
+            <p class="featured-desc">
+              PinnedPicks is an independently owned affiliate e-commerce platform I designed, built, and operate. 
+              It curates product picks across Shopee, Amazon, and SHEIN covering Fashion, Electronics, Health and 
+              Beauty, and Trending categories, presented in a clean discovery layout without requiring users to create accounts. <br>
+              Built entirely from scratch and deployed on GitHub Pages. Traffic is driven through a Pinterest-based social content 
+              strategy running alongside the platform. This project demonstrates full product ownership: concept, 
+              development, deployment, and ongoing marketing, not just the build.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">E-Commerce</span>
+              <span class="tag">Affiliate Marketing</span>
+              <span class="tag">Web Design</span>
+              <span class="tag">Social Strategy</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://www.pinnedpicks.gt.tc/" target="_blank" class="featured-link">Visit Platform <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT: CrypStockDash -->
+        <div class="project-featured reveal reveal-delay-3">
+          <div class="project-featured-img">
+            <img src="../assets/images/SD.png" alt="StockDash - Stock Market Viewer" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">03 - Live Project</p>
+            <h3 class="featured-title">CrypStockDash</h3>
+            <p class="featured-desc">
+              A lightweight, no-login stock market viewer built for instant access to real-time market data.
+              Users can search any ticker symbol and view live stock information without creating an account
+              or entering any personal information. Built around the principle that financial data should be
+              frictionless to access. Clean interface, fast lookup, and zero barriers.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Finance</span>
+              <span class="tag">API</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://www.crypstockdash.page.gd/" target="_blank" class="featured-link">Visit StockDash <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 4: Buzy Reviewer -->
+        <div class="project-featured reveal reveal-delay-4">
+          <div class="project-featured-img">
+            <img src="../assets/images/br.png" alt="Buzy Reviewer" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">04 - Live Project</p>
+            <h3 class="featured-title">Buzy Reviewer</h3>
+            <p class="featured-desc">
+              The direct predecessor to IARMS, Buzy Reviewer was built as a foundational school project
+              exploring interactive study tools. It served its academic purpose and informed the development
+              of IARMS, but was not designed as a public or production-ready platform.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://abaldosano.github.io/Buzy-Reviewer/index.html" target="_blank" class="featured-link">Live Demo <span>→</span></a>
+              <a href="https://github.com/ABaldosano" target="_blank" class="featured-link" style="opacity:0.6;">GitHub <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.project-group top live -->
+
+
+      <!-- ── GROUP: FREELANCING PROJECTS ── -->
+      <div class="project-group">
+        <p class="project-group-label reveal">Freelancing Projects</p>
+
+        <!-- Paid: Class & School Website -->
+        <div class="project-featured reveal reveal-delay-1">
+          <div class="project-featured-img">
+            <img src="../assets/images/schoolsite.png" alt="Class and School Website" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">05 - Freelance</p>
+            <h3 class="featured-title">Class and School Website</h3>
+            <p class="featured-desc">
+              A complete class and school website delivered for a paying client using Google Sites.
+              Covers all required content areas with clear navigation, organized layout, and a professional finish suited for an academic audience.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">Freelance</span>
+              <span class="tag">Google Sites</span>
+              <span class="tag">Paid</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://sites.google.com/view/helenbaldosano-schoolandclass?usp=sharing" target="_blank" class="featured-link">Visit Site <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Freelance: Product Discovery Format 1 -->
+        <div class="project-featured reveal reveal-delay-2">
+          <div class="project-featured-img">
+            <img src="../assets/images/PDF1.png" alt="Product Discovery 1" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">06 - Freelance</p>
+            <h3 class="featured-title">Product Discovery Website Format 1</h3>
+            <p class="featured-desc">
+              A client-facing product discovery web layout built as a freelance deliverable. Format 1 explores a structured editorial approach to product presentation, designed for clarity, ease of browsing, and clean visual hierarchy.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Freelance</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://abaldosano.github.io/productdiscoveryformat1/" target="_blank" class="featured-link">View Project <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Freelance: Product Discovery Format 2 -->
+        <div class="project-featured reveal reveal-delay-3">
+          <div class="project-featured-img">
+            <img src="../assets/images/PDF2.png" alt="Product Discovery 2" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">07 - Freelance</p>
+            <h3 class="featured-title">Product Discovery Website Format 2</h3>
+            <p class="featured-desc">
+              A second iteration of the product discovery web format, exploring an alternative visual and structural direction. Format 2 refines layout density, browsing flow, and interaction patterns as a comparative freelance study.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Freelance</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://abaldosano.github.io/productdiscoveryformat2/" target="_blank" class="featured-link">View Project <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.project-group freelancing -->
+
+
+      <!-- ── GROUP: FOR FUN PROJECTS ── -->
+      <div class="project-group">
+        <p class="project-group-label reveal">For Fun Projects</p>
+
+        <div class="project-featured reveal reveal-delay-1">
+          <div class="project-featured-img">
+            <img src="../assets/images/CP2077.png" alt="Cyberpunk 2077" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">08 - Personal · For Fun</p>
+            <h3 class="featured-title">Cyberpunk 2077 Themed Landing Page</h3>
+            <p class="featured-desc">
+              A creative frontend build inspired by Cyberpunk 2077, exploring immersive UI design, 
+              dynamic visual elements, and game-inspired interaction patterns. Built to push the 
+              boundaries of expressive frontend design using HTML, CSS, and JavaScript, with no framework dependencies.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Creative</span>
+              <span class="tag">Personal</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://abaldosano.github.io/Cyberpunk2077/" target="_blank" class="featured-link">View Project <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-featured reveal reveal-delay-2">
+          <div class="project-featured-img">
+            <img src="../assets/images/DS.png" alt="Death Stranding" class="featured-screenshot" />
+          </div>
+          <div class="project-featured-content">
+            <p class="featured-badge">09 - Personal · For Fun</p>
+            <h3 class="featured-title">Death Stranding Themed Landing Page</h3>
+            <p class="featured-desc">
+              A creative frontend build inspired by Death Stranding, experimenting with atmospheric visual design, 
+              layered UI elements, and game-inspired interaction flow. Built entirely in HTML, CSS, and JavaScript as 
+              a deliberate exploration of mood-driven frontend aesthetics.
+            </p>
+            <div style="display:flex; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Creative</span>
+              <span class="tag">Personal</span>
+            </div>
+            <div class="featured-links">
+              <a href="https://abaldosano.github.io/deathstranding/" target="_blank" class="featured-link">View Project <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.project-group for fun -->
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Arthur Baldosano Jr.</span>
+    <div class="footer-icons">
+      <a href="mailto:arthurjuniorbaldosano@gmail.com" title="Email" class="footer-icon-link">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      </a>
+      <a href="https://github.com/ABaldosano" target="_blank" title="GitHub" class="footer-icon-link">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.89 1.52 2.33 1.08 2.9.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.26-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.11 2.5.33 1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.38.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/arthur-baldosano-jr-2b5607406" target="_blank" title="LinkedIn" class="footer-icon-link">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zm2-3a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+      </a>
+      <a href="https://www.upwork.com/freelancers/~01746d5ba8ae90ffb9?mp_source=share" target="_blank" title="Upwork" class="footer-icon-link">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703 0 1.489-1.211 2.66-2.696 2.66zM18.56 3c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H8.386v7.31c0 1.457-1.187 2.644-2.644 2.644S3.1 10.241 3.1 8.784V1.474H.824v7.31C.824 11.439 3.04 13.63 5.742 13.63c2.703 0 4.919-2.191 4.919-4.846V7.71c.539 1.219 1.219 2.514 2.054 3.638l-1.733 8.152h2.312l1.26-5.922c1.139.783 2.411 1.226 3.807 1.226C21.327 14.804 24 12.133 24 8.784 24 5.433 21.327 3 18.561 3z"/></svg>
+      </a>
+    </div>
+    <p>© 2026 - Designed and Built by Arthur Baldosano Jr.</p>
+    <p>Puerto Princesa, Palawan, Philippines</p>
+  </footer>
+
+  <script src="../assets/js/functions.js"></script>
+</body>
+</html>
