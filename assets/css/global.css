@@ -93,7 +93,7 @@ body {
 .hero-eyebrow, .section-label, .hero-badge, .tag, .stat-label,
 .btn-primary, .btn-outline, .contact-link, .featured-link,
 .featured-badge, .paid-badge, .hero-scroll-hint, .nav-links a,
-.project-group-label, .proj-card-badge, .proj-card-link {
+.project-group-label, .cert-group-label, .proj-card-badge, .proj-card-link {
   font-family: 'Inter', sans-serif; 
   font-weight: 500;
 }
@@ -1290,6 +1290,7 @@ footer p {
   .stat-num { font-size: 2rem; }
   
   #projects { padding: 64px 0; }
+  #certifications { padding: 48px 0 80px; }
   .projects-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 36px; }
   .projects-header-right { text-align: left; max-width: 100%; }
   .project-featured { grid-template-columns: 1fr; }
