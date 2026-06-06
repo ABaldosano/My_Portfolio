@@ -921,6 +921,18 @@ nav.header-hidden {
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
 }
+.cert-card-grid .proj-card-img {
+  height: auto;
+  overflow: visible;
+}
+.cert-card-grid .proj-card-img img {
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+.cert-card-grid .proj-card:hover .proj-card-img img {
+  transform: none;
+}
 
 /* ==========================================================================
    12. CENTRALIZED INQUIRY & COMMUNICATIONS MODULE
