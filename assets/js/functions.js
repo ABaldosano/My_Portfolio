@@ -1,9 +1,9 @@
 /* ==========================================================================
-   PORTFOLIO :: functions.js
-   Single source of truth for all global JS. Loaded on every page.
+   portfolio :: functions.js
+   single source code for functions. load on every page.
    ========================================================================== */
 
-// 1. THEME TOGGLE ─────────────────────────────────────────────────────────────
+// 1. theme toggle ─────────────────────────────────────────────────────────────
 const html     = document.documentElement;
 const themeBtn = document.getElementById('themeToggle');
 html.setAttribute('data-theme', localStorage.getItem('portfolio-theme') || 'light');
@@ -13,7 +13,7 @@ themeBtn.addEventListener('click', () => {
   localStorage.setItem('portfolio-theme', next);
 });
 
-// 2. HAMBURGER / MOBILE NAV ───────────────────────────────────────────────────
+// 2. hamburger nav ───────────────────────────────────────────────────
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
 
@@ -28,7 +28,7 @@ hamburger.addEventListener('click', () => {
   const isOpen = hamburger.classList.toggle('open');
   mobileNav.classList.toggle('open', isOpen);
   document.body.style.overflow = isOpen ? 'hidden' : '';
-  // Prevent nav from hiding while mobile menu is open
+  // wag ka po mawala sa mobile hihi
   if (isOpen) {
     window._navScrollLock && window._navScrollLock();
     document.querySelector('nav').classList.remove('header-hidden');
@@ -37,7 +37,7 @@ hamburger.addEventListener('click', () => {
   }
 });
 
-// 3. STICKY NAVBAR: AUTO-HIDE ON SCROLL DOWN, SHOW ON SCROLL UP ──────────────
+// 3. sticky navbar ─────────────────────────────────────────────────────
 (function initNavScroll() {
   const navEl   = document.querySelector('nav');
   let lastY     = window.scrollY;
@@ -71,7 +71,7 @@ hamburger.addEventListener('click', () => {
   }, { passive: true });
 })();
 
-// 4. CUSTOM CURSOR (desktop with fine pointer only) ───────────────────────────
+// 4. custom cursor for desktop only ───────────────────────────
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursorRing');
 if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
@@ -100,7 +100,7 @@ if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   });
 }
 
-// 5. SCROLL REVEAL (IntersectionObserver) ─────────────────────────────────────
+// 5. scroll reveal ─────────────────────────────────────
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
@@ -108,7 +108,7 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
 
-// 6. NAV ACTIVE STATE: path-based ─────────────────────────────────────────────
+// 6. nav activestate ─────────────────────────────────────────────────────
 (function () {
   const path = window.location.pathname;
   let activePage = 'home';
