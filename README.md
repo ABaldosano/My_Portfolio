@@ -44,7 +44,7 @@ Arthur is a web developer and systems builder based in Puerto Princesa, Palawan.
 
 | Stat | Value |
 |------|-------|
-| Live Projects | 8+ |
+| Live Projects | 9+ |
 | Freelance Builds | 3+ |
 | Role at PSU | SITE President |
 
@@ -52,74 +52,80 @@ Arthur is a web developer and systems builder based in Puerto Princesa, Palawan.
 
 ## Projects
 
+Projects are organized into three groups: **Top Live Projects**, **Freelancing Projects**, and **For Fun Projects**.
+
 ### Top Live Projects
 
-**01 · Intelligent Academic Resource Management System (IARMS)** · *Primary Featured · Thesis*
+**ATLAS · Automated Teaching Load Assignment System** · *Primary Featured · Thesis Proposal Prototype*
+An automated decision-support system that uses an optimization algorithm to streamline and balance faculty teaching load assignments for department chairpersons at Palawan State University's College of Sciences.
+`HTML` `CSS` `JavaScript` `Python`
+[Live Demo](https://abaldosano.github.io/ATLAS-PSU/) · [GitHub](https://github.com/ABaldosano)
+
+---
+
+**01 · Intelligent Academic Resource Management System (IARMS)** · *Thesis Proposal Prototype*
 AI-powered academic resource platform for PSU's BSIT students. Generates summaries, flashcards, quizzes, glossary, and key concepts from uploaded documents. Backend runs Ollama (Llama3) locally; GPT-5 Mini API planned for production.
 `Python` `FastAPI` `Ollama LLM` `JavaScript` `Thesis`
 [View Prototype](https://abaldosano.github.io/PSU_AcadRes/)
 
 ---
 
-**02 · Faculty Workload Balancing System** · *Live Project*
-Web-based system for organizing and balancing faculty workloads at PSU. Uses a high-constraint Genetic Algorithm factoring in specializations, time constraints, max teaching loads, and schedule conflicts.
-`HTML` `CSS` `JavaScript`
-[Live Demo](https://abaldosano.github.io/Updated-Faculty-Workload-Balancing-System/index.html) · [GitHub](https://github.com/ABaldosano)
-
----
-
-**03 · PinnedPicks Affiliate Platform** · *Live Business*
+**02 · PinnedPicks Affiliate Platform** · *Live Business*
 Independently owned affiliate e-commerce platform curating picks across Shopee, Amazon, and SHEIN. Built from scratch on GitHub Pages. Traffic driven through a Pinterest-based social content strategy.
 `HTML` `CSS` `JavaScript` `E-Commerce` `Affiliate` `Web Design` `Social Strategy`
 [Visit Platform](https://www.pinnedpicks.gt.tc/)
 
 ---
 
-**04 · CrypStockDash** · *Live Project*
+**03 · CrypStockDash** · *Live Project*
 Lightweight, no-login stock market viewer for instant access to real-time market data. Search any ticker symbol and view live info without creating an account. Built on the principle that financial data should be frictionless.
 `HTML` `CSS` `JavaScript` `Finance` `API`
 [Visit CrypStockDash](https://www.crypstockdash.page.gd/)
 
 ---
 
-**05 · Buzy Reviewer** · *Live Project*
+**04 · Buzy Reviewer** · *Live Project*
 The direct predecessor to IARMS. Built as a foundational school project exploring interactive study tools. Served its academic purpose and directly informed the architecture and design decisions behind IARMS.
 `HTML` `CSS` `JavaScript`
 [Live Demo](https://abaldosano.github.io/Buzy-Reviewer/index.html) · [GitHub](https://github.com/ABaldosano)
 
 ---
 
-**06 · Class and School Website** · *Freelance · Paid*
+### Freelancing Projects
+
+**05 · Class and School Website** · *Freelance · Paid*
 Complete class and school website delivered for a paying client using Google Sites. Covers all required content areas with clear navigation, organized layout, and a professional finish suited for an academic audience.
 `Freelance` `Google Sites` `Paid`
 [Visit Site](https://sites.google.com/view/helenbaldosano-schoolandclass?usp=sharing)
 
 ---
 
-**07 · Product Discovery Website Format 1** · *Freelance*
+**06 · Product Discovery Website Format 1** · *Freelance*
 Client-facing product discovery layout built as a freelance deliverable. Format 1 explores a structured editorial approach to product presentation, designed for clarity, ease of browsing, and clean visual hierarchy.
 `HTML` `CSS` `JavaScript` `Freelance`
 [View Project](https://abaldosano.github.io/productdiscoveryformat1/)
 
 ---
 
-**08 · Product Discovery Website Format 2** · *Freelance*
+**07 · Product Discovery Website Format 2** · *Freelance*
 Second iteration of the product discovery web format, exploring an alternative visual and structural direction. Format 2 refines layout density, browsing flow, and interaction patterns as a comparative freelance study.
 `HTML` `CSS` `JavaScript` `Freelance`
 [View Project](https://abaldosano.github.io/productdiscoveryformat2/)
 
 ---
 
-**09 · Cyberpunk 2077 Themed Landing Page** · *Personal · For Fun*
+### For Fun Projects
+
+**08 · Cyberpunk 2077 Themed Landing Page** · *Personal · For Fun*
 Creative frontend build inspired by Cyberpunk 2077, exploring immersive UI design, dynamic visual elements, and game-inspired interaction patterns. Built entirely in pure HTML, CSS, and JavaScript, no framework dependencies.
-`HTML` `CSS` `JavaScript`
+`HTML` `CSS` `JavaScript` `Creative`
 [View Project](https://abaldosano.github.io/Cyberpunk2077/)
 
 ---
 
-**10 · Death Stranding Themed Landing Page** · *Personal · For Fun*
+**09 · Death Stranding Themed Landing Page** · *Personal · For Fun*
 Creative frontend build inspired by Death Stranding, experimenting with atmospheric visual design, layered UI elements, and game-inspired interaction flow. A deliberate exploration of mood-driven frontend aesthetics.
-`HTML` `CSS` `JavaScript`
+`HTML` `CSS` `JavaScript` `Creative`
 [View Project](https://abaldosano.github.io/deathstranding/)
 
 ---
@@ -151,6 +157,7 @@ The portfolio is intentionally lightweight. No frameworks, no backend, no build 
 | Persistence | Browser `localStorage` (theme preference only) |
 | Fonts | Google Fonts — Playfair Display, Inter |
 | Analytics | Google Analytics 4 via Google Tag Manager |
+| PWA | Web App Manifest (`manifest.json`) |
 | Hosting | GitHub Pages (custom domain via CNAME) |
 | Domain | [www.arthurr.gt.tc](https://www.arthurr.gt.tc/) |
 
@@ -167,7 +174,7 @@ No external UI frameworks. No npm dependencies. No server-side rendering.
 
 ### 📜 Scroll Reveal
 - `IntersectionObserver`-powered `.reveal` animations on scroll
-- Staggered reveal delays (`reveal-delay-2`, `reveal-delay-3`, `reveal-delay-4`)
+- Staggered reveal delays (`reveal-delay-1`, `reveal-delay-2`, `reveal-delay-3`, `reveal-delay-4`)
 
 ### 🖱️ Custom Cursor
 - Custom cursor dot and ring active on pointer/hover devices
@@ -179,10 +186,16 @@ No external UI frameworks. No npm dependencies. No server-side rendering.
 - Touch-friendly layout and spacing
 - Optimized typography scaling across breakpoints
 
+### 📲 PWA Support
+- Web App Manifest (`manifest.json`) for installability
+- Apple and Android mobile web app meta tags
+- Theme color support for light and dark system preferences
+
 ### 🔎 SEO & Discoverability
 - Full Open Graph and Twitter/X card metadata on every page
 - JSON-LD structured data: `Person`, `WebSite`, `CollectionPage`, `ContactPage`, `BreadcrumbList`, `SearchAction`
 - Geo metadata (Puerto Princesa, Palawan — `PH-PLW`)
+- Google Site Verification and Bing Webmaster Tools validation
 - Canonical URLs and `robots` directives
 - XML sitemap covering all four pages
 
@@ -191,6 +204,7 @@ No external UI frameworks. No npm dependencies. No server-side rendering.
 - Submits via `mailto:` with no backend or third-party form service required
 
 ---
+
 
 ## Local Storage Usage
 
@@ -208,7 +222,7 @@ No other data is stored. Nothing leaves your device.
 |----------|------|
 | Email | [arthurjuniorbaldosano@gmail.com](mailto:arthurjuniorbaldosano@gmail.com) |
 | GitHub | [ABaldosano](https://github.com/ABaldosano) |
-| LinkedIn | [arthur-baldosano-jr](www.linkedin.com/in/arthur-v-baldosano-jr-2b5607406) |
+| LinkedIn | [arthur-baldosano-jr](https://www.linkedin.com/in/arthur-v-baldosano-jr-2b5607406) |
 | Upwork | [Arthur Baldosano Jr.](https://www.upwork.com/freelancers/~01746d5ba8ae90ffb9?mp_source=share) |
 
 ---
@@ -225,6 +239,8 @@ The underlying HTML/CSS/JS structure is independently developed by **Arthur Bald
 
 **Arthur Baldosano Jr.** · IT Student & Full-Stack Developer · PSU-SITE President · Puerto Princesa, Palawan 🇵🇭
 
-[arthurr.gt.tc](https://www.arthurr.gt.tc/) · [GitHub](https://github.com/ABaldosano) · [LinkedIn](www.linkedin.com/in/arthur-v-baldosano-jr-2b5607406) · [Upwork](https://www.upwork.com/freelancers/~01746d5ba8ae90ffb9?mp_source=share)
+© 2026 — Designed and Built by Arthur Baldosano Jr.
+
+[arthurr.gt.tc](https://www.arthurr.gt.tc/) · [GitHub](https://github.com/ABaldosano) · [LinkedIn](https://www.linkedin.com/in/arthur-v-baldosano-jr-2b5607406) · [Upwork](https://www.upwork.com/freelancers/~01746d5ba8ae90ffb9?mp_source=share)
 
 </div>
