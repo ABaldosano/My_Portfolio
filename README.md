@@ -138,8 +138,8 @@ Certifications and credentials are currently in progress. Actively pursuing cred
 |-------|-------|
 | Web Development | Frontend, Backend & Full-Stack |
 | Data Analytics | Tableau, Python & Statistics |
-| IT & Systems | Networking, Security & Infrastructure |
-| Leadership & Others | Leadership Trainings, Marketing & Freelancing |
+| Marketing |   Digital Marketing & Freelancing |
+| Leadership & Management | Leadership Trainings & Management |
 
 [View Certifications Page](https://www.arthurr.gt.tc/pages/certifications.html)
 
