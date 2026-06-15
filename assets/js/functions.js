@@ -113,14 +113,18 @@ document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
   const path = window.location.pathname;
   let activePage = 'home';
   if      (path.includes('projects'))      activePage = 'projects';
+  else if (path.includes('articles'))      activePage = 'articles';
+  else if (path.includes('research'))      activePage = 'research';
   else if (path.includes('certifications')) activePage = 'certifications';
   else if (path.includes('contact'))       activePage = 'contact';
-
+ 
   document.querySelectorAll('.nav-links a').forEach(a => {
     const text = a.textContent.trim().toLowerCase();
     const isActive =
       (activePage === 'home'           && text === 'home') ||
       (activePage === 'projects'       && text === 'projects') ||
+      (activePage === 'articles'       && text === 'articles') ||
+      (activePage === 'research'       && text === 'research') ||
       (activePage === 'certifications' && text === 'certifications') ||
       (activePage === 'contact'        && text === 'contact');
     a.style.color = isActive ? 'var(--gold)' : '';
