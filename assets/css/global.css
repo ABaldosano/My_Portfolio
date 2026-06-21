@@ -1004,6 +1004,14 @@ nav.header-hidden {
   border-top: none;
   padding-top: 4px;
 }
+.cert-card-grid .proj-card-desc {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  margin-bottom: 14px;
+  flex: 0 1 auto;
+  -webkit-line-clamp: 3;
+  min-height: unset;
+}
 
 /* ==========================================================================
    12. CENTRALIZED INQUIRY & COMMUNICATIONS MODULE
