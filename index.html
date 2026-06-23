@@ -329,6 +329,20 @@
             </div>
             <span class="chat-status-dot" aria-hidden="true"></span>
           </div>
+
+          <!-- Mode Selector -->
+          <div class="mode-selector" id="modeSelector">
+            <button type="button" class="mode-selector-btn" id="modeSelectorBtn" aria-expanded="false" aria-haspopup="listbox">
+              <span class="mode-icon">◆</span>
+              <span id="modeSelectorLabel">AI Mode</span>
+              <span class="mode-chevron" aria-hidden="true">▲</span>
+            </button>
+            <div class="mode-dropdown" id="modeDropdown" role="listbox" hidden>
+              <button type="button" class="mode-option mode-option--active" data-mode="ai" role="option">AI Mode</button>
+              <button type="button" class="mode-option" data-mode="terminal" role="option">Terminal Mode</button>
+            </div>
+          </div>
+
           <button type="button" class="chat-toggle-btn" id="chatToggleBtn" aria-expanded="false" aria-controls="chatBody">
             <span class="chat-toggle-label">Open</span>
             <span class="chevron" aria-hidden="true"></span>

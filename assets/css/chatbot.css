@@ -1,10 +1,7 @@
 /* ==========================================================================
-   portfolio :: chatbot.css  ·  terminal edition
-   $10k commercial-grade terminal-style AI assistant widget.
-   Inherits the CSS variable system from global.css.
+   portfolio :: chatbot.css · dual-mode edition
    ========================================================================== */
 
-/* ── Accessibility ───────────────────────────────────────────────────────── */
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;
@@ -15,29 +12,32 @@
   border: 0;
 }
 
-/* ── Section ─────────────────────────────────────────────────────────────── */
 #ai-assistant {
   padding: 100px 0;
   background: var(--bg);
   transition: background 0.3s;
 }
 
-/* ── Terminal Window ─────────────────────────────────────────────────────── */
 .chat-widget {
   max-width: 780px;
   margin: 0 auto;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--card-bg);
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   transition: background 0.3s, border-color 0.35s, box-shadow 0.45s;
   box-shadow:
     0 2px 8px rgba(0, 0, 0, 0.12),
     0 0 0 0 rgba(201, 169, 110, 0);
+  clip-path: none;
 }
 
-/* Subtle scanline overlay — luxury terminal texture */
+/* Clip overflow only for inner children, not the dropdown */
+.chat-widget > *:not(.mode-selector) {
+  overflow: hidden;
+}
+
 .chat-widget::before {
   content: '';
   position: absolute;
@@ -73,15 +73,17 @@
   background: rgba(0, 0, 0, 0.18);
   position: relative;
   z-index: 1;
+  border-radius: 10px 10px 0 0;
 }
 
 .chat-widget-header-left {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex: 1;
+  min-width: 0;
 }
 
-/* Traffic-light dots */
 .terminal-dots {
   display: flex;
   gap: 7px;
@@ -102,7 +104,6 @@
 
 .chat-widget-header:hover .terminal-dot { opacity: 1; }
 
-/* Title group */
 .chat-title-group {
   display: flex;
   flex-direction: column;
@@ -118,15 +119,6 @@
   letter-spacing: 0.01em;
 }
 
-.chat-widget-subtitle {
-  font-family: 'Courier New', 'Lucida Console', monospace;
-  font-size: 0.64rem;
-  color: var(--muted);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-/* Online status dot */
 .chat-status-dot {
   width: 7px;
   height: 7px;
@@ -141,7 +133,133 @@
   50%       { opacity: 0.35; transform: scale(0.75); }
 }
 
-/* Toggle button */
+/* ── Mode Selector ───────────────────────────────────────────────────────── */
+.mode-selector {
+  position: relative;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.mode-selector-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.22s, color 0.22s, background 0.22s;
+}
+
+.mode-selector-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 169, 110, 0.06);
+}
+
+.mode-selector-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.mode-icon {
+  font-size: 0.55rem;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+.mode-chevron {
+  font-size: 0.5rem;
+  opacity: 0.6;
+  transition: transform 0.22s;
+}
+
+.mode-selector-btn[aria-expanded="true"] .mode-chevron {
+  transform: rotate(180deg);
+}
+
+.mode-dropdown {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 160px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow:
+    0 -4px 20px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(201, 169, 110, 0.08);
+  z-index: 100;
+  overflow: hidden;
+  animation: dropUp 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mode-dropdown[hidden] { display: none; }
+
+@keyframes dropUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.mode-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 16px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+  position: relative;
+}
+
+.mode-option::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.mode-option:hover {
+  background: rgba(201, 169, 110, 0.06);
+  color: var(--cream);
+}
+
+.mode-option--active {
+  color: var(--gold);
+}
+
+.mode-option--active::before {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.mode-option + .mode-option {
+  border-top: 1px solid var(--border);
+}
+
+/* ── Toggle button ───────────────────────────────────────────────────────── */
 .chat-toggle-btn {
   display: inline-flex;
   align-items: center;
@@ -159,6 +277,7 @@
   cursor: pointer;
   white-space: nowrap;
   transition: border-color 0.22s, color 0.22s, background 0.22s;
+  flex-shrink: 0;
 }
 
 .chat-toggle-btn:hover {
@@ -190,6 +309,8 @@
   border-top: 1px solid var(--border);
   position: relative;
   z-index: 1;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
 }
 
 /* ── Messages Area ───────────────────────────────────────────────────────── */
@@ -221,7 +342,6 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Prompt line */
 .chat-msg-prompt {
   display: flex;
   align-items: center;
@@ -233,34 +353,12 @@
   white-space: nowrap;
 }
 
-.chat-msg-prompt-arrow {
-  font-size: 1rem;
-  line-height: 1;
-  color: var(--gold);
-  flex-shrink: 0;
-}
+.chat-msg-prompt-arrow   { font-size: 1rem; line-height: 1; color: var(--gold); flex-shrink: 0; }
+.chat-msg-prompt-name    { font-weight: 700; color: var(--gold); }
+.chat-msg-prompt-divider { flex: 1; height: 1px; background: var(--border); min-width: 16px; opacity: 0.6; }
+.chat-msg-prompt-time    { color: var(--muted); font-size: 0.62rem; opacity: 0.75; flex-shrink: 0; }
 
-.chat-msg-prompt-name {
-  font-weight: 700;
-  color: var(--gold);
-}
-
-.chat-msg-prompt-divider {
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-  min-width: 16px;
-  opacity: 0.6;
-}
-
-.chat-msg-prompt-time {
-  color: var(--muted);
-  font-size: 0.62rem;
-  opacity: 0.75;
-  flex-shrink: 0;
-}
-
-/* -- Bot message */
+/* Bot message */
 .chat-msg-bot .chat-msg-body {
   font-family: 'Inter', sans-serif;
   font-size: 0.88rem;
@@ -273,11 +371,17 @@
   background: var(--tag-bg);
 }
 
-/* ── User message ────────────────────────────────────────────────────────── */
-.chat-msg-user {
-  align-items: flex-end;
+/* Bot pre (terminal multiline output) */
+.chat-msg-bot pre.chat-msg-body {
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.78rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
+/* User message */
+.chat-msg-user { align-items: flex-end; }
 .chat-msg-user .chat-msg-prompt-arrow { color: var(--muted); }
 .chat-msg-user .chat-msg-prompt-name  { color: var(--muted); }
 
@@ -295,11 +399,25 @@
   word-break: break-word;
 }
 
-[data-theme="dark"] .chat-msg-user .chat-msg-body {
-  color: var(--bg);
+[data-theme="dark"] .chat-msg-user .chat-msg-body { color: var(--bg); }
+
+/* System message */
+.chat-msg-system .chat-msg-body {
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+  padding: 8px 14px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  letter-spacing: 0.04em;
+  text-align: center;
+  opacity: 0.75;
 }
 
-/* ── Claude-style Thinking State ─────────────────────────────────────────── */
+/* ── Thinking State ──────────────────────────────────────────────────────── */
 .chat-thinking {
   display: flex;
   flex-direction: row;
@@ -311,12 +429,7 @@
 
 .chat-thinking[hidden] { display: none; }
 
-/* Claude-style thinking dots — pulse in sequence */
-.chat-thinking-dots {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
+.chat-thinking-dots { display: inline-flex; align-items: center; gap: 5px; }
 
 .chat-thinking-dots span {
   display: inline-block;
@@ -335,23 +448,7 @@
   30%           { opacity: 1;    transform: scale(1.25); }
 }
 
-/* Shimmer progress bar */
-.chat-thinking-bar {
-  display: none;
-}
-
-.chat-thinking-bar::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
-  animation: shimmerBar 1.9s ease-in-out infinite;
-}
-
-@keyframes shimmerBar {
-  0%   { transform: translateX(-200%); }
-  100% { transform: translateX(400%); }
-}
+.chat-thinking-bar { display: none; }
 
 .chat-thinking-label {
   font-family: 'Inter', sans-serif;
@@ -367,7 +464,7 @@
   50%      { opacity: 1; }
 }
 
-/* ── Blinking cursor (typewriter) ────────────────────────────────────────── */
+/* ── Blinking cursor ─────────────────────────────────────────────────────── */
 .chat-cursor {
   display: inline-block;
   width: 8px;
@@ -379,7 +476,7 @@
 }
 
 @keyframes blinkCursor {
-  0%, 49% { opacity: 1; }
+  0%, 49%   { opacity: 1; }
   50%, 100% { opacity: 0; }
 }
 
@@ -421,14 +518,9 @@
   caret-color: var(--gold);
 }
 
-.chat-input:focus {
-  border-bottom-color: var(--gold);
-}
+.chat-input:focus { border-bottom-color: var(--gold); }
 
-.chat-input:focus + .chat-input-prefix,
-.chat-input-row:focus-within .chat-input-prefix {
-  opacity: 1;
-}
+.chat-input-row:focus-within .chat-input-prefix { opacity: 1; }
 
 .chat-input::placeholder {
   color: var(--muted);
@@ -436,7 +528,6 @@
   font-style: italic;
 }
 
-/* Send button */
 .chat-send-btn {
   display: inline-flex;
   align-items: center;
@@ -466,18 +557,10 @@
   transform: translateY(-1px);
 }
 
-.chat-send-btn:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-}
+.chat-send-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.chat-send-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
 
-.chat-send-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* ── Error (rendered as a chat bubble inside .chat-messages) ─────────────── */
+/* ── Error ───────────────────────────────────────────────────────────────── */
 .chat-msg-error .chat-msg-body {
   font-family: 'Inter', sans-serif;
   font-size: 0.83rem;
@@ -498,23 +581,23 @@
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  #ai-assistant   { padding: 64px 0; }
-  .chat-widget-header { padding: 13px 18px; }
-  .chat-messages  { padding: 20px 18px 10px; max-height: 360px; }
-  .chat-input-row { padding: 14px 18px; }
-  .chat-thinking  { padding: 0 18px 14px; }
+  #ai-assistant        { padding: 64px 0; }
+  .chat-widget-header  { padding: 13px 18px; }
+  .chat-messages       { padding: 20px 18px 10px; max-height: 360px; }
+  .chat-input-row      { padding: 14px 18px; }
+  .chat-thinking       { padding: 0 18px 14px; }
   .chat-msg-user .chat-msg-body { max-width: 95%; }
 }
 
 @media (max-width: 480px) {
-  .chat-widget-subtitle  { display: none; }
-  .chat-toggle-label     { display: none; }
-  .chat-toggle-btn       { padding: 8px 10px; }
+  .chat-toggle-label   { display: none; }
+  .chat-toggle-btn     { padding: 8px 10px; }
   .chat-send-btn span:first-child { display: none; }
-  .chat-send-btn         { padding: 9px 12px; }
+  .chat-send-btn       { padding: 9px 12px; }
+  .mode-selector-btn   { padding: 6px 8px; }
+  #modeSelectorLabel   { display: none; }
 }
 
-/* ── Reduced motion ──────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .chat-status-dot,
   .chat-thinking-dots span,
