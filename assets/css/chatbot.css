@@ -285,7 +285,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 0.88rem;
   line-height: 1.6;
-  color: var(--cream);
+  color: #fff;
   background: var(--gold);
   border: none;
   border-radius: var(--radius-sm);

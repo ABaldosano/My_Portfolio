@@ -1,0 +1,36 @@
+{
+  "name": "Arthur Baldosano Jr. | Portfolio",
+  "short_name": "Arthur Baldosano",
+  "description": "Full-Stack Web Developer and IT student at Palawan State University. Custom web systems, AI-powered tools, and e-commerce platforms from Puerto Princesa, Palawan.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#c9a96e",
+  "lang": "en-PH",
+  "categories": ["portfolio", "business", "productivity"],
+  "icons": [
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/og-cover.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Arthur Baldosano Jr. Portfolio"
+    }
+  ]
+}
