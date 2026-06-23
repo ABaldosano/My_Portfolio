@@ -5,7 +5,7 @@
 
 // Replace this with your deployed Worker URL after running `wrangler deploy`.
 // Example: https://arthurr-portfolio-chatbot.YOUR-SUBDOMAIN.workers.dev/api/chat
-const CHAT_ENDPOINT = 'https://arthurr-portfolio-chatbot.YOUR-SUBDOMAIN.workers.dev/api/chat';
+const CHAT_ENDPOINT = 'https://arthurr-portfolio-chatbot.arthurbaldosano.workers.dev/api/chat';
 
 const MAX_HISTORY_TURNS = 6;
 
