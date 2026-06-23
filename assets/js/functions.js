@@ -28,7 +28,6 @@ hamburger.addEventListener('click', () => {
   const isOpen = hamburger.classList.toggle('open');
   mobileNav.classList.toggle('open', isOpen);
   document.body.style.overflow = isOpen ? 'hidden' : '';
-  // wag ka po mawala sa mobile hihi
   if (isOpen) {
     window._navScrollLock && window._navScrollLock();
     document.querySelector('nav').classList.remove('header-hidden');
@@ -131,3 +130,22 @@ document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
     a.classList.toggle('active', isActive);
   });
 })();
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12') {
+        e.preventDefault();
+    }
+
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && 
+        (e.key.toLowerCase() === 'i' || e.key.toLowerCase() === 'j' || e.key.toLowerCase() === 'c')) {
+        e.preventDefault();
+    }
+
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'u') {
+        e.preventDefault();
+    }
+});
