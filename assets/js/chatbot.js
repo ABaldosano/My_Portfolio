@@ -124,7 +124,7 @@ const MAX_HISTORY_TURNS = 6;
     const bubble = document.createElement('div');
     bubble.className = 'chat-msg chat-msg-bot';
 
-    bubble.appendChild(buildPromptLine('arthurbot', getTime()));
+    
 
     const body = document.createElement('p');
     body.className = 'chat-msg-body';
@@ -146,13 +146,18 @@ const MAX_HISTORY_TURNS = 6;
   }
 
   function showError(msg) {
-    errorEl.textContent = msg;
-    errorEl.removeAttribute('hidden');
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-msg chat-msg-error';
+    const body = document.createElement('p');
+    body.className = 'chat-msg-body';
+    body.textContent = msg;
+    bubble.appendChild(body);
+    messagesEl.appendChild(bubble);
+    scrollToBottom();
   }
 
   function clearError() {
-    errorEl.setAttribute('hidden', '');
-    errorEl.textContent = '';
+    // errors are now chat bubbles; nothing to clear
   }
 
   // ── Submit ─────────────────────────────────────────────────────────────
