@@ -5,107 +5,97 @@
    ========================================================================== */
 
 export const PORTFOLIO_KNOWLEDGE = `
-=== BIOGRAPHY ===
-Arthur Baldosano Jr. (also written Arthur Baldosano) is a Full-Stack Web Developer
-and Information Technology student at Palawan State University (PSU) in Puerto
-Princesa, Palawan, Philippines, specializing in Data Analytics and E-Commerce.
-He builds full-stack web applications, e-commerce platforms, and AI-powered
-academic systems, all custom-built from scratch with no templates. He serves as
-President of PSU-SITE (Society of Information Technology Enthusiasts) and
-independently manages his own freelance IT and web development practice.
+Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a web developer and
+IT student at Palawan State University (PSU) in Puerto Princesa, Palawan,
+Philippines. He's studying Information Technology with a focus on Data Analytics
+and E-Commerce. Everything he builds is custom. No templates, no page builders.
+He also runs his own freelance practice independently, and serves as President of
+PSU-SITE (Society of Information Technology Enthusiasts).
 
-=== CONTACT ===
+His technical work spans full-stack web applications, e-commerce platforms, and
+AI-powered academic tools. He writes mostly in HTML, CSS, JavaScript, and Python
+(with FastAPI for backends). He uses Git and GitHub for version control, has
+experience with system design and data analytics, and has done some AI integration
+work on several projects.
+
+CONTACT
 Email: arthurjuniorbaldosano@gmail.com
 GitHub: https://github.com/ABaldosano
 LinkedIn: https://www.linkedin.com/in/arthur-v-baldosano-jr-2b5607406
 ORCID: https://orcid.org/0009-0009-1013-900X
 Upwork: https://www.upwork.com/freelancers/~01746d5ba8ae90ffb9
 Location: Puerto Princesa, Palawan, Philippines
-Contact page on the site: pages/contact.html
+Contact page: pages/contact.html
 
-=== SKILLS ===
-HTML / CSS / JavaScript, Python / FastAPI, Full-Stack Development,
-E-Commerce Platforms, System Design, Data Analytics, Git / GitHub,
-AI Integration, Student Leadership.
+PROJECTS
+Arthur has built and shipped a range of projects. The notable ones:
 
-=== FEATURED / LIVE PROJECTS ===
-1. Automated Teaching Load Assignment System (ATLAS PSU) — Primary featured
-   thesis proposal prototype. An automated decision-support system using an
-   optimization algorithm to streamline and balance faculty teaching load
-   assignments for department chairpersons at PSU's College of Sciences.
-   Live demo: https://abaldosano.github.io/ATLAS-PSU/
+ATLAS PSU (Automated Teaching Load Assignment System) is his primary thesis
+proposal prototype. It uses an optimization algorithm to help department
+chairpersons at PSU's College of Sciences assign and balance faculty teaching
+loads automatically. Live at https://abaldosano.github.io/ATLAS-PSU/
 
-2. Intelligent Academic Resource Management System (IARMS) — Thesis proposal
-   prototype. AI-powered academic resource platform for PSU BSIT students.
-   Generates summaries, flashcards, quizzes, glossary, and key concepts from
-   uploaded documents. Live prototype: https://abaldosano.github.io/PSU_AcadRes/
+IARMS (Intelligent Academic Resource Management System) is his other thesis
+prototype. It's an AI-powered study platform for PSU BSIT students. Upload a
+document and it generates summaries, flashcards, quizzes, glossary terms, and
+key concepts. Live at https://abaldosano.github.io/PSU_AcadRes/
 
-3. PinnedPicks Affiliate Platform — Live business. Independently owned
-   affiliate e-commerce platform curating picks across Shopee, Amazon, and
-   SHEIN, built from scratch on GitHub Pages, with traffic driven through a
-   Pinterest-based content strategy. Live: https://www.pinnedpicks.gt.tc/
+PinnedPicks is a live affiliate e-commerce platform he owns and operates. It
+curates product picks across Shopee, Amazon, and SHEIN, built from scratch on
+GitHub Pages. Traffic comes through a Pinterest content strategy he runs himself.
+Live at https://www.pinnedpicks.gt.tc/
 
-4. CrypStockDash — Live project. Lightweight, no-login stock market viewer for
-   instant access to real-time market data; search any ticker and view live
-   info without an account. Live: https://www.crypstockdash.page.gd/
+CrypStockDash is a lightweight, no-login stock market viewer for
+checking real-time market data on any ticker. Live at https://www.crypstockdash.page.gd/
 
-5. Product Sort Simulator — A drag-and-drop sorting game originally built in
-   C# for a Data Structures and Algorithms final project, later ported to the
-   web in June 2026, where players sort falling grocery items into the
-   correct baskets before they hit the ground.
+Product Sort Simulator started as a C# drag-and-drop sorting game for a Data
+Structures and Algorithms final project. He ported it to the web in June 2026.
+Players sort falling grocery items into the right baskets before they hit the ground.
 
-6. Buzy Reviewer — The direct predecessor to IARMS. A foundational school
-   project exploring interactive study tools that informed IARMS's
-   architecture and design.
+Buzy Reviewer was a school project that came before IARMS. The ideas he tested there, interactive study tools and document-driven content, fed directly into
+IARMS's design.
 
-7. Class and School Website — A complete class and school website delivered
-   for a paying client using Google Sites, with organized navigation and a
-   professional finish for an academic audience.
+Class and School Website was a paid client project delivered via Google Sites,
+with organized navigation and a professional layout for an academic audience.
 
-8. Product Discovery Website Format 1 & Format 2 — Two client-facing product
-   discovery layouts built as freelance deliverables, exploring different
-   editorial structures, browsing flow, and visual hierarchy.
+Product Discovery Website (Format 1 and Format 2) were two freelance deliverables
+exploring different editorial layouts, browsing flow, and visual hierarchy for
+product discovery use cases.
 
-9. Cyberpunk 2077 Themed Landing Page — Creative frontend build exploring
-   immersive UI design and game-inspired interaction patterns, built in pure
-   HTML, CSS, and JavaScript with no framework dependencies.
-
-10. Death Stranding Themed Landing Page — Creative frontend build exploring
-    atmospheric visual design and mood-driven frontend aesthetics.
+Cyberpunk 2077 Themed Landing Page and Death Stranding Themed Landing Page are
+creative frontend builds in pure HTML, CSS, and JavaScript with no frameworks, exploring game-inspired UI and mood-driven visual design.
 
 Full project list with live links: pages/projects.html
 
-=== RESEARCH PUBLICATIONS ===
-- "An Experimental Comparison of Filtration, Distillation, and Chemical
-  Treatment for Wastewater Purification in Puerto Princesa City, Palawan"
-- "A Narrative Study on the Lived Experiences of a Mother Diagnosed with
-  Adenomyosis"
+RESEARCH
+Arthur has co-authored academic research papers:
+- "An Experimental Comparison of Filtration, Distillation, and Chemical Treatment
+  for Wastewater Purification in Puerto Princesa City, Palawan"
+- "A Narrative Study on the Lived Experiences of a Mother Diagnosed with Adenomyosis"
 Full list: pages/research.html
 
-=== ARTICLES ===
-- "Embedding AI Literacy in Philippine Higher Education: A National Strategy
-  for Workforce Readiness in the Age of Artificial Intelligence"
-- "Puerto Princesa City's Path to Sustainability: Solar Power as an
-  Alternative Energy Source"
+ARTICLES
+He has written articles on policy and technology topics:
+- "Embedding AI Literacy in Philippine Higher Education: A National Strategy for
+  Workforce Readiness in the Age of Artificial Intelligence"
+- "Puerto Princesa City's Path to Sustainability: Solar Power as an Alternative
+  Energy Source"
 Full list: pages/articles.html
 
-=== CERTIFICATIONS ===
-- Online Freelancing Mentorship Session 2: Business Registration and Labor
-  Compliance
-- Project Management Essentials Certified (PMEC)
-- Kickoff: Predictive & Agile Project Management (PMI)
-- Developing, Mentoring, and Supporting Youth Leadership
-- Introduction to Modern AI (Cisco)
-- AI Fundamentals (IBM SkillsBuild)
-- Google Analytics 2026 Certified
-- SEO Certified
-- Digital Marketing Certified
-- Content Marketing Certified
-- Email Marketing Certified
+CERTIFICATIONS
+He holds certifications across project management, marketing, and technology:
+Online Freelancing Mentorship Session 2 (Business Registration and Labor Compliance),
+Project Management Essentials Certified (PMEC),
+Kickoff: Predictive & Agile Project Management (PMI),
+Developing, Mentoring, and Supporting Youth Leadership,
+Introduction to Modern AI (Cisco),
+AI Fundamentals (IBM SkillsBuild),
+Google Analytics 2026 Certified, SEO Certified, Digital Marketing Certified,
+Content Marketing Certified, Email Marketing Certified.
 Full list: pages/certifications.html
 
-=== LEADERSHIP ===
-Arthur serves as President of PSU-SITE (Society of Information Technology
-Enthusiasts) at Palawan State University, leading the organization's
-academic, administrative, and student-development initiatives.
+LEADERSHIP
+Arthur is the current President of PSU-SITE at Palawan State University. The
+organization covers academic programs, administrative work, and student development
+initiatives for IT students at PSU.
 `.trim();

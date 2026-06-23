@@ -67,14 +67,14 @@ Student Leadership`,
 → Full list: pages/certifications.html`,
 
   help: `Available commands:
-  /bio            Biography and background
-  /contact        Contact information and links
-  /skills         Technical and professional skills
-  /projects       Featured and live projects
-  /research       Research publications
-  /articles       Published articles
-  /certifications Certifications earned
-  /help           Show this help menu`,
+  bio             Biography and background
+  contact         Contact information and links
+  skills          Technical and professional skills
+  projects        Featured and live projects
+  research        Research publications
+  articles        Published articles
+  certifications  Certifications earned
+  help            Show this help menu`,
 };
 
 (function initChatWidget() {
@@ -130,7 +130,7 @@ Student Leadership`,
   function switchModeUI(mode) {
     const isTerminal = mode === 'terminal';
     inputEl.placeholder = isTerminal
-      ? 'type a command, e.g. /help…'
+      ? 'type a command, e.g. help…'
       : 'ask about projects, skills, research…';
     inputEl.style.fontFamily = isTerminal
       ? "'Courier New', 'Lucida Console', monospace"
@@ -140,7 +140,7 @@ Student Leadership`,
     if (modeTag) modeTag.textContent = isTerminal ? 'TERMINAL' : 'AI';
 
     if (isTerminal) {
-      appendSystemMessage('Terminal mode active. Type /help to see available commands.');
+      appendSystemMessage('Terminal mode active. Type help to see available commands.');
     } else {
       appendSystemMessage('AI mode active. Ask me anything about Arthur.');
     }
@@ -149,6 +149,8 @@ Student Leadership`,
   }
 
   // ── Toggle open / close ──────────────────────────────────────────────────
+  let hasOpened = false;
+
   toggleBtn.addEventListener('click', () => {
     const isOpen = !chatBody.hasAttribute('hidden');
     if (isOpen) {
@@ -161,8 +163,24 @@ Student Leadership`,
       toggleBtn.setAttribute('aria-expanded', 'true');
       const label = toggleBtn.querySelector('.chat-toggle-label');
       if (label) label.textContent = 'Close';
-      inputEl.focus();
       scrollToBottom();
+
+      if (!hasOpened) {
+        hasOpened = true;
+        sendBtn.disabled = true;
+        inputEl.disabled = true;
+        typingEl.removeAttribute('hidden');
+        scrollToBottom();
+        setTimeout(async () => {
+          typingEl.setAttribute('hidden', '');
+          sendBtn.disabled = false;
+          inputEl.disabled = false;
+          await appendBotMessageTyped("Helloo, I'm Arthur's portfolio AI assistant. You can ask me about his projects, skills, research, certifications, or how to get in touch. You only have a maximum of 5 requests per day, so ask important questions. ദ്ദി(˶ᵔ ᵕ ᵔ˶)/✧");
+          inputEl.focus();
+        }, 1500);
+      } else {
+        inputEl.focus();
+      }
     }
   });
 
@@ -282,11 +300,7 @@ Student Leadership`,
   // ── Terminal Mode Handler ────────────────────────────────────────────────
   function handleTerminalCommand(raw) {
     const input = raw.trim().toLowerCase();
-    if (!input.startsWith('/')) {
-      showError('Commands must start with /  →  type /help to see available commands.');
-      return;
-    }
-    const cmd = input.slice(1).split(' ')[0];
+    const cmd = input.split(' ')[0];
     const data = TERMINAL_KNOWLEDGE[cmd];
     if (data) {
       const isMultiline = data.includes('\n');
@@ -299,7 +313,7 @@ Student Leadership`,
       messagesEl.appendChild(bubble);
       scrollToBottom();
     } else {
-      showError(`Unknown command: /${cmd}  →  type /help for a list of commands.`);
+      showError(`Unknown command: '${cmd}'  →  type help for a list of commands.`);
     }
   }
 
