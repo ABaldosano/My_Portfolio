@@ -3,8 +3,7 @@
    frontend logic for the portfolio AI assistant. loaded on index.html only.
    ========================================================================== */
 
-// Replace this with your deployed Worker URL after running `wrangler deploy`.
-// Example: https://arthurr-portfolio-chatbot.YOUR-SUBDOMAIN.workers.dev/api/chat
+// Your deployed Worker endpoint.
 const CHAT_ENDPOINT = 'https://arthurr-portfolio-chatbot.arthurbaldosano.workers.dev/api/chat';
 
 const MAX_HISTORY_TURNS = 6;
@@ -38,7 +37,7 @@ const MAX_HISTORY_TURNS = 6;
     }
   });
 
-  function appendMessage(role, text) {
+  function appendStaticMessage(role, text) {
     const bubble = document.createElement('div');
     bubble.className = role === 'user' ? 'chat-msg chat-msg-user' : 'chat-msg chat-msg-bot';
     const p = document.createElement('p');
@@ -46,6 +45,48 @@ const MAX_HISTORY_TURNS = 6;
     bubble.appendChild(p);
     messagesEl.appendChild(bubble);
     messagesEl.scrollTop = messagesEl.scrollHeight;
+    return bubble;
+  }
+
+  // Reveals `text` inside `paragraphEl` in smooth incremental chunks (a
+  // typewriter effect) rather than dumping the whole reply in at once.
+  // Total duration is capped so long replies don't take forever to finish.
+  function typeOutText(paragraphEl, text) {
+    return new Promise((resolve) => {
+      const cursor = document.createElement('span');
+      cursor.className = 'chat-cursor';
+      paragraphEl.appendChild(cursor);
+
+      const steps = Math.max(16, Math.min(90, text.length));
+      const chunkSize = Math.max(1, Math.ceil(text.length / steps));
+      const totalDurationMs = Math.max(420, Math.min(2200, text.length * 14));
+      const intervalMs = totalDurationMs / steps;
+
+      let shown = 0;
+
+      const timer = setInterval(() => {
+        shown = Math.min(text.length, shown + chunkSize);
+        paragraphEl.textContent = text.slice(0, shown);
+        paragraphEl.appendChild(cursor);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+
+        if (shown >= text.length) {
+          clearInterval(timer);
+          cursor.remove();
+          resolve();
+        }
+      }, intervalMs);
+    });
+  }
+
+  async function appendBotMessageTyped(text) {
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-msg chat-msg-bot';
+    const p = document.createElement('p');
+    bubble.appendChild(p);
+    messagesEl.appendChild(bubble);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    await typeOutText(p, text);
   }
 
   function setSending(state) {
@@ -76,9 +117,9 @@ const MAX_HISTORY_TURNS = 6;
     if (!message) return;
 
     clearError();
-    appendMessage('user', message);
+    appendStaticMessage('user', message);
     inputEl.value = '';
-    setSending(true);
+    setSending(true); // shows the "Thinking" dots while we wait on the API
 
     try {
       const response = await fetch(CHAT_ENDPOINT, {
@@ -99,14 +140,20 @@ const MAX_HISTORY_TURNS = 6;
         return;
       }
 
-      appendMessage('bot', data.reply);
+      // Hide the "Thinking" dots first, then type the reply out smoothly.
+      setSending(false);
+      await appendBotMessageTyped(data.reply);
+
       history.push({ role: 'user', text: message });
       history.push({ role: 'model', text: data.reply });
       history = history.slice(-MAX_HISTORY_TURNS * 2);
     } catch {
+      setSending(false);
       showError('Unable to reach the AI assistant right now. Please try again shortly.');
     } finally {
-      setSending(false);
+      isSending = false;
+      sendBtn.disabled = false;
+      inputEl.disabled = false;
       inputEl.focus();
     }
   });

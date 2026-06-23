@@ -131,6 +131,12 @@
   border-radius: var(--radius-sm);
   font-size: 0.88rem;
   line-height: 1.55;
+  animation: chatMsgIn 0.28s ease;
+}
+
+@keyframes chatMsgIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .chat-msg p {
@@ -157,11 +163,28 @@
 .chat-typing {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   padding: 0 26px 14px;
 }
 
-.chat-typing span {
+/* Higher specificity than .chat-typing so [hidden] actually wins the cascade */
+.chat-typing[hidden] {
+  display: none;
+}
+
+.chat-typing-label {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.chat-typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chat-typing-dots span {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -169,12 +192,28 @@
   animation: chatTypingBounce 1.2s ease-in-out infinite;
 }
 
-.chat-typing span:nth-child(2) { animation-delay: 0.15s; }
-.chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+.chat-typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.chat-typing-dots span:nth-child(3) { animation-delay: 0.3s; }
 
 @keyframes chatTypingBounce {
   0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
   30% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Blinking cursor shown at the end of a bot message while it is being typed out */
+.chat-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.95em;
+  margin-left: 1px;
+  background: var(--gold);
+  vertical-align: -0.15em;
+  animation: chatCursorBlink 0.9s steps(1) infinite;
+}
+
+@keyframes chatCursorBlink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }
 
 .chat-input-row {
