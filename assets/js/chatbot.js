@@ -6,7 +6,12 @@ const CHAT_ENDPOINT     = 'https://arthurr-portfolio-chatbot.arthurbaldosano.wor
 const MAX_HISTORY_TURNS = 6;
 
 const TERMINAL_KNOWLEDGE = {
-  bio: `Arthur Baldosano Jr. is a Full-Stack Web Developer and Information Technology student at Palawan State University (PSU) in Puerto Princesa, Palawan, Philippines, specializing in Data Analytics and E-Commerce. He builds full-stack web applications, e-commerce platforms, and AI-powered academic systems — all custom-built from scratch. He serves as President of PSU-SITE and independently manages his own freelance IT and web development practice.`,
+  bio: `Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a web developer and
+IT student at Palawan State University in Puerto Princesa, Palawan, Philippines.
+He studies Information Technology with a focus on Data Analytics and E-Commerce.
+Everything he builds is custom. No templates, no page builders. He runs his own
+freelance practice independently and serves as President of PSU-SITE (Society of
+Information Technology Enthusiasts).`,
 
   contact: `Email:    arthurjuniorbaldosano@gmail.com
 GitHub:   https://github.com/ABaldosano
@@ -25,46 +30,46 @@ Git / GitHub
 AI Integration
 Student Leadership`,
 
-  projects: `[1] ATLAS PSU — Automated Teaching Load Assignment System
-     https://abaldosano.github.io/ATLAS-PSU/
-[2] IARMS — Intelligent Academic Resource Management System
-     https://abaldosano.github.io/PSU_AcadRes/
-[3] PinnedPicks Affiliate Platform
-     https://www.pinnedpicks.gt.tc/
-[4] CrypStockDash — Real-time stock viewer
-     https://www.crypstockdash.page.gd/
-[5] Product Sort Simulator — Drag-and-drop sorting game (C# → Web)
-[6] Buzy Reviewer — Interactive study tools precursor to IARMS
-[7] Class and School Website — Google Sites client delivery
-[8] Product Discovery Website Format 1 & Format 2 — Freelance builds
-[9] Cyberpunk 2077 Themed Landing Page
+  projects: `[1]  ATLAS PSU (Automated Teaching Load Assignment System)
+      https://abaldosano.github.io/ATLAS-PSU/
+[2]  IARMS (Intelligent Academic Resource Management System)
+      https://abaldosano.github.io/PSU_AcadRes/
+[3]  PinnedPicks Affiliate Platform
+      https://www.pinnedpicks.gt.tc/
+[4]  CrypStockDash, real-time stock viewer, no login required
+      https://www.crypstockdash.page.gd/
+[5]  Product Sort Simulator (C# school project, ported to web June 2026)
+[6]  Buzy Reviewer, study tools project and precursor to IARMS
+[7]  Class and School Website, paid client build on Google Sites
+[8]  Product Discovery Website Format 1 and Format 2, freelance builds
+[9]  Cyberpunk 2077 Themed Landing Page
 [10] Death Stranding Themed Landing Page
-→ Full list: pages/projects.html`,
+->   Full list: pages/projects.html`,
 
   research: `[1] "An Experimental Comparison of Filtration, Distillation, and Chemical
      Treatment for Wastewater Purification in Puerto Princesa City, Palawan"
-[2] "A Narrative Study on the Lived Experiences of a Mother Diagnosed with
-     Adenomyosis"
-→ Full list: pages/research.html`,
+[2] "A Narrative Study on the Lived Experiences of a Mother Diagnosed
+     with Adenomyosis"
+->   Full list: pages/research.html`,
 
   articles: `[1] "Embedding AI Literacy in Philippine Higher Education: A National
      Strategy for Workforce Readiness in the Age of Artificial Intelligence"
 [2] "Puerto Princesa City's Path to Sustainability: Solar Power as an
      Alternative Energy Source"
-→ Full list: pages/articles.html`,
+->   Full list: pages/articles.html`,
 
-  certifications: `• Online Freelancing Mentorship Session 2: Business Registration and Labor Compliance
-• Project Management Essentials Certified (PMEC)
-• Kickoff: Predictive & Agile Project Management (PMI)
-• Developing, Mentoring, and Supporting Youth Leadership
-• Introduction to Modern AI (Cisco)
-• AI Fundamentals (IBM SkillsBuild)
-• Google Analytics 2026 Certified
-• SEO Certified
-• Digital Marketing Certified
-• Content Marketing Certified
-• Email Marketing Certified
-→ Full list: pages/certifications.html`,
+  certifications: `* Online Freelancing Mentorship Session 2: Business Registration and Labor Compliance
+* Project Management Essentials Certified (PMEC)
+* Kickoff: Predictive and Agile Project Management (PMI)
+* Developing, Mentoring, and Supporting Youth Leadership
+* Introduction to Modern AI (Cisco)
+* AI Fundamentals (IBM SkillsBuild)
+* Google Analytics 2026 Certified
+* SEO Certified
+* Digital Marketing Certified
+* Content Marketing Certified
+* Email Marketing Certified
+->   Full list: pages/certifications.html`,
 
   help: `Available commands:
   bio             Biography and background
