@@ -188,7 +188,7 @@
 
 .mode-dropdown {
   position: absolute;
-  bottom: calc(100% + 8px);
+  top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
   min-width: 160px;
@@ -196,17 +196,17 @@
   border: 1px solid var(--border);
   border-radius: 6px;
   box-shadow:
-    0 -4px 20px rgba(0, 0, 0, 0.25),
+    0 4px 20px rgba(0, 0, 0, 0.25),
     0 0 0 1px rgba(201, 169, 110, 0.08);
   z-index: 100;
   overflow: hidden;
-  animation: dropUp 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: dropDown 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .mode-dropdown[hidden] { display: none; }
 
-@keyframes dropUp {
-  from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+@keyframes dropDown {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
   to   { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
 
