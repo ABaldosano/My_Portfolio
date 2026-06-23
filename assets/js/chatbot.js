@@ -1,11 +1,9 @@
 /* ==========================================================================
-   portfolio :: chatbot.js
-   frontend logic for the portfolio AI assistant. loaded on index.html only.
+   portfolio :: chatbot.js  ·  terminal edition
+   Frontend logic for the portfolio AI assistant. Loaded on index.html only.
    ========================================================================== */
 
-// Your deployed Worker endpoint.
-const CHAT_ENDPOINT = 'https://arthurr-portfolio-chatbot.arthurbaldosano.workers.dev/api/chat';
-
+const CHAT_ENDPOINT    = 'https://arthurr-portfolio-chatbot.arthurbaldosano.workers.dev/api/chat';
 const MAX_HISTORY_TURNS = 6;
 
 (function initChatWidget() {
@@ -20,87 +18,135 @@ const MAX_HISTORY_TURNS = 6;
 
   if (!toggleBtn || !chatBody || !formEl) return;
 
-  let history = [];
+  let history   = [];
   let isSending = false;
 
+  // ── Toggle open / close ─────────────────────────────────────────────────
   toggleBtn.addEventListener('click', () => {
-    const isOpen = chatBody.hasAttribute('hidden') === false;
+    const isOpen = !chatBody.hasAttribute('hidden');
+
     if (isOpen) {
       chatBody.setAttribute('hidden', '');
       toggleBtn.setAttribute('aria-expanded', 'false');
-      toggleBtn.querySelector('.chat-toggle-label').textContent = 'Open Chat';
+      const label = toggleBtn.querySelector('.chat-toggle-label');
+      if (label) label.textContent = 'Open';
     } else {
       chatBody.removeAttribute('hidden');
       toggleBtn.setAttribute('aria-expanded', 'true');
-      toggleBtn.querySelector('.chat-toggle-label').textContent = 'Close Chat';
+      const label = toggleBtn.querySelector('.chat-toggle-label');
+      if (label) label.textContent = 'Close';
       inputEl.focus();
+      scrollToBottom();
     }
   });
 
-  function appendStaticMessage(role, text) {
-    const bubble = document.createElement('div');
-    bubble.className = role === 'user' ? 'chat-msg chat-msg-user' : 'chat-msg chat-msg-bot';
-    const p = document.createElement('p');
-    p.textContent = text;
-    bubble.appendChild(p);
-    messagesEl.appendChild(bubble);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-    return bubble;
+  // ── Utilities ──────────────────────────────────────────────────────────
+  function getTime() {
+    return new Date().toLocaleTimeString('en-US', {
+      hour: '2-digit', minute: '2-digit', hour12: false,
+    });
   }
 
-  // Reveals `text` inside `paragraphEl` in smooth incremental chunks (a
-  // typewriter effect) rather than dumping the whole reply in at once.
-  // Total duration is capped so long replies don't take forever to finish.
+  function scrollToBottom() {
+    requestAnimationFrame(() => {
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    });
+  }
+
+  // ── Build terminal prompt line ─────────────────────────────────────────
+  function buildPromptLine(name, time) {
+    const prompt = document.createElement('div');
+    prompt.className  = 'chat-msg-prompt';
+    prompt.setAttribute('aria-hidden', 'true');
+
+    prompt.innerHTML =
+      `<span class="chat-msg-prompt-arrow">›</span>` +
+      `<span class="chat-msg-prompt-name">${name}</span>` +
+      `<span class="chat-msg-prompt-divider"></span>` +
+      `<span class="chat-msg-prompt-time">${time}</span>`;
+
+    return prompt;
+  }
+
+  // ── Append user message ────────────────────────────────────────────────
+  function appendUserMessage(text) {
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-msg chat-msg-user';
+
+    bubble.appendChild(buildPromptLine('you', getTime()));
+
+    const body = document.createElement('p');
+    body.className = 'chat-msg-body';
+    body.textContent = text;
+    bubble.appendChild(body);
+
+    messagesEl.appendChild(bubble);
+    scrollToBottom();
+  }
+
+  // ── Typewriter — smooth, capped duration ──────────────────────────────
   function typeOutText(paragraphEl, text) {
     return new Promise((resolve) => {
       const cursor = document.createElement('span');
       cursor.className = 'chat-cursor';
+      cursor.setAttribute('aria-hidden', 'true');
       paragraphEl.appendChild(cursor);
 
-      const steps = Math.max(16, Math.min(90, text.length));
-      const chunkSize = Math.max(1, Math.ceil(text.length / steps));
-      const totalDurationMs = Math.max(420, Math.min(2200, text.length * 14));
-      const intervalMs = totalDurationMs / steps;
+      // Scale chunks so long replies don't crawl, short replies don't blink
+      const charCount     = text.length;
+      const steps         = Math.max(24, Math.min(110, charCount));
+      const chunkSize     = Math.max(1, Math.ceil(charCount / steps));
+      const totalDuration = Math.max(600, Math.min(2600, charCount * 12));
+      const intervalMs    = totalDuration / steps;
 
       let shown = 0;
 
-      const timer = setInterval(() => {
-        shown = Math.min(text.length, shown + chunkSize);
+      const tick = setInterval(() => {
+        shown = Math.min(charCount, shown + chunkSize);
         paragraphEl.textContent = text.slice(0, shown);
         paragraphEl.appendChild(cursor);
-        messagesEl.scrollTop = messagesEl.scrollHeight;
+        scrollToBottom();
 
-        if (shown >= text.length) {
-          clearInterval(timer);
-          cursor.remove();
-          resolve();
+        if (shown >= charCount) {
+          clearInterval(tick);
+          // Brief pause so cursor blinks once at end before disappearing
+          setTimeout(() => {
+            cursor.remove();
+            resolve();
+          }, 320);
         }
       }, intervalMs);
     });
   }
 
+  // ── Append bot message with typewriter ────────────────────────────────
   async function appendBotMessageTyped(text) {
     const bubble = document.createElement('div');
     bubble.className = 'chat-msg chat-msg-bot';
-    const p = document.createElement('p');
-    bubble.appendChild(p);
+
+    bubble.appendChild(buildPromptLine('arthurbot', getTime()));
+
+    const body = document.createElement('p');
+    body.className = 'chat-msg-body';
+    bubble.appendChild(body);
+
     messagesEl.appendChild(bubble);
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-    await typeOutText(p, text);
+    scrollToBottom();
+
+    await typeOutText(body, text);
   }
 
-  function setSending(state) {
-    isSending = state;
-    sendBtn.disabled = state;
-    inputEl.disabled = state;
-    typingEl.toggleAttribute('hidden', !state);
-    if (state) {
-      messagesEl.scrollTop = messagesEl.scrollHeight;
-    }
+  // ── Sending state — shows / hides thinking UI ─────────────────────────
+  function setSending(active) {
+    isSending         = active;
+    sendBtn.disabled  = active;
+    inputEl.disabled  = active;
+    typingEl.toggleAttribute('hidden', !active);
+    if (active) scrollToBottom();
   }
 
-  function showError(message) {
-    errorEl.textContent = message;
+  function showError(msg) {
+    errorEl.textContent = msg;
     errorEl.removeAttribute('hidden');
   }
 
@@ -109,6 +155,7 @@ const MAX_HISTORY_TURNS = 6;
     errorEl.textContent = '';
   }
 
+  // ── Submit ─────────────────────────────────────────────────────────────
   formEl.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (isSending) return;
@@ -117,9 +164,12 @@ const MAX_HISTORY_TURNS = 6;
     if (!message) return;
 
     clearError();
-    appendStaticMessage('user', message);
+    appendUserMessage(message);
     inputEl.value = '';
-    setSending(true); // shows the "Thinking" dots while we wait on the API
+
+    // Tiny delay before showing thinking UI — feels more intentional
+    await new Promise(r => setTimeout(r, 80));
+    setSending(true);
 
     try {
       const response = await fetch(CHAT_ENDPOINT, {
@@ -131,30 +181,34 @@ const MAX_HISTORY_TURNS = 6;
       const data = await response.json().catch(() => null);
 
       if (response.status === 429) {
-        showError((data && data.error) || 'The AI assistant has reached its usage limit. Please try again later.');
+        showError((data && data.error) || 'Rate limit reached. Please try again later.');
         return;
       }
 
       if (!response.ok || !data) {
-        showError((data && data.error) || 'Something went wrong. Please try again in a moment.');
+        showError((data && data.error) || 'Something went wrong. Please try again.');
         return;
       }
 
-      // Hide the "Thinking" dots first, then type the reply out smoothly.
+      // Hide thinking UI, then type out response
       setSending(false);
+
+      // Brief breath between thinking ending and reply starting
+      await new Promise(r => setTimeout(r, 120));
       await appendBotMessageTyped(data.reply);
 
-      history.push({ role: 'user', text: message });
+      history.push({ role: 'user',  text: message    });
       history.push({ role: 'model', text: data.reply });
       history = history.slice(-MAX_HISTORY_TURNS * 2);
+
     } catch {
-      setSending(false);
-      showError('Unable to reach the AI assistant right now. Please try again shortly.');
+      showError('Unable to reach the AI assistant. Please try again shortly.');
     } finally {
-      isSending = false;
+      setSending(false);
       sendBtn.disabled = false;
       inputEl.disabled = false;
       inputEl.focus();
     }
   });
+
 })();
