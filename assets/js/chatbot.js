@@ -39,9 +39,9 @@ function applyInline(text) {
 function renderMarkdown(raw) {
   const lines = escapeHtml(raw).split('\n');
   let html = '';
-  let outerType = null;    // 'ul' | 'ol' | null — the current top-level list
-  let liOpen = false;      // is the current top-level <li> still open?
-  let nestedOpen = false;  // is a nested <ul> open inside that <li>?
+  let outerType = null;
+  let liOpen = false;
+  let nestedOpen = false;
   let paragraph = [];
 
   const flushParagraph = () => {
@@ -66,8 +66,6 @@ function renderMarkdown(raw) {
     const numbered = trimmed.match(/^\d+\.\s+(.*)/);
 
     if (bullet && indented && liOpen) {
-      // Indented bullet right under an open item: a description/sub-point
-      // nested inside it, not a new sibling list item.
       flushParagraph();
       if (!nestedOpen) { html += '<ul>'; nestedOpen = true; }
       html += `<li>${applyInline(bullet[1])}</li>`;
@@ -96,7 +94,6 @@ function renderMarkdown(raw) {
 }
 
 // ── Device ID (UUID stored in localStorage AND a 365-day cookie) ─────────────
-// Cookie survives localStorage clears; both must be wiped to get a new ID.
 function getCookie(name) {
   const m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
   return m ? decodeURIComponent(m[1]) : null;
@@ -108,7 +105,6 @@ function setCookie(name, value, days) {
 }
 
 function getOrCreateDeviceId() {
-  // Cookie takes priority — survives localStorage clears
   let id = getCookie(COOKIE_NAME);
   try { if (!id) id = localStorage.getItem(DEVICE_ID_KEY); } catch {}
   if (!id) {
@@ -121,16 +117,12 @@ function getOrCreateDeviceId() {
           });
     } catch { id = 'unknown'; }
   }
-  // Write to both so both stay in sync
   setCookie(COOKIE_NAME, id, 365);
   try { localStorage.setItem(DEVICE_ID_KEY, id); } catch {}
   return id;
 }
 
 // ── Browser fingerprint ───────────────────────────────────────────────────────
-// Hashes stable browser signals (screen, language, timezone, canvas rendering).
-// Survives clearing localStorage AND cookies. The only way to beat it is
-// switching browsers or devices — which is genuinely a different user.
 function getCanvasFingerprint() {
   try {
     const c = document.createElement('canvas');
@@ -279,17 +271,17 @@ Student Leadership`,
 };
 
 (function initChatWidget() {
-  const toggleBtn      = document.getElementById('chatToggleBtn');
-  const chatBody       = document.getElementById('chatBody');
-  const messagesEl     = document.getElementById('chatMessages');
-  const typingEl       = document.getElementById('chatTyping');
-  const formEl         = document.getElementById('chatForm');
-  const inputEl        = document.getElementById('chatInput');
-  const sendBtn        = document.getElementById('chatSendBtn');
+  const toggleBtn       = document.getElementById('chatToggleBtn');
+  const chatBody        = document.getElementById('chatBody');
+  const messagesEl      = document.getElementById('chatMessages');
+  const typingEl        = document.getElementById('chatTyping');
+  const formEl          = document.getElementById('chatForm');
+  const inputEl         = document.getElementById('chatInput');
+  const sendBtn         = document.getElementById('chatSendBtn');
   const modeSelectorBtn = document.getElementById('modeSelectorBtn');
-  const modeDropdown   = document.getElementById('modeDropdown');
-  const modeLabelEl    = document.getElementById('modeSelectorLabel');
-  const modeOptions    = document.querySelectorAll('.mode-option');
+  const modeDropdown    = document.getElementById('modeDropdown');
+  const modeLabelEl     = document.getElementById('modeSelectorLabel');
+  const modeOptions     = document.querySelectorAll('.mode-option');
 
   if (!toggleBtn || !chatBody || !formEl) return;
 
@@ -334,9 +326,6 @@ Student Leadership`,
     inputEl.placeholder = isTerminal
       ? 'type a command, e.g. help…'
       : 'ask about projects, skills, research…';
-    inputEl.style.fontFamily = isTerminal
-      ? "'Courier New', 'Lucida Console', monospace"
-      : "'Courier New', 'Lucida Console', monospace";
 
     const modeTag = document.getElementById('chatModeTag');
     if (modeTag) modeTag.textContent = isTerminal ? 'TERMINAL' : 'AI';
@@ -390,14 +379,12 @@ Student Leadership`,
   });
 
   // ── Keep focus / keyboard locked to the input ────────────────────────────
-  // Prevent the send button from stealing focus on press (avoids the mobile
-  // keyboard flickering closed-then-open on every message, like Claude's UI).
   sendBtn.addEventListener('mousedown', (e) => e.preventDefault());
 
   inputEl.addEventListener('focus', () => {
     setTimeout(() => {
       formEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    }, 280); // give the mobile keyboard time to animate in first
+    }, 280);
   });
 
   // ── Utilities ────────────────────────────────────────────────────────────
@@ -514,6 +501,39 @@ Student Leadership`,
     scrollToBottom();
   }
 
+  function showLimitReached() {
+    const existing = document.getElementById('chatLimitBanner');
+    if (existing) return;
+
+    const banner = document.createElement('div');
+    banner.id = 'chatLimitBanner';
+    banner.className = 'chat-limit-banner';
+    banner.setAttribute('role', 'status');
+    banner.innerHTML = `
+      <div class="chat-limit-banner-icon" aria-hidden="true">◆</div>
+      <div class="chat-limit-banner-text">
+        <strong>AI limit reached</strong>
+        <span>10 requests used · resets in 24h · switch to Terminal Mode for instant lookups</span>
+      </div>
+      <button type="button" class="chat-limit-switch-btn" id="chatLimitSwitchBtn">
+        Terminal Mode
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    `;
+    messagesEl.appendChild(banner);
+    scrollToBottom();
+
+    document.getElementById('chatLimitSwitchBtn').addEventListener('click', () => {
+      currentMode = 'terminal';
+      modeLabelEl.textContent = 'Terminal Mode';
+      modeOptions.forEach(o => o.classList.toggle('mode-option--active', o.dataset.mode === 'terminal'));
+      switchModeUI('terminal');
+      inputEl.disabled = false;
+      sendBtn.disabled = false;
+      inputEl.focus();
+    });
+  }
+
   // ── Terminal Mode Handler ────────────────────────────────────────────────
   function handleTerminalCommand(raw) {
     const input = raw.trim().toLowerCase();
@@ -567,7 +587,10 @@ Student Leadership`,
       const data = await response.json().catch(() => null);
 
       if (response.status === 429) {
-        showError((data && data.error) || 'Rate limit reached. Please try again later.');
+        setSending(false);
+        showLimitReached();
+        sendBtn.disabled = true;
+        inputEl.disabled = true;
         return;
       }
 
@@ -588,11 +611,16 @@ Student Leadership`,
       history = history.slice(-MAX_HISTORY_TURNS * 2);
 
     } catch {
-      showError('Limit reached. Try again tomorrow.');
+      setSending(false);
+      showLimitReached();
+      sendBtn.disabled = true;
+      inputEl.disabled = true;
     } finally {
       setSending(false);
-      sendBtn.disabled = false;
-      inputEl.disabled = false;
+      if (currentMode !== 'ai' || !document.getElementById('chatLimitBanner')) {
+        sendBtn.disabled = false;
+        inputEl.disabled = false;
+      }
       inputEl.focus();
     }
   });

@@ -4,6 +4,8 @@
    update this file whenever the portfolio site content changes.
    ========================================================================== */
 
+import personality from './arthur-personality.json';
+
 export const PORTFOLIO_KNOWLEDGE = `
 Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a web developer and
 IT student at Palawan State University (PSU) in Puerto Princesa, Palawan,
@@ -98,4 +100,7 @@ LEADERSHIP
 Arthur is the current President of PSU-SITE at Palawan State University. The
 organization covers academic programs, administrative work, and student development
 initiatives for IT students at PSU.
-`.trim();
+`.trim() + '\n\nPERSONALITY & PERSONAL CONTEXT\n' +
+  Object.entries(personality)
+    .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.join(', ') : v}`)
+    .join('\n');

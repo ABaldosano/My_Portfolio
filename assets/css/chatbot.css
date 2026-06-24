@@ -191,12 +191,12 @@
   bottom: calc(100% + 8px);
   right: 0;
   min-width: 160px;
-  background: var(--card-bg);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 6px;
   box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(201, 169, 110, 0.08);
+    0 4px 20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(201, 169, 110, 0.12);
   z-index: 100;
   overflow: hidden;
   animation: dropUp 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -652,6 +652,81 @@
   transition: width 0.5s ease;
 }
 
+/* ── Limit Reached Banner ────────────────────────────────────────────────── */
+.chat-limit-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid rgba(201, 169, 110, 0.35);
+  border-radius: var(--radius-sm);
+  background: rgba(201, 169, 110, 0.06);
+  animation: msgSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.chat-limit-banner-icon {
+  font-size: 0.75rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.chat-limit-banner-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.chat-limit-banner-text strong {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.01em;
+}
+
+.chat-limit-banner-text span {
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.66rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.chat-limit-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  flex-shrink: 0;
+  border: 1px solid rgba(201, 169, 110, 0.5);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.15s;
+}
+
+.chat-limit-switch-btn:hover {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.chat-limit-switch-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   #ai-assistant        { padding: 64px 0; }
@@ -674,6 +749,8 @@
   .mode-selector-btn   { padding: 6px 8px; }
   #modeSelectorLabel   { display: none; }
   #sessionLabel        { font-size: 0.58rem; }
+  .chat-limit-banner   { flex-wrap: wrap; gap: 10px; }
+  .chat-limit-switch-btn { width: 100%; justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
