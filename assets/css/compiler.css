@@ -4,8 +4,8 @@
    ========================================================================== */
 
 #py-compiler {
-  padding: 0 0 100px;
-  background: var(--bg);
+  padding: 100px 0;
+  background: var(--bg2);
   transition: background 0.3s;
 }
 
@@ -363,7 +363,7 @@
 }
 
 @media (max-width: 768px) {
-  #py-compiler            { padding: 0 0 64px; }
+  #py-compiler            { padding: 64px 0; }
   .compiler-widget-header { padding: 13px 18px; }
   .compiler-body          { padding: 18px 18px 22px; }
   .py-editor              { min-height: 140px; max-height: 280px; }

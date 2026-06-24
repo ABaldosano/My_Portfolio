@@ -784,6 +784,27 @@ nav.header-hidden {
 }
 
 /* ==========================================================================
+   8b. INDEX INTERACTIVE WIDGET INTROS (AI CHAT + PYTHON COMPILER SECTIONS)
+   ========================================================================== */
+.section-intro {
+  max-width: 620px;
+  margin: 0 auto 52px;
+  text-align: center;
+}
+.section-intro .section-label {
+  justify-content: center;
+}
+.section-intro .section-title {
+  font-size: clamp(2rem, 3.2vw, 2.7rem);
+}
+.section-intro-desc {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 0.98rem;
+  margin-top: -6px;
+}
+
+/* ==========================================================================
    9. SUB-PAGES SYSTEM CORE LAYOUT & ARCHITECTURE
    ========================================================================== */
 
@@ -1385,6 +1406,7 @@ footer p {
   
   #projects { padding: 64px 0; }
   #certifications { padding: 48px 0 80px; }
+  .section-intro { margin-bottom: 36px; }
   .projects-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 36px; }
   .projects-header-right { text-align: left; max-width: 100%; }
   .project-featured { grid-template-columns: 1fr; }
