@@ -257,6 +257,7 @@
   display: flex;
   flex-direction: column;
   min-height: 0;
+  position: relative;
 }
 
 .py-output-label {
@@ -298,6 +299,22 @@
 
 .py-output .py-stderr { color: #c62828; }
 [data-theme="dark"] .py-output .py-stderr { color: #ef9a9a; }
+
+/* ── Hidden input: real focusable field so mobile/tablet keyboards open
+   when the script pauses on input(). A <pre> can never trigger an
+   on-screen keyboard on iOS/Android, only a real input/textarea can. ── */
+.py-hidden-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  opacity: 0;
+  background: transparent;
+  caret-color: transparent;
+  pointer-events: none;
+}
 
 .py-typed-input {
   color: var(--gold);
@@ -368,6 +385,15 @@
   .compiler-body          { padding: 18px 18px 22px; }
   .py-editor              { min-height: 140px; max-height: 280px; }
   .py-output              { min-height: 200px; }
+
+  /* 16px+ stops iOS/Android from auto-zooming the page on focus.
+     Gutter + highlight layer must match so line numbers and tokens
+     stay pixel-aligned with the (invisible) textarea text on top. */
+  .py-gutter,
+  .py-highlight,
+  .py-input {
+    font-size: 16px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

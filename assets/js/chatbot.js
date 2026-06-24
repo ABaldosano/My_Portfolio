@@ -169,17 +169,16 @@ Student Leadership`,
       const label = toggleBtn.querySelector('.chat-toggle-label');
       if (label) label.textContent = 'Close';
       scrollToBottom();
+      inputEl.focus();
 
       if (!hasOpened) {
         hasOpened = true;
         sendBtn.disabled = true;
-        inputEl.disabled = true;
         typingEl.removeAttribute('hidden');
         scrollToBottom();
         setTimeout(async () => {
           typingEl.setAttribute('hidden', '');
           sendBtn.disabled = false;
-          inputEl.disabled = false;
           await appendBotMessageTyped("Helloo, I'm Arthur's portfolio AI assistant. You can ask me about his projects, skills, research, certifications, or how to get in touch. You only have a maximum of 5 requests per day, so ask important questions. ദ്ദി(˶ᵔ ᵕ ᵔ˶)/✧");
           inputEl.focus();
         }, 1500);
@@ -187,6 +186,17 @@ Student Leadership`,
         inputEl.focus();
       }
     }
+  });
+
+  // ── Keep focus / keyboard locked to the input ────────────────────────────
+  // Prevent the send button from stealing focus on press (avoids the mobile
+  // keyboard flickering closed-then-open on every message, like Claude's UI).
+  sendBtn.addEventListener('mousedown', (e) => e.preventDefault());
+
+  inputEl.addEventListener('focus', () => {
+    setTimeout(() => {
+      formEl.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }, 280); // give the mobile keyboard time to animate in first
   });
 
   // ── Utilities ────────────────────────────────────────────────────────────
@@ -286,7 +296,6 @@ Student Leadership`,
   function setSending(active) {
     isSending        = active;
     sendBtn.disabled = active;
-    inputEl.disabled = active;
     typingEl.toggleAttribute('hidden', !active);
     if (active) scrollToBottom();
   }

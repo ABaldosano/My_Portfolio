@@ -16,6 +16,7 @@
   const statusLabel     = document.getElementById('compilerStatusLabel');
   const gutterEl        = document.getElementById('pyGutter');
   const highlightCodeEl = document.getElementById('pyHighlightCode');
+  const hiddenInputEl   = document.getElementById('pyHiddenInput');
 
   // ── Interactive-terminal state (input() pause/replay model) ─────────────
   let answers          = [];   // values supplied so far, in call order
@@ -167,6 +168,7 @@
   let pyodideInstance = null;
   let pyodideLoading  = null;
   let isRunning       = false;
+  let isPyodideReady  = false;
 
   // ── Load the Pyodide <script> exactly once, however many times we're asked ──
   function loadScriptOnce(src) {
@@ -210,6 +212,7 @@
       await loadScriptOnce(PYODIDE_CDN);
       const pyodide = await window.loadPyodide();
       pyodideInstance = pyodide;
+      isPyodideReady = true;
       setStatus('ready', true);
       setRunButtonState('idle');
       return pyodide;
@@ -237,6 +240,7 @@
     typedSpan = null;
     caretSpan = null;
     outputEl.classList.remove('py-output--awaiting-input');
+    if (hiddenInputEl) hiddenInputEl.value = '';
   }
 
   function appendStdout(text) {
@@ -266,7 +270,13 @@
     outputEl.appendChild(caretSpan);
     outputEl.classList.add('py-output--awaiting-input');
     outputEl.scrollTop = outputEl.scrollHeight;
-    outputEl.focus();
+    runBtn.disabled = true;
+    if (hiddenInputEl) {
+      hiddenInputEl.value = '';
+      hiddenInputEl.focus({ preventScroll: true });
+    } else {
+      outputEl.focus();
+    }
   }
 
   function exitAwaitingInput() {
@@ -287,28 +297,35 @@
     // freeze the typed value as plain echoed text, then move to a new line
     if (typedSpan) typedSpan.appendChild(document.createTextNode('\n'));
     exitAwaitingInput();
+    if (hiddenInputEl) hiddenInputEl.value = '';
     answers.push(value);
     runOnce(activeCode);
   }
 
-  outputEl.addEventListener('keydown', (e) => {
-    if (!awaitingInput) return;
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      submitTypedLine();
-    } else if (e.key === 'Backspace') {
-      e.preventDefault();
-      if (typedBuffer.length) {
-        typedBuffer = typedBuffer.slice(0, -1);
-        renderTypedBuffer();
-      }
-    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
-      e.preventDefault();
-      typedBuffer += e.key;
+  // Route all typing through a real, focusable input element. This is what
+  // makes the IDE genuinely usable on touch devices: a <pre> can display a
+  // blinking caret but can never summon an on-screen keyboard, only an
+  // actual input/textarea can. It also gives us correct paste, autocorrect,
+  // and IME support for free on desktop too.
+  if (hiddenInputEl) {
+    hiddenInputEl.addEventListener('input', () => {
+      if (!awaitingInput) return;
+      typedBuffer = hiddenInputEl.value;
       renderTypedBuffer();
-    }
+    });
+    hiddenInputEl.addEventListener('keydown', (e) => {
+      if (!awaitingInput) return;
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        submitTypedLine();
+      }
+    });
+  }
+  outputEl.addEventListener('click', () => {
+    if (!awaitingInput) return;
+    if (hiddenInputEl) hiddenInputEl.focus({ preventScroll: true });
+    else outputEl.focus();
   });
-  outputEl.addEventListener('click', () => { if (awaitingInput) outputEl.focus(); });
 
   // ── Run user code, pausing live at each input() like a real terminal ────
   // Trick: since plain main-thread Pyodide can't block mid-script for a
@@ -413,6 +430,7 @@
       isRunning = false;
       clearOutput();
       outputEl.textContent = '// output cleared';
+      if (isPyodideReady) setRunButtonState('idle');
     });
   }
 

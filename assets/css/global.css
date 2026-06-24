@@ -90,6 +90,12 @@ textarea:focus-visible,
   border-radius: 4px;
 }
 
+/* Snappier touch response everywhere: removes the ~300ms tap delay on
+   touch devices without changing how anything looks. */
+a, button, input, textarea, select {
+  touch-action: manipulation;
+}
+
 /* ==========================================================================
    2. TYPOGRAPHY & FONT ASSIGNMENTS
    ========================================================================== */
@@ -1417,6 +1423,7 @@ footer p {
   #contact { padding: 64px 0; }
   .contact-links { flex-direction: column; align-items: stretch; }
   .contact-link { justify-content: center; }
+  .inquiry-field { font-size: 16px; }
   
   footer { padding: 24px; flex-direction: column; text-align: center; gap: 10px; }
   .footer-left { align-items: center; }
