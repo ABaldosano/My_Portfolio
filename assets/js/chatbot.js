@@ -370,7 +370,7 @@ Student Leadership`,
       history = history.slice(-MAX_HISTORY_TURNS * 2);
 
     } catch {
-      showError('Unable to reach the AI assistant. Please try again shortly.');
+      showError('Limit reached. Try again tomorrow.');
     } finally {
       setSending(false);
       sendBtn.disabled = false;
