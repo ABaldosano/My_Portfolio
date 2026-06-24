@@ -56,6 +56,14 @@ SCOPE RULES (follow these strictly and at all times):
    renders it.
 7. Never use em-dashes (—) anywhere in your replies. Use a comma, period, or
    parentheses instead.
+8. If a numbered or bulleted item needs a short sub-point directly under it
+   (e.g. a one-line description of that item), indent that sub-point with
+   two spaces so it nests under the item instead of becoming its own list,
+   like this:
+   1. Item name
+     - short description
+   2. Next item
+     - short description
 
 PORTFOLIO KNOWLEDGE:
 ${PORTFOLIO_KNOWLEDGE}
@@ -199,7 +207,7 @@ export default {
       contents,
       generationConfig: {
         temperature: 0.5,
-        maxOutputTokens: 400,
+        maxOutputTokens: 800,
         thinkingConfig: { thinkingLevel: 'low' },
         responseMimeType: 'application/json',
         responseSchema: {
@@ -252,7 +260,21 @@ export default {
         reply = typeof parsed.reply === 'string' ? parsed.reply : '';
         offTopic = Boolean(parsed.offTopic);
       } catch {
-        reply = rawText;
+        // Gemini likely got cut off by maxOutputTokens before the JSON
+        // closed. Salvage the "reply" string's text instead of dumping the
+        // raw, broken {"reply": "..." wrapper on the user.
+        const match = rawText.match(/"reply"\s*:\s*"([\s\S]*)/);
+        if (match) {
+          let salvaged = match[1]
+            .replace(/"\s*,\s*"offTopic"[\s\S]*$/, '')
+            .replace(/\\n/g, '\n')
+            .replace(/\\"/g, '"')
+            .replace(/\\\\/g, '\\');
+          if (!/[.!?…]\s*$/.test(salvaged)) salvaged += '…';
+          reply = salvaged;
+        } else {
+          reply = '';
+        }
       }
     }
 

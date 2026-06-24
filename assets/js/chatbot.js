@@ -29,46 +29,67 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-function renderMarkdown(raw) {
-  let text = escapeHtml(raw);
+function applyInline(text) {
   text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
   text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  return text;
+}
 
-  const lines = text.split('\n');
+function renderMarkdown(raw) {
+  const lines = escapeHtml(raw).split('\n');
   let html = '';
-  let listType = null;
+  let outerType = null;    // 'ul' | 'ol' | null — the current top-level list
+  let liOpen = false;      // is the current top-level <li> still open?
+  let nestedOpen = false;  // is a nested <ul> open inside that <li>?
   let paragraph = [];
 
   const flushParagraph = () => {
     if (paragraph.length) { html += `<p>${paragraph.join('<br>')}</p>`; paragraph = []; }
   };
-  const closeList = () => {
-    if (listType) { html += `</${listType}>`; listType = null; }
+  const closeNested = () => {
+    if (nestedOpen) { html += '</ul>'; nestedOpen = false; }
+  };
+  const closeItem = () => {
+    closeNested();
+    if (liOpen) { html += '</li>'; liOpen = false; }
+  };
+  const closeOuter = () => {
+    closeItem();
+    if (outerType) { html += `</${outerType}>`; outerType = null; }
   };
 
   lines.forEach((line) => {
+    const indented = /^\s+\S/.test(line);
     const trimmed = line.trim();
     const bullet = trimmed.match(/^[-*]\s+(.*)/);
     const numbered = trimmed.match(/^\d+\.\s+(.*)/);
 
-    if (bullet) {
+    if (bullet && indented && liOpen) {
+      // Indented bullet right under an open item: a description/sub-point
+      // nested inside it, not a new sibling list item.
       flushParagraph();
-      if (listType !== 'ul') { closeList(); html += '<ul>'; listType = 'ul'; }
-      html += `<li>${bullet[1]}</li>`;
+      if (!nestedOpen) { html += '<ul>'; nestedOpen = true; }
+      html += `<li>${applyInline(bullet[1])}</li>`;
     } else if (numbered) {
       flushParagraph();
-      if (listType !== 'ol') { closeList(); html += '<ol>'; listType = 'ol'; }
-      html += `<li>${numbered[1]}</li>`;
+      if (outerType === 'ol') closeItem(); else { closeOuter(); html += '<ol>'; outerType = 'ol'; }
+      html += `<li>${applyInline(numbered[1])}`;
+      liOpen = true;
+    } else if (bullet) {
+      flushParagraph();
+      if (outerType === 'ul') closeItem(); else { closeOuter(); html += '<ul>'; outerType = 'ul'; }
+      html += `<li>${applyInline(bullet[1])}`;
+      liOpen = true;
     } else if (trimmed === '') {
-      closeList();
+      closeOuter();
       flushParagraph();
     } else {
-      closeList();
-      paragraph.push(trimmed);
+      closeOuter();
+      paragraph.push(applyInline(trimmed));
     }
   });
-  closeList();
+  closeOuter();
   flushParagraph();
 
   return html || '<p></p>';
