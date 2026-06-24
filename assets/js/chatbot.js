@@ -8,6 +8,22 @@ const SESSION_DAILY_LIMIT = 10;
 const SESSION_KEY         = 'portfolio-chat-session';
 const DEVICE_ID_KEY       = 'portfolio-device-id';
 const COOKIE_NAME         = 'portfolio_vid';
+const GREETINGS_URL       = '/assets/js/greetings.json';
+const DEFAULT_GREETING    = "Helloo, I'm Arthur's portfolio AI assistant. You can ask me about his projects, skills, research, certifications, or how to get in touch. You only have a maximum of 10 requests per day, so ask important questions. ദ്ദി(˶ᵔ ᵕ ᵔ˶)/✧";
+
+let greetingsCache = null;
+
+async function getGreeting() {
+  try {
+    if (!greetingsCache) {
+      const res = await fetch(GREETINGS_URL);
+      const data = await res.json();
+      greetingsCache = Array.isArray(data) && data.length ? data : null;
+    }
+    if (greetingsCache) return greetingsCache[Math.floor(Math.random() * greetingsCache.length)];
+  } catch {}
+  return DEFAULT_GREETING;
+}
 
 function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -343,7 +359,7 @@ Student Leadership`,
         setTimeout(async () => {
           typingEl.setAttribute('hidden', '');
           sendBtn.disabled = false;
-          await appendBotMessageTyped("Helloo, I'm Arthur's portfolio AI assistant. You can ask me about his projects, skills, research, certifications, or how to get in touch. You only have a maximum of 10 requests per day, so ask important questions. ദ്ദി(˶ᵔ ᵕ ᵔ˶)/✧");
+          await appendBotMessageTyped(await getGreeting());
           inputEl.focus();
         }, 1800);
       } else {
