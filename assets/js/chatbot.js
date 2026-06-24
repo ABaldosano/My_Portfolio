@@ -2,8 +2,12 @@
    portfolio :: chatbot.js · dual-mode edition (AI + Terminal)
    ========================================================================== */
 
-const CHAT_ENDPOINT     = 'https://arthurr-portfolio-chatbot.arthurbaldosano.workers.dev/api/chat';
-const MAX_HISTORY_TURNS = 6;
+const CHAT_ENDPOINT       = 'https://arthurr-portfolio-chatbot.arthurbaldosano.workers.dev/api/chat';
+const MAX_HISTORY_TURNS   = 8;
+const SESSION_DAILY_LIMIT = 10;
+const SESSION_KEY         = 'portfolio-chat-session';
+const DEVICE_ID_KEY       = 'portfolio-device-id';
+const COOKIE_NAME         = 'portfolio_vid';
 
 function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -52,6 +56,112 @@ function renderMarkdown(raw) {
   flushParagraph();
 
   return html || '<p></p>';
+}
+
+// ── Device ID (UUID stored in localStorage AND a 365-day cookie) ─────────────
+// Cookie survives localStorage clears; both must be wiped to get a new ID.
+function getCookie(name) {
+  const m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
+function setCookie(name, value, days) {
+  const exp = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${exp}; path=/; SameSite=Strict`;
+}
+
+function getOrCreateDeviceId() {
+  // Cookie takes priority — survives localStorage clears
+  let id = getCookie(COOKIE_NAME);
+  try { if (!id) id = localStorage.getItem(DEVICE_ID_KEY); } catch {}
+  if (!id) {
+    try {
+      id = crypto.randomUUID
+        ? crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+            const r = crypto.getRandomValues(new Uint8Array(1))[0] % 16;
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+          });
+    } catch { id = 'unknown'; }
+  }
+  // Write to both so both stay in sync
+  setCookie(COOKIE_NAME, id, 365);
+  try { localStorage.setItem(DEVICE_ID_KEY, id); } catch {}
+  return id;
+}
+
+// ── Browser fingerprint ───────────────────────────────────────────────────────
+// Hashes stable browser signals (screen, language, timezone, canvas rendering).
+// Survives clearing localStorage AND cookies. The only way to beat it is
+// switching browsers or devices — which is genuinely a different user.
+function getCanvasFingerprint() {
+  try {
+    const c = document.createElement('canvas');
+    const ctx = c.getContext('2d');
+    ctx.textBaseline = 'top';
+    ctx.font = '13px Arial';
+    ctx.fillStyle = '#c9a96e';
+    ctx.fillText('portfolio\u{1F3AF}2026', 2, 2);
+    return c.toDataURL().slice(-48);
+  } catch { return 'no-canvas'; }
+}
+
+async function generateFingerprint() {
+  try {
+    const raw = [
+      navigator.userAgent,
+      navigator.language,
+      `${screen.width}x${screen.height}x${screen.colorDepth}`,
+      navigator.hardwareConcurrency ?? '',
+      navigator.platform ?? '',
+      Intl.DateTimeFormat().resolvedOptions().timeZone,
+      getCanvasFingerprint(),
+    ].join('|||');
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw));
+    return Array.from(new Uint8Array(buf))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('')
+      .slice(0, 32);
+  } catch { return 'no-fp'; }
+}
+
+// ── Session tracking ─────────────────────────────────────────────────────────
+function getSession() {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (raw) {
+      const s = JSON.parse(raw);
+      if (s.start && Date.now() - s.start < 24 * 60 * 60 * 1000) return s;
+    }
+  } catch {}
+  return { count: 0, start: null };
+}
+
+function saveSession(s) {
+  try { localStorage.setItem(SESSION_KEY, JSON.stringify(s)); } catch {}
+}
+
+function incrementSession() {
+  const s = getSession();
+  if (!s.start) s.start = Date.now();
+  s.count = Math.min(SESSION_DAILY_LIMIT, (s.count || 0) + 1);
+  saveSession(s);
+}
+
+function updateSessionBar() {
+  const s    = getSession();
+  const pct  = Math.min(100, Math.round(((s.count || 0) / SESSION_DAILY_LIMIT) * 100));
+  let resetStr = '24h 0m';
+  if (s.start) {
+    const remaining = Math.max(0, 24 * 60 * 60 * 1000 - (Date.now() - s.start));
+    const h = Math.floor(remaining / 3600000);
+    const m = Math.floor((remaining % 3600000) / 60000);
+    resetStr = `${h}h ${m}m`;
+  }
+  const label = document.getElementById('sessionLabel');
+  const fill  = document.getElementById('sessionBarFill');
+  if (label) label.textContent = `Session: ${pct}% · resets in ${resetStr}`;
+  if (fill)  fill.style.width  = pct + '%';
 }
 
 const TERMINAL_KNOWLEDGE = {
@@ -149,6 +259,7 @@ Student Leadership`,
   let history   = [];
   let isSending = false;
   let currentMode = 'ai'; // 'ai' | 'terminal'
+  let countdownInterval = null;
 
   // ── Mode Selector ────────────────────────────────────────────────────────
   modeSelectorBtn.addEventListener('click', (e) => {
@@ -212,6 +323,8 @@ Student Leadership`,
       toggleBtn.setAttribute('aria-expanded', 'false');
       const label = toggleBtn.querySelector('.chat-toggle-label');
       if (label) label.textContent = 'Open';
+      clearInterval(countdownInterval);
+      countdownInterval = null;
     } else {
       chatBody.removeAttribute('hidden');
       toggleBtn.setAttribute('aria-expanded', 'true');
@@ -219,6 +332,8 @@ Student Leadership`,
       if (label) label.textContent = 'Close';
       scrollToBottom();
       inputEl.focus();
+      updateSessionBar();
+      countdownInterval = setInterval(updateSessionBar, 60000);
 
       if (!hasOpened) {
         hasOpened = true;
@@ -228,9 +343,9 @@ Student Leadership`,
         setTimeout(async () => {
           typingEl.setAttribute('hidden', '');
           sendBtn.disabled = false;
-          await appendBotMessageTyped("Helloo, I'm Arthur's portfolio AI assistant. You can ask me about his projects, skills, research, certifications, or how to get in touch. You only have a maximum of 5 requests per day, so ask important questions. ദ്ദി(˶ᵔ ᵕ ᵔ˶)/✧");
+          await appendBotMessageTyped("Helloo, I'm Arthur's portfolio AI assistant. You can ask me about his projects, skills, research, certifications, or how to get in touch. You only have a maximum of 10 requests per day, so ask important questions. ദ്ദി(˶ᵔ ᵕ ᵔ˶)/✧");
           inputEl.focus();
-        }, 1500);
+        }, 1800);
       } else {
         inputEl.focus();
       }
@@ -403,10 +518,13 @@ Student Leadership`,
     setSending(true);
 
     try {
+      const deviceId = getOrCreateDeviceId();
+      const fpId     = await generateFingerprint();
+
       const response = await fetch(CHAT_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, history }),
+        body: JSON.stringify({ message, history, deviceId, fpId }),
       });
 
       const data = await response.json().catch(() => null);
@@ -424,6 +542,9 @@ Student Leadership`,
       setSending(false);
       await new Promise(r => setTimeout(r, 120));
       await appendBotMessageTyped(data.reply);
+
+      incrementSession();
+      updateSessionBar();
 
       history.push({ role: 'user',  text: message    });
       history.push({ role: 'model', text: data.reply });

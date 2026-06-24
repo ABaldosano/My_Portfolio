@@ -136,7 +136,6 @@
 /* ── Mode Selector ───────────────────────────────────────────────────────── */
 .mode-selector {
   position: relative;
-  margin-left: auto;
   flex-shrink: 0;
   z-index: 200;
 }
@@ -189,9 +188,8 @@
 
 .mode-dropdown {
   position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: calc(100% + 8px);
+  right: 0;
   min-width: 160px;
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -201,14 +199,14 @@
     0 0 0 1px rgba(201, 169, 110, 0.08);
   z-index: 100;
   overflow: hidden;
-  animation: dropDown 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: dropUp 0.18s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .mode-dropdown[hidden] { display: none; }
 
-@keyframes dropDown {
-  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+@keyframes dropUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .mode-option {
@@ -613,6 +611,47 @@
   border-color: rgba(239, 154, 154, 0.22);
 }
 
+/* ── Chat Footer (session bar + mode selector) ───────────────────────────── */
+.chat-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 28px 14px;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.chat-session-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+#sessionLabel {
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.62rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+.session-bar-track {
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.session-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   #ai-assistant        { padding: 64px 0; }
@@ -620,22 +659,11 @@
   .chat-messages       { padding: 20px 18px 10px; max-height: 360px; }
   .chat-input-row      { padding: 14px 18px; }
   .chat-thinking       { padding: 0 18px 14px; }
+  .chat-footer         { padding: 8px 18px 12px; gap: 12px; }
   .chat-msg-user .chat-msg-body { max-width: 95%; }
 
   /* 16px+ stops iOS/Android from auto-zooming the page on focus */
   .chat-input          { font-size: 16px; }
-
-  /* Right-anchor the dropdown so it can't run off the screen edge */
-  .mode-dropdown {
-    left: auto;
-    right: 0;
-    transform: none;
-    min-width: 150px;
-  }
-  @keyframes dropDown {
-    from { opacity: 0; transform: translateY(-6px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
 }
 
 @media (max-width: 480px) {
@@ -645,6 +673,7 @@
   .chat-send-btn       { padding: 9px 12px; }
   .mode-selector-btn   { padding: 6px 8px; }
   #modeSelectorLabel   { display: none; }
+  #sessionLabel        { font-size: 0.58rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

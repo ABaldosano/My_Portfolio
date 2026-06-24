@@ -10,10 +10,10 @@ import { PORTFOLIO_KNOWLEDGE } from './knowledge.js';
 const MODEL = 'gemini-3.1-flash-lite';
 const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
-const PER_VISITOR_DAILY_LIMIT = 5;
-const TOTAL_DAILY_LIMIT = 400;
-const MAX_MESSAGE_LENGTH = 500;
-const MAX_HISTORY_TURNS = 6;
+const PER_VISITOR_DAILY_LIMIT = 10;
+const TOTAL_DAILY_LIMIT = 450;
+const MAX_MESSAGE_LENGTH = 1000;
+const MAX_HISTORY_TURNS = 8;
 const COUNTER_TTL_SECONDS = 60 * 60 * 26; // a little over a day; the date-scoped key is what actually resets daily
 
 const LIMIT_MESSAGE = 'The AI assistant has reached its usage limit. Please try again later.';
@@ -134,7 +134,10 @@ export default {
       return jsonResponse({ error: 'Method not allowed.' }, 405, cors);
     }
 
-    if (requestOrigin && !ALLOWED_ORIGINS.includes(requestOrigin)) {
+    // Require a recognized Origin header. Real browser cross-origin fetches
+    // from the front-end always send Origin, so this only blocks scripted/
+    // server-side requests (e.g. curl) that try to bypass CORS by omitting it.
+    if (!requestOrigin || !ALLOWED_ORIGINS.includes(requestOrigin)) {
       return jsonResponse({ error: 'Origin not allowed.' }, 403, cors);
     }
 
@@ -161,17 +164,31 @@ export default {
       );
     }
 
-    const date = todayUTC();
-    const visitorId = request.headers.get('CF-Connecting-IP') || 'unknown';
-    const visitorKey = `visitor:${date}:${visitorId}`;
-    const totalKey = `total:${date}`;
+    const date     = todayUTC();
+    const deviceId = typeof body.deviceId === 'string' && body.deviceId.length <= 64
+      ? body.deviceId.trim() : null;
+    const fpId     = typeof body.fpId === 'string' && body.fpId.length <= 64
+      ? body.fpId.trim() : null;
 
-    const [visitorCount, totalCount] = await Promise.all([
+    // visitorKey  → UUID (or IP fallback): cleared only by wiping cookie + localStorage
+    // fpKey       → browser fingerprint:   cleared only by switching browsers/devices
+    // totalKey    → global daily cap across all visitors
+    const visitorId  = deviceId || request.headers.get('CF-Connecting-IP') || 'unknown';
+    const visitorKey = `visitor:${date}:${visitorId}`;
+    const fpKey      = fpId ? `fp:${date}:${fpId}` : null;
+    const totalKey   = `total:${date}`;
+
+    const [visitorCount, totalCount, fpCount] = await Promise.all([
       readCounter(env.RATE_LIMIT_KV, visitorKey),
       readCounter(env.RATE_LIMIT_KV, totalKey),
+      fpKey ? readCounter(env.RATE_LIMIT_KV, fpKey) : Promise.resolve(0),
     ]);
 
-    if (!isLocalDev && (totalCount >= TOTAL_DAILY_LIMIT || visitorCount >= PER_VISITOR_DAILY_LIMIT)) {
+    if (!isLocalDev && (
+      totalCount   >= TOTAL_DAILY_LIMIT       ||
+      visitorCount >= PER_VISITOR_DAILY_LIMIT ||
+      fpCount      >= PER_VISITOR_DAILY_LIMIT
+    )) {
       return jsonResponse({ error: LIMIT_MESSAGE }, 429, cors);
     }
 
@@ -198,9 +215,12 @@ export default {
 
     let geminiResponse;
     try {
-      geminiResponse = await fetch(`${GEMINI_ENDPOINT}?key=${env.GEMINI_API_KEY}`, {
+      geminiResponse = await fetch(GEMINI_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': env.GEMINI_API_KEY,
+        },
         body: JSON.stringify(geminiPayload),
       });
     } catch {
@@ -250,7 +270,12 @@ export default {
 
     // Only count successful exchanges against the daily quota (skipped for local dev testing).
     if (!isLocalDev) {
-      await Promise.all([incrementCounter(env.RATE_LIMIT_KV, visitorKey), incrementCounter(env.RATE_LIMIT_KV, totalKey)]);
+      const increments = [
+        incrementCounter(env.RATE_LIMIT_KV, visitorKey),
+        incrementCounter(env.RATE_LIMIT_KV, totalKey),
+      ];
+      if (fpKey) increments.push(incrementCounter(env.RATE_LIMIT_KV, fpKey));
+      await Promise.all(increments);
     }
 
     return jsonResponse({ reply, offTopic }, 200, cors);
