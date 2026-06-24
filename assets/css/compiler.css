@@ -248,6 +248,35 @@
 .py-clear-btn:hover { border-color: var(--gold); color: var(--gold); }
 .py-clear-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
+/* ── Snippet picker: detached from Run/Clear, anchored to the far right ── */
+.compiler-actions { flex-wrap: wrap; }
+
+.py-snippet-picker {
+  margin-left: auto;
+}
+
+.py-snippet-select {
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.22s, color 0.22s;
+}
+.py-snippet-select:hover { border-color: var(--gold); color: var(--gold); }
+.py-snippet-select:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.py-snippet-select option {
+  background: var(--card-bg);
+  color: var(--text);
+  text-transform: none;
+}
+
 .compiler-body--terminal { padding: 22px 24px 26px; }
 
 /* ── Output terminal ─────────────────────────────────────────────────── */

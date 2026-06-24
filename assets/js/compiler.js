@@ -441,6 +441,74 @@
     }
   });
 
+  // ── "Pick a Code" sample snippet picker ──────────────────────────────────
+  const SNIPPETS = {
+    guess: `import random
+secret = random.randint(1, 20)
+print("Guess the number between 1 and 20!")
+while True:
+    guess = int(input("Enter guess: "))
+    if guess == secret:
+        print("You won!")
+        break
+    print("Too high!" if guess > secret else "Too low!")`,
+
+    password: `import random
+import string
+length = int(input("Enter password length: "))
+chars = string.ascii_letters + string.digits
+password = "".join(random.choices(chars, k=length))
+print(f"Your password: {password}")`,
+
+    rps: `import random
+choices = ["rock", "paper", "scissors"]
+computer = random.choice(choices)
+player = input("Choose rock, paper, or scissors: ").lower()
+print(f"Computer chose: {computer}")
+if player == computer:
+    print("It's a tie!")
+elif (player == "rock" and computer == "scissors") or \\
+     (player == "paper" and computer == "rock") or \\
+     (player == "scissors" and computer == "paper"):
+    print("You win!")
+else:
+    print("You lose!")`,
+
+    dice: `import random
+while True:
+    roll = input("Roll the dice? (y/n): ").lower()
+    if roll == 'y':
+        print(f"You rolled a: {random.randint(1, 6)}")
+    elif roll == 'n':
+        print("Thanks for playing!")
+        break`,
+
+    currency: `# Fixed rates relative to 1 USD
+rates = {"EUR": 0.92, "GBP": 0.79, "JPY": 155.5}
+amount = float(input("Enter amount in USD: $"))
+currency = input("Convert to (EUR, GBP, JPY): ").upper()
+if currency in rates:
+    converted = amount * rates[currency]
+    print(f"\${amount} USD = {converted:.2f} {currency}")
+else:
+    print("Currency not supported.")`,
+  };
+
+  const snippetSelect = document.getElementById('pySnippetSelect');
+  if (snippetSelect) {
+    snippetSelect.addEventListener('change', () => {
+      const code = SNIPPETS[snippetSelect.value];
+      snippetSelect.selectedIndex = 0; // reset — behaves like a one-shot picker
+      if (!code || !inputEl) return;
+      isRunning = false;
+      clearOutput();
+      outputEl.textContent = 'Code output will appear here.';
+      inputEl.value = code;
+      syncEditor();
+      inputEl.focus();
+    });
+  }
+
   // ── Public hook for the chatbot integration layer below ─────────────────
   window.PyCompiler = {
     run(code, autoRun) {
