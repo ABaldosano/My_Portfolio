@@ -5,6 +5,55 @@
 const CHAT_ENDPOINT     = 'https://arthurr-portfolio-chatbot.arthurbaldosano.workers.dev/api/chat';
 const MAX_HISTORY_TURNS = 6;
 
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function renderMarkdown(raw) {
+  let text = escapeHtml(raw);
+  text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+  text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+  const lines = text.split('\n');
+  let html = '';
+  let listType = null;
+  let paragraph = [];
+
+  const flushParagraph = () => {
+    if (paragraph.length) { html += `<p>${paragraph.join('<br>')}</p>`; paragraph = []; }
+  };
+  const closeList = () => {
+    if (listType) { html += `</${listType}>`; listType = null; }
+  };
+
+  lines.forEach((line) => {
+    const trimmed = line.trim();
+    const bullet = trimmed.match(/^[-*]\s+(.*)/);
+    const numbered = trimmed.match(/^\d+\.\s+(.*)/);
+
+    if (bullet) {
+      flushParagraph();
+      if (listType !== 'ul') { closeList(); html += '<ul>'; listType = 'ul'; }
+      html += `<li>${bullet[1]}</li>`;
+    } else if (numbered) {
+      flushParagraph();
+      if (listType !== 'ol') { closeList(); html += '<ol>'; listType = 'ol'; }
+      html += `<li>${numbered[1]}</li>`;
+    } else if (trimmed === '') {
+      closeList();
+      flushParagraph();
+    } else {
+      closeList();
+      paragraph.push(trimmed);
+    }
+  });
+  closeList();
+  flushParagraph();
+
+  return html || '<p></p>';
+}
+
 const TERMINAL_KNOWLEDGE = {
   bio: `Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a web developer and
 IT student at Palawan State University in Puerto Princesa, Palawan, Philippines.
@@ -285,12 +334,14 @@ Student Leadership`,
   async function appendBotMessageTyped(text) {
     const bubble = document.createElement('div');
     bubble.className = 'chat-msg chat-msg-bot';
-    const body = document.createElement('p');
+    const body = document.createElement('div');
     body.className = 'chat-msg-body';
     bubble.appendChild(body);
     messagesEl.appendChild(bubble);
     scrollToBottom();
+
     await typeOutText(body, text);
+    body.innerHTML = renderMarkdown(text);
   }
 
   function setSending(active) {

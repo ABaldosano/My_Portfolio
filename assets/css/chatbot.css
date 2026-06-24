@@ -381,6 +381,39 @@
   word-break: break-word;
 }
 
+/* Markdown formatting inside AI responses */
+.chat-msg-bot .chat-msg-body p { margin: 0 0 10px; }
+.chat-msg-bot .chat-msg-body p:last-child { margin-bottom: 0; }
+.chat-msg-bot .chat-msg-body strong { font-weight: 700; color: var(--cream); }
+.chat-msg-bot .chat-msg-body em { font-style: italic; }
+.chat-msg-bot .chat-msg-body code {
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.82em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-light);
+}
+[data-theme="dark"] .chat-msg-bot .chat-msg-body code { background: rgba(255, 255, 255, 0.08); }
+.chat-msg-bot .chat-msg-body ul,
+.chat-msg-bot .chat-msg-body ol {
+  margin: 4px 0 10px;
+  padding-left: 20px;
+}
+.chat-msg-bot .chat-msg-body li { margin: 3px 0; }
+.chat-msg-bot .chat-msg-body ul:last-child,
+.chat-msg-bot .chat-msg-body ol:last-child { margin-bottom: 0; }
+
+.chat-flag-note {
+  margin: 6px 0 0;
+  font-family: 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.7;
+}
+
 /* User message */
 .chat-msg-user { align-items: flex-end; }
 .chat-msg-user .chat-msg-prompt-arrow { color: var(--muted); }
