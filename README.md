@@ -147,21 +147,25 @@ Certifications and credentials are currently in progress. Actively pursuing cred
 
 ## Technologies
 
-The portfolio is intentionally lightweight. No frameworks, no backend, no build step.
+The portfolio frontend is intentionally lightweight: no frameworks, no build step. The AI assistant is the one feature with a backend, a small serverless Cloudflare Worker that keeps the Gemini API key off the browser entirely.
 
 | Layer | Technology |
 |-------|-----------|
 | Markup | HTML5 (semantic) |
 | Styling | CSS3 (custom properties, no preprocessor) |
 | Logic | Vanilla JavaScript (ES6+) |
-| Persistence | Browser `localStorage` (theme preference only) |
-| Fonts | Google Fonts — Playfair Display, Inter |
+| Persistence | Browser `localStorage` and cookies (see Local Storage Usage below) |
+| Fonts | Google Fonts (Playfair Display, Inter) |
 | Analytics | Google Analytics 4 via Google Tag Manager |
+| AI Backend | Cloudflare Workers (serverless proxy) |
+| AI Model | Google Gemini API |
+| Rate Limiting | Cloudflare KV |
+| In-Browser Python | Pyodide (WebAssembly) |
 | PWA | Web App Manifest (`manifest.json`) |
 | Hosting | GitHub Pages (custom domain via CNAME) |
 | Domain | [www.arthurr.gt.tc](https://www.arthurr.gt.tc/) |
 
-No external UI frameworks. No npm dependencies. No server-side rendering.
+No external UI frameworks. No npm dependencies. No server-side rendering. The Cloudflare Worker is the only server-side code in the project, and it exists solely to proxy AI chat requests and enforce rate limits.
 
 ---
 
@@ -181,6 +185,17 @@ No external UI frameworks. No npm dependencies. No server-side rendering.
 - Scale interaction on hoverable elements
 - Disabled on touch devices via `matchMedia`
 
+### 🤖 AI Portfolio Assistant
+- Dual-mode chat widget: an AI mode powered by Google Gemini, and a Terminal mode for browsing bio, skills, projects, research, and certifications by typed command
+- Replies stay scoped to questions about Arthur, with light tolerance for quick general questions
+- Typed-out response animation with markdown rendering for bold text, inline code, and lists
+- AI-generated Python code blocks carry a button that sends the snippet straight to the in-browser compiler
+
+### 🐍 In-Browser Python Compiler
+- Pyodide-based Python runtime that runs entirely in the browser, no code execution on any server
+- Syntax highlighting, line numbers, auto-indent, and a sample snippet picker for quick demos
+- Supports interactive `input()` calls by pausing execution and resuming once the visitor types a response
+
 ### 📱 Responsive & Mobile-First
 - Mobile hamburger nav with overlay
 - Touch-friendly layout and spacing
@@ -194,7 +209,7 @@ No external UI frameworks. No npm dependencies. No server-side rendering.
 ### 🔎 SEO & Discoverability
 - Full Open Graph and Twitter/X card metadata on every page
 - JSON-LD structured data: `Person`, `WebSite`, `CollectionPage`, `ContactPage`, `BreadcrumbList`, `SearchAction`
-- Geo metadata (Puerto Princesa, Palawan — `PH-PLW`)
+- Geo metadata (Puerto Princesa, Palawan, `PH-PLW`)
 - Google Site Verification and Bing Webmaster Tools validation
 - Canonical URLs and `robots` directives
 - XML sitemap covering all four pages
@@ -203,16 +218,23 @@ No external UI frameworks. No npm dependencies. No server-side rendering.
 - Inquiry form (Name, Email, Subject, Message) on `contact.html`
 - Submits via `mailto:` with no backend or third-party form service required
 
----
+### 🛡️ Backend & Abuse Protection
+- The Gemini API key lives only as a Cloudflare Worker secret and is never sent to the browser
+- Chat requests are restricted by origin, so only the portfolio's own pages can call the AI backend
+- Usage is capped per visitor, per browser fingerprint, and with a shared daily cap across every visitor, so the assistant cannot be drained by a single visitor or a scripted abuser
+- External links (GitHub, LinkedIn, Upwork, project demos, certificates) open with `rel="noopener noreferrer"`, so the opened page can't reach back into the original tab
 
+---
 
 ## Local Storage Usage
 
 | Key | Purpose |
 |-----|---------|
 | `portfolio-theme` | Remembers light or dark mode between visits |
+| `portfolio-device-id` | Anonymous ID used to apply the AI assistant's per-visitor daily limit |
+| `portfolio-chat-session` | Tracks how many AI messages have been sent in the current 24-hour window |
 
-No other data is stored. Nothing leaves your device.
+A matching `portfolio_vid` cookie backs up the device ID, since both have to be cleared together to reset the daily limit. The device ID and a basic browser fingerprint are sent to the AI assistant's backend only when the chat widget is used, solely to apply the limits above. Browsing the rest of the site sends nothing.
 
 ---
 
@@ -239,7 +261,7 @@ The underlying HTML/CSS/JS structure is independently developed by **Arthur Bald
 
 **Arthur Baldosano Jr.** · IT Student & Full-Stack Developer · PSU-SITE President · Puerto Princesa, Palawan 🇵🇭
 
-© 2026 — Designed and Built by Arthur Baldosano Jr.
+© 2026 · Designed and Built by Arthur Baldosano Jr.
 
 [arthurr.gt.tc](https://www.arthurr.gt.tc/) · [GitHub](https://github.com/ABaldosano) · [LinkedIn](https://www.linkedin.com/in/arthur-v-baldosano-jr-2b5607406) · [Upwork](https://www.upwork.com/freelancers/~01746d5ba8ae90ffb9?mp_source=share)
 
