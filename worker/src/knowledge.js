@@ -10,15 +10,15 @@ export const PORTFOLIO_KNOWLEDGE = `
 Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a web developer and
 IT student at Palawan State University (PSU) in Puerto Princesa, Palawan,
 Philippines. He's studying Information Technology with a focus on Data Analytics
-and E-Commerce. Everything he builds is custom. No templates, no page builders.
-He also runs his own freelance practice independently, and serves as President of
+and E-Commerce. Everything he builds is custom — no templates, no page builders.
+He runs his own freelance practice independently and serves as President of
 PSU-SITE (Society of Information Technology Enthusiasts).
 
-His technical work spans full-stack web applications, e-commerce platforms, and
+His work covers full-stack web applications, e-commerce platforms, and
 AI-powered academic tools. He writes mostly in HTML, CSS, JavaScript, and Python
-(with FastAPI for backends). He uses Git and GitHub for version control, has
-experience with system design and data analytics, and has done some AI integration
-work on several projects.
+(FastAPI for backends). He uses Git and GitHub for version control, has solid
+experience in system design and data analytics, and has integrated AI into
+several of his projects.
 
 CONTACT
 Email: arthurjuniorbaldosano@gmail.com
@@ -32,29 +32,30 @@ Contact page: pages/contact.html
 PROJECTS
 Arthur has built and shipped a range of projects. The notable ones:
 
-ATLAS PSU (Automated Teaching Load Assignment System) is his primary thesis
-proposal prototype. It uses an optimization algorithm to help department
-chairpersons at PSU's College of Sciences assign and balance faculty teaching
-loads automatically. Live at https://abaldosano.github.io/ATLAS-PSU/
+ATLAS PSU (Automated Teaching Load Assignment System) is his thesis prototype.
+It uses an optimization algorithm to help department chairpersons at PSU's College
+of Sciences assign and balance faculty teaching loads automatically.
+Live at https://abaldosano.github.io/ATLAS-PSU/
 
 IARMS (Intelligent Academic Resource Management System) is his other thesis
-prototype. It's an AI-powered study platform for PSU BSIT students. Upload a
-document and it generates summaries, flashcards, quizzes, glossary terms, and
-key concepts. Live at https://abaldosano.github.io/PSU_AcadRes/
+prototype — an AI-powered study platform for PSU BSIT students. Upload a document
+and it generates summaries, flashcards, quizzes, glossary terms, and key concepts.
+Live at https://abaldosano.github.io/PSU_AcadRes/
 
-PinnedPicks is a live affiliate e-commerce platform he owns and operates. It
-curates product picks across Shopee, Amazon, and SHEIN, built from scratch on
-GitHub Pages. Traffic comes through a Pinterest content strategy he runs himself.
+PinnedPicks is a live affiliate e-commerce platform he owns and runs. It curates
+product picks across Shopee, Amazon, and SHEIN, built from scratch on GitHub Pages.
+Traffic comes through a Pinterest content strategy he runs himself.
 Live at https://www.pinnedpicks.gt.tc/
 
-CrypStockDash is a lightweight, no-login stock market viewer for
-checking real-time market data on any ticker. Live at https://www.crypstockdash.page.gd/
+CrypStockDash is a lightweight, no-login stock market viewer for checking
+real-time market data on any ticker. Live at https://www.crypstockdash.page.gd/
 
 Product Sort Simulator started as a C# drag-and-drop sorting game for a Data
-Structures and Algorithms final project. He ported it to the web in June 2026.
+Structures and Algorithms final project, then ported to the web in June 2026.
 Players sort falling grocery items into the right baskets before they hit the ground.
 
-Buzy Reviewer was a school project that came before IARMS. The ideas he tested there, interactive study tools and document-driven content, fed directly into
+Buzy Reviewer was a school project that came before IARMS. The ideas he tested
+there — interactive study tools and document-driven content — fed directly into
 IARMS's design.
 
 Class and School Website was a paid client project delivered via Google Sites,
@@ -65,7 +66,8 @@ exploring different editorial layouts, browsing flow, and visual hierarchy for
 product discovery use cases.
 
 Cyberpunk 2077 Themed Landing Page and Death Stranding Themed Landing Page are
-creative frontend builds in pure HTML, CSS, and JavaScript with no frameworks, exploring game-inspired UI and mood-driven visual design.
+creative frontend builds in pure HTML, CSS, and JavaScript — no frameworks —
+exploring game-inspired UI and mood-driven visual design.
 
 Full project list with live links: pages/projects.html
 
@@ -85,13 +87,13 @@ He has written articles on policy and technology topics:
 Full list: pages/articles.html
 
 CERTIFICATIONS
-He holds certifications across project management, marketing, and technology:
 Online Freelancing Mentorship Session 2 (Business Registration and Labor Compliance),
 Project Management Essentials Certified (PMEC),
 Kickoff: Predictive & Agile Project Management (PMI),
 Developing, Mentoring, and Supporting Youth Leadership,
 Introduction to Modern AI (Cisco),
 AI Fundamentals (IBM SkillsBuild),
+Data Analytics Essentials (Cisco),
 Google Analytics 2026 Certified, SEO Certified, Digital Marketing Certified,
 Content Marketing Certified, Email Marketing Certified.
 Full list: pages/certifications.html

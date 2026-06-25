@@ -252,6 +252,7 @@ Student Leadership`,
 * Developing, Mentoring, and Supporting Youth Leadership
 * Introduction to Modern AI (Cisco)
 * AI Fundamentals (IBM SkillsBuild)
+* Data Analytics Essentials (Cisco)
 * Google Analytics 2026 Certified
 * SEO Certified
 * Digital Marketing Certified
