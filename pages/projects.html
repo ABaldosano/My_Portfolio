@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    var _consent = localStorage.getItem('portfolio_consent');
+    if (_consent === '1') {
+      gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', functionality_storage: 'granted', personalization_storage: 'denied', security_storage: 'granted' });
+    } else if (_consent === '0') {
+      gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', functionality_storage: 'denied', personalization_storage: 'denied', security_storage: 'granted' });
+    } else {
+      gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', functionality_storage: 'denied', personalization_storage: 'denied', security_storage: 'granted', wait_for_update: 500 });
+    }
+  </script>
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -145,6 +157,7 @@
   <link rel="preload" as="image" href="/assets/images/favicon.png" imagesrcset="/assets/images/favicon.png" imagesizes="40px" />
 
   <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/consent.css" />
 
 </head>
 <body>
@@ -504,5 +517,19 @@
   </footer>
 
   <script src="../assets/js/functions.js"></script>
+
+  <div id="cookie-overlay" style="display:none;" aria-hidden="true"></div>
+  <div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie consent" style="display:none;">
+    <div>
+      <p class="cookie-modal-label">Cookie Notice</p>
+      <p class="cookie-text">This site uses cookies and analytics to improve your experience. By continuing to browse, you agree to our use of cookies.</p>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-decline-btn" id="cookieDeclineBtn" aria-label="Decline cookies">No</button>
+      <button class="cookie-accept-btn" id="cookieAcceptBtn" aria-label="Accept cookies">Yes</button>
+    </div>
+  </div>
+
+  <script src="../assets/js/consent-modal.js"></script>
 </body>
 </html>

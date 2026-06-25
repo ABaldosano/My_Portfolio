@@ -1,14 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
+  <script>
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    var _consent = localStorage.getItem('portfolio_consent');
+
+    if (_consent === '1') {
+      gtag('consent', 'default', {
+        analytics_storage: 'granted',
+        ad_storage: 'denied',
+        functionality_storage: 'granted',
+        personalization_storage: 'denied',
+        security_storage: 'granted'
+      });
+    } else if (_consent === '0') {
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
+        security_storage: 'granted'
+      });
+    } else {
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+    }
+  </script>
+
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-WHQ474NX');</script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-6XEX1LX6ZM');
   </script>
@@ -183,6 +216,7 @@
   <link rel="stylesheet" href="assets/css/global.css" />
   <link rel="stylesheet" href="assets/css/chatbot.css" />
   <link rel="stylesheet" href="assets/css/compiler.css" />
+  <link rel="stylesheet" href="assets/css/consent.css" />
 
 </head>
 <body>
@@ -328,7 +362,6 @@
 
       <div class="chat-widget" id="chatWidget">
 
-        <!-- Terminal Title Bar -->
         <div class="chat-widget-header">
           <div class="chat-widget-header-left">
             <div class="terminal-dots" aria-hidden="true">
@@ -348,15 +381,12 @@
           </button>
         </div>
 
-        <!-- Chat Body -->
         <div class="chat-body" id="chatBody" hidden>
 
-          <!-- Message Log -->
           <div class="chat-messages" id="chatMessages" role="log" aria-live="polite">
 
           </div>
 
-          <!-- Claude-style Thinking State -->
           <div class="chat-thinking" id="chatTyping" hidden aria-hidden="true">
             <div class="chat-thinking-dots">
               <span></span><span></span><span></span>
@@ -365,7 +395,6 @@
             <div class="chat-thinking-bar"></div>
           </div>
 
-          <!-- Terminal Input -->
           <form class="chat-input-row" id="chatForm">
             <label for="chatInput" class="sr-only">Ask a question about Arthur</label>
             <span class="chat-input-prefix" aria-hidden="true">›</span>
@@ -383,7 +412,6 @@
             </button>
           </form>
 
-          <!-- Session Bar + Mode Selector Footer -->
           <div class="chat-footer" id="chatFooter">
             <div class="chat-session-info">
               <span id="sessionLabel">Session: 0% · resets in 24h 0m</span>
@@ -423,7 +451,6 @@
     </div>
     <div class="compiler-shell" id="compilerWidget">
 
-      <!-- LEFT PANE: IDE -->
       <div class="compiler-pane compiler-pane--editor">
         <div class="compiler-widget-header">
           <div class="compiler-widget-header-left">
@@ -479,7 +506,6 @@
         </div>
       </div>
 
-      <!-- RIGHT PANE: TERMINAL (stdin on top, output below) -->
       <div class="compiler-pane compiler-pane--terminal">
         <div class="compiler-widget-header">
           <div class="compiler-widget-header-left">
@@ -540,5 +566,15 @@
   <script src="assets/js/functions.js"></script>
   <script src="assets/js/chatbot.js"></script>
   <script src="assets/js/compiler.js"></script>
+
+  <div id="cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;">
+    <p class="cookie-text">This site uses cookies and analytics to improve your experience. By continuing to browse, you agree to our use of cookies.</p>
+    <div class="cookie-actions">
+      <button class="cookie-decline-btn" id="cookieDeclineBtn" aria-label="Decline cookies">No</button>
+      <button class="cookie-accept-btn" id="cookieAcceptBtn" aria-label="Accept cookies">Yes</button>
+    </div>
+  </div>
+
+  <script src="assets/js/consent-banner.js"></script>
 </body>
 </html>
