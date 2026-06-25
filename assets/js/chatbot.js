@@ -285,9 +285,10 @@ Student Leadership`,
 
   if (!toggleBtn || !chatBody || !formEl) return;
 
-  let history   = [];
-  let isSending = false;
-  let currentMode = 'ai'; // 'ai' | 'terminal'
+  let history        = [];
+  let isSending      = false;
+  let currentMode    = 'ai'; // 'ai' | 'terminal'
+  let aiLimitReached = false;
   let countdownInterval = null;
 
   // ── Mode Selector ────────────────────────────────────────────────────────
@@ -330,11 +331,18 @@ Student Leadership`,
     const modeTag = document.getElementById('chatModeTag');
     if (modeTag) modeTag.textContent = isTerminal ? 'TERMINAL' : 'AI';
 
+    // Always re-enable input and send when switching modes
+    inputEl.disabled = false;
+    sendBtn.disabled = false;
+
     if (isTerminal) {
       appendSystemMessage('Terminal mode active. Type help to see available commands.');
     } else {
       appendSystemMessage('AI mode active. Ask me anything about Arthur.');
+      // Re-show limit banner if AI limit was already hit
+      if (aiLimitReached) showLimitReached();
     }
+
     history = [];
     inputEl.focus();
   }
@@ -501,6 +509,7 @@ Student Leadership`,
     scrollToBottom();
   }
 
+  // Shows the limit banner once; subsequent AI submits show the red error instead
   function showLimitReached() {
     const existing = document.getElementById('chatLimitBanner');
     if (existing) return;
@@ -528,9 +537,6 @@ Student Leadership`,
       modeLabelEl.textContent = 'Terminal Mode';
       modeOptions.forEach(o => o.classList.toggle('mode-option--active', o.dataset.mode === 'terminal'));
       switchModeUI('terminal');
-      inputEl.disabled = false;
-      sendBtn.disabled = false;
-      inputEl.focus();
     });
   }
 
@@ -565,8 +571,17 @@ Student Leadership`,
     appendUserMessage(message);
     inputEl.value = '';
 
+    // Terminal mode: always works, no limits
     if (currentMode === 'terminal') {
       handleTerminalCommand(message);
+      inputEl.focus();
+      return;
+    }
+
+    // AI mode: if limit already hit, remind the user each time they try
+    if (aiLimitReached) {
+      showLimitReached(); // no-op if banner already visible
+      showError('Limit reached. Switch to Terminal Mode or try again tomorrow.');
       inputEl.focus();
       return;
     }
@@ -588,9 +603,10 @@ Student Leadership`,
 
       if (response.status === 429) {
         setSending(false);
+        aiLimitReached = true;
         showLimitReached();
-        sendBtn.disabled = true;
-        inputEl.disabled = true;
+        showError('Limit reached. Switch to Terminal Mode or try again tomorrow.');
+        inputEl.focus();
         return;
       }
 
@@ -612,15 +628,13 @@ Student Leadership`,
 
     } catch {
       setSending(false);
+      aiLimitReached = true;
       showLimitReached();
-      sendBtn.disabled = true;
-      inputEl.disabled = true;
+      showError('Limit reached. Switch to Terminal Mode or try again tomorrow.');
     } finally {
       setSending(false);
-      if (currentMode !== 'ai' || !document.getElementById('chatLimitBanner')) {
-        sendBtn.disabled = false;
-        inputEl.disabled = false;
-      }
+      sendBtn.disabled = false;
+      inputEl.disabled = false;
       inputEl.focus();
     }
   });
