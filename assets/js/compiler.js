@@ -1,6 +1,6 @@
 /* ==========================================================================
-   portfolio :: compiler.js · Pyodide-based python compiler (add-on layer)
-   Loaded once globally. Never imports, calls, or mutates chatbot.js internals.
+   portfolio: compiler.js the Pyodide-based python compiler (add-on layer)
+   loaded once globally.
    ========================================================================== */
 
 (function initPyCompiler() {
@@ -18,9 +18,8 @@
   const highlightCodeEl = document.getElementById('pyHighlightCode');
   const hiddenInputEl   = document.getElementById('pyHiddenInput');
 
-  // ── Interactive-terminal state (input() pause/replay model) ─────────────
-  let answers          = [];   // values supplied so far, in call order
-  let shownLen          = 0;   // how much of the python stdout we've already rendered
+  let answers          = [];
+  let shownLen          = 0;
   let awaitingInput     = false;
   let typedBuffer       = '';
   let typedSpan         = null;
@@ -29,11 +28,8 @@
 
   if (!inputEl || !runBtn || !outputEl) return;
 
-  const INDENT_UNIT = '    '; // 4 spaces, PEP8-style
+  const INDENT_UNIT = '    ';
 
-  // ── Editor enhancements: syntax highlighting + line numbers ──────────────
-  // Escape first, then wrap only our own <span> tags around matched tokens —
-  // never reflects raw/unescaped user text into innerHTML.
   function escapeHtml(s) {
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
@@ -67,7 +63,7 @@
     }
 
     out += escapeHtml(code.slice(lastIndex));
-    return out + '\n'; // trailing newline keeps the last empty line in sync
+    return out + '\n';
   }
 
   function updateGutter(value) {
@@ -88,7 +84,6 @@
     return text.lastIndexOf('\n', pos - 1) + 1;
   }
 
-  // ── Tab to indent (Shift+Tab to dedent) + auto indent/dedent on Enter ────
   inputEl.addEventListener('keydown', (e) => {
     const ta = inputEl;
 
@@ -126,9 +121,9 @@
       const trimmed = currentLine.replace(/#.*/, '').trim();
 
       if (/:\s*$/.test(trimmed)) {
-        indent += INDENT_UNIT; // entering a block (def/if/for/class/...)
+        indent += INDENT_UNIT;
       } else if (/^(return|pass|break|continue|raise)\b/.test(trimmed)) {
-        indent = indent.slice(0, Math.max(0, indent.length - INDENT_UNIT.length)); // leaving a block
+        indent = indent.slice(0, Math.max(0, indent.length - INDENT_UNIT.length));
       }
 
       const insertion = '\n' + indent;
@@ -138,7 +133,6 @@
       return;
     }
 
-    // "Electric colon" — dedent else / elif / except / finally to match their block opener
     if (e.key === ':') {
       setTimeout(() => {
         const pos = ta.selectionStart;
@@ -163,14 +157,13 @@
   });
 
   inputEl.addEventListener('input', syncEditor);
-  syncEditor(); // initial paint (empty editor → gutter shows "1")
+  syncEditor();
 
   let pyodideInstance = null;
   let pyodideLoading  = null;
   let isRunning       = false;
   let isPyodideReady  = false;
 
-  // ── Load the Pyodide <script> exactly once, however many times we're asked ──
   function loadScriptOnce(src) {
     return new Promise((resolve, reject) => {
       if (window.loadPyodide) { resolve(); return; }
@@ -200,7 +193,6 @@
     if (state === 'idle')    { runBtn.disabled = false; runLabel.textContent = 'Run'; }
   }
 
-  // ── Single global Pyodide instance, initialized once ────────────────────
   async function initPyodide() {
     if (pyodideInstance) return pyodideInstance;
     if (pyodideLoading)  return pyodideLoading;
@@ -221,7 +213,6 @@
     return pyodideLoading;
   }
 
-  // Kick off loading in the background as soon as the page is ready.
   initPyodide().catch((err) => {
     setStatus('failed to load', false);
     outputEl.appendChild(Object.assign(document.createElement('span'), {
@@ -230,7 +221,6 @@
     }));
   });
 
-  // ── Output helpers ───────────────────────────────────────────────────────
   function clearOutput() {
     outputEl.textContent = '';
     shownLen = 0;
@@ -258,7 +248,6 @@
     outputEl.scrollTop = outputEl.scrollHeight;
   }
 
-  // ── Live "you are typing" echo while paused on input() ───────────────────
   function enterAwaitingInput() {
     awaitingInput = true;
     typedBuffer = '';
@@ -294,7 +283,6 @@
   function submitTypedLine() {
     const value = typedBuffer;
     if (caretSpan && caretSpan.parentNode) caretSpan.remove();
-    // freeze the typed value as plain echoed text, then move to a new line
     if (typedSpan) typedSpan.appendChild(document.createTextNode('\n'));
     exitAwaitingInput();
     if (hiddenInputEl) hiddenInputEl.value = '';
@@ -302,11 +290,6 @@
     runOnce(activeCode);
   }
 
-  // Route all typing through a real, focusable input element. This is what
-  // makes the IDE genuinely usable on touch devices: a <pre> can display a
-  // blinking caret but can never summon an on-screen keyboard, only an
-  // actual input/textarea can. It also gives us correct paste, autocorrect,
-  // and IME support for free on desktop too.
   if (hiddenInputEl) {
     hiddenInputEl.addEventListener('input', () => {
       if (!awaitingInput) return;
@@ -327,14 +310,6 @@
     else outputEl.focus();
   });
 
-  // ── Run user code, pausing live at each input() like a real terminal ────
-  // Trick: since plain main-thread Pyodide can't block mid-script for a
-  // keystroke (that needs Workers + SharedArrayBuffer + cross-origin
-  // isolation headers, unavailable on GitHub Pages), we replay the script
-  // from the top on every input() call, feeding back all answers collected
-  // so far. Output already shown is never re-printed — only the new text
-  // produced since the last pause is appended — so visually it behaves
-  // exactly like a normal interactive run.
   async function runOnce(code) {
     setRunButtonState('running');
 
@@ -396,7 +371,7 @@
         isRunning = false;
         setRunButtonState('idle');
         enterAwaitingInput();
-        return; // wait for the user's keystrokes; submitTypedLine() resumes us
+        return;
       }
 
       if (hadException) {
@@ -422,7 +397,6 @@
     await runOnce(code);
   }
 
-  // ── Event bindings ───────────────────────────────────────────────────────
   runBtn.addEventListener('click', () => runPythonCode(inputEl.value));
 
   if (clearBtn) {
@@ -441,7 +415,6 @@
     }
   });
 
-  // ── "Pick a Code" sample snippet picker ──────────────────────────────────
   const SNIPPETS = {
     guess: `import random
 secret = random.randint(1, 20)
@@ -498,7 +471,7 @@ else:
   if (snippetSelect) {
     snippetSelect.addEventListener('change', () => {
       const code = SNIPPETS[snippetSelect.value];
-      snippetSelect.selectedIndex = 0; // reset — behaves like a one-shot picker
+      snippetSelect.selectedIndex = 0;
       if (!code || !inputEl) return;
       isRunning = false;
       clearOutput();
@@ -509,7 +482,6 @@ else:
     });
   }
 
-  // ── Public hook for the chatbot integration layer below ─────────────────
   window.PyCompiler = {
     run(code, autoRun) {
       if (!inputEl || !sectionEl) return;
@@ -521,11 +493,6 @@ else:
   };
 })();
 
-/* ==========================================================================
-   chatbot integration hook · add-on only, never touches chatbot.js
-   Watches #chatMessages for finished bot replies and tags ```python fences
-   with a "Run in Python Compiler" button.
-   ========================================================================== */
 (function initChatbotPyHook() {
   const messagesEl = document.getElementById('chatMessages');
   if (!messagesEl) return;
@@ -555,7 +522,7 @@ else:
 
       const pre  = document.createElement('pre');
       const code_ = document.createElement('code');
-      code_.textContent = code; // textContent only — never innerHTML
+      code_.textContent = code;
       pre.appendChild(code_);
       block.appendChild(pre);
 
@@ -583,7 +550,7 @@ else:
   function scanMessages() {
     messagesEl.querySelectorAll('.chat-msg-bot .chat-msg-body').forEach((el) => {
       if (el.dataset.pyScanned === '1') return;
-      if (el.querySelector('.chat-cursor')) return; // still typing, wait
+      if (el.querySelector('.chat-cursor')) return;
       enhanceBotMessage(el);
     });
   }

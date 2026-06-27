@@ -1,7 +1,7 @@
 /* ==========================================================================
-   portfolio chatbot :: knowledge.js
-   maintainable knowledge source injected into every Gemini request.
-   update this file whenever the portfolio site content changes.
+   portfolio chatbot: knowledge.js
+   maintainable knowledge source injected into every API requests
+   only update when new content/certifications/projects are added to the portfolio
    ========================================================================== */
 
 import personality from './arthur-personality.json';

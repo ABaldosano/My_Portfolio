@@ -1,6 +1,8 @@
 /* ==========================================================================
-   portfolio :: functions.js
-   single source code for functions. load on every page.
+   portfolio: functions.js
+   single source code for functions. it must load on every page.
+   when bugs appear, check this first before checking others.
+   it will save hourssssss
    ========================================================================== */
 
 // 1. theme toggle ─────────────────────────────────────────────────────────────

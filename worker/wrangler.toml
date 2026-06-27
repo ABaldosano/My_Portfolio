@@ -5,9 +5,6 @@ compatibility_date = "2026-06-01"
 [vars]
 ALLOWED_ORIGIN = "https://www.arthurr.gt.tc"
 
-# Create the KV namespace first with:
-#   wrangler kv namespace create RATE_LIMIT_KV
-# then replace the id below with the id it prints out.
 [[kv_namespaces]]
 binding = "RATE_LIMIT_KV"
 id = "7c3d842a5d45445b9c723db6a5d777ae"

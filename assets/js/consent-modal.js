@@ -1,5 +1,7 @@
 /* ==========================================================================
-   portfolio :: consent-modal.js — sub-pages required popup variant
+   portfolio: consent-modal.js
+   for sub-pages required popup variant, so that users MUST either accept or
+   decline the cookies. this is a requirement for GDPR compliance.
    ========================================================================== */
 
 (function () {

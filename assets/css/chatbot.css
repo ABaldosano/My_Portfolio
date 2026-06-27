@@ -1,5 +1,5 @@
 /* ==========================================================================
-   portfolio :: chatbot.css · dual-mode edition
+   portfolio: chatbot.css with the dual mode applied
    ========================================================================== */
 
 .sr-only {
@@ -57,7 +57,6 @@
     0 0 40px rgba(201, 169, 110, 0.06);
 }
 
-/* ── Terminal Title Bar ──────────────────────────────────────────────────── */
 .chat-widget-header {
   display: flex;
   align-items: center;
@@ -133,7 +132,6 @@
   50%       { opacity: 0.35; transform: scale(0.75); }
 }
 
-/* ── Mode Selector ───────────────────────────────────────────────────────── */
 .mode-selector {
   position: relative;
   flex-shrink: 0;
@@ -258,7 +256,6 @@
   border-top: 1px solid var(--border);
 }
 
-/* ── Toggle button ───────────────────────────────────────────────────────── */
 .chat-toggle-btn {
   display: inline-flex;
   align-items: center;
@@ -303,7 +300,6 @@
   transform: rotate(225deg);
 }
 
-/* ── Chat Body ───────────────────────────────────────────────────────────── */
 .chat-body {
   border-top: 1px solid var(--border);
   position: relative;
@@ -312,7 +308,6 @@
   overflow: hidden;
 }
 
-/* ── Messages Area ───────────────────────────────────────────────────────── */
 .chat-messages {
   max-height: 420px;
   overflow-y: auto;
@@ -328,7 +323,6 @@
 .chat-messages::-webkit-scrollbar-track { background: transparent; }
 .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
-/* ── Message Block ───────────────────────────────────────────────────────── */
 .chat-msg {
   display: flex;
   flex-direction: column;
@@ -357,7 +351,6 @@
 .chat-msg-prompt-divider { flex: 1; height: 1px; background: var(--border); min-width: 16px; opacity: 0.6; }
 .chat-msg-prompt-time    { color: var(--muted); font-size: 0.62rem; opacity: 0.75; flex-shrink: 0; }
 
-/* Bot message */
 .chat-msg-bot .chat-msg-body {
   font-family: 'Inter', sans-serif;
   font-size: 0.88rem;
@@ -370,7 +363,6 @@
   background: var(--tag-bg);
 }
 
-/* Bot pre (terminal multiline output) */
 .chat-msg-bot pre.chat-msg-body {
   font-family: 'Courier New', 'Lucida Console', monospace;
   font-size: 0.78rem;
@@ -379,7 +371,6 @@
   word-break: break-word;
 }
 
-/* Markdown formatting inside AI responses */
 .chat-msg-bot .chat-msg-body p { margin: 0 0 10px; }
 .chat-msg-bot .chat-msg-body p:last-child { margin-bottom: 0; }
 .chat-msg-bot .chat-msg-body strong { font-weight: 700; color: var(--cream); }
@@ -412,7 +403,6 @@
   opacity: 0.7;
 }
 
-/* User message */
 .chat-msg-user { align-items: flex-end; }
 .chat-msg-user .chat-msg-prompt-arrow { color: var(--muted); }
 .chat-msg-user .chat-msg-prompt-name  { color: var(--muted); }
@@ -433,7 +423,6 @@
 
 [data-theme="dark"] .chat-msg-user .chat-msg-body { color: var(--bg); }
 
-/* System message */
 .chat-msg-system .chat-msg-body {
   font-family: 'Courier New', 'Lucida Console', monospace;
   font-size: 0.72rem;
@@ -449,7 +438,6 @@
   opacity: 0.75;
 }
 
-/* ── Thinking State ──────────────────────────────────────────────────────── */
 .chat-thinking {
   display: flex;
   flex-direction: row;
@@ -496,7 +484,6 @@
   50%      { opacity: 1; }
 }
 
-/* ── Blinking cursor ─────────────────────────────────────────────────────── */
 .chat-cursor {
   display: inline-block;
   width: 8px;
@@ -512,7 +499,6 @@
   50%, 100% { opacity: 0; }
 }
 
-/* ── Input Row ───────────────────────────────────────────────────────────── */
 .chat-input-row {
   display: flex;
   align-items: center;
@@ -592,7 +578,6 @@
 .chat-send-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .chat-send-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
 
-/* ── Error ───────────────────────────────────────────────────────────────── */
 .chat-msg-error .chat-msg-body {
   font-family: 'Inter', sans-serif;
   font-size: 0.83rem;
@@ -611,7 +596,6 @@
   border-color: rgba(239, 154, 154, 0.22);
 }
 
-/* ── Chat Footer (session bar + mode selector) ───────────────────────────── */
 .chat-footer {
   display: flex;
   align-items: center;
@@ -652,7 +636,6 @@
   transition: width 0.5s ease;
 }
 
-/* ── Limit Reached Banner ────────────────────────────────────────────────── */
 .chat-limit-banner {
   display: flex;
   align-items: center;
@@ -727,7 +710,6 @@
   outline-offset: 2px;
 }
 
-/* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   #ai-assistant        { padding: 64px 0; }
   .chat-widget-header  { padding: 13px 18px; }
@@ -737,7 +719,6 @@
   .chat-footer         { padding: 8px 18px 12px; gap: 12px; }
   .chat-msg-user .chat-msg-body { max-width: 95%; }
 
-  /* 16px+ stops iOS/Android from auto-zooming the page on focus */
   .chat-input          { font-size: 16px; }
 }
 

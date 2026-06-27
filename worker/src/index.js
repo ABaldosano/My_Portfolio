@@ -1,8 +1,8 @@
 /* ==========================================================================
-   portfolio chatbot :: worker/src/index.js
-   cloudflare worker — proxies chat requests to the gemini api and enforces
-   rate limits. the gemini api key is read from a cloudflare secret and is
-   never exposed to the browser.
+   portfolio chatbot: worker/src/index.js
+   cloudflare worker, that proxies chat requests to the api and enforces rate limits. 
+   the api key is read from a cloudflare secret and is never exposed to the browser. 
+   If you're reading this, you can't find it here lol.
    ========================================================================== */
 
 import { PORTFOLIO_KNOWLEDGE } from './knowledge.js';
@@ -139,7 +139,7 @@ function jsonResponse(body, status, headers) {
 }
 
 function todayUTC() {
-  return new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  return new Date().toISOString().slice(0, 10);
 }
 
 async function readCounter(kv, key) {

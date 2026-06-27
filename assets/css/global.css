@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. reset, base styles and variable system
+   1. reset, base styles and variable system. all must load before any other CSS
    ========================================================================== */
 
 *, *::before, *::after { 
@@ -66,7 +66,6 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Respect reduced-motion preferences for accessibility */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -78,7 +77,6 @@ body {
   .reveal { opacity: 1 !important; transform: none !important; }
 }
 
-/* Accessible focus states */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -90,8 +88,6 @@ textarea:focus-visible,
   border-radius: 4px;
 }
 
-/* Snappier touch response everywhere: removes the ~300ms tap delay on
-   touch devices without changing how anything looks. */
 a, button, input, textarea, select {
   touch-action: manipulation;
 }
@@ -100,7 +96,6 @@ a, button, input, textarea, select {
    2. TYPOGRAPHY & FONT ASSIGNMENTS
    ========================================================================== */
 
-/* Serif Families (Elegant Headlines) */
 .hero-name, 
 .section-title, 
 .contact-big,
@@ -114,14 +109,12 @@ a, button, input, textarea, select {
   font-family: 'Playfair Display', serif; 
 }
 
-/* Serif Weights & Variations */
 .hero-name, .contact-big, .cert-placeholder-title, .contact-page-title { font-weight: 700; }
 .section-title, .project-name, .proj-card-title { font-weight: 600; }
 .featured-title { font-weight: 600; font-size: 1.8rem; line-height: 1.2; }
 .project-name { font-size: 1.3rem; }
 .hero-name em, .section-title em, .contact-big em, .contact-page-title em { font-style: italic; color: var(--gold); }
 
-/* Sans-Serif Medium (Labels, Badges, Buttons) */
 .hero-eyebrow, .section-label, .hero-badge, .tag, .stat-label,
 .btn-primary, .btn-outline, .contact-link, .featured-link,
 .featured-badge, .paid-badge, .hero-scroll-hint, .nav-links a,
@@ -130,7 +123,6 @@ a, button, input, textarea, select {
   font-weight: 500;
 }
 
-/* Sans-Serif Regular (Body Text, Profiles, Descriptions) */
 .hero-desc, .about-bio, .project-desc, .featured-desc,
 .contact-sub, .projects-header-right, .page-header-desc, 
 .cert-placeholder-desc, .contact-page-desc, .proj-card-desc {
@@ -139,7 +131,6 @@ a, button, input, textarea, select {
   font-size: 0.95rem;
 }
 
-/* Typography Overrides & Accent Utilities */
 .about-bio strong { font-weight: 600; color: var(--cream); }
 .stat-num { font-family: 'Playfair Display', serif; font-weight: 700; }
 
@@ -280,7 +271,6 @@ nav.header-hidden {
   color: var(--gold);
 }
 
-/* Mobile Drawer Mechanics */
 .hamburger {
   display: none; 
   flex-direction: column;
@@ -338,7 +328,6 @@ nav.header-hidden {
   color: var(--gold); 
 }
 
-/* Theme Selector Control */
 .theme-toggle {
   background: none; 
   border: 1px solid var(--border);
@@ -461,7 +450,6 @@ nav.header-hidden {
   animation: fadeUp 0.7s ease 0.4s forwards;
 }
 
-/* Button Foundation Definitions */
 .btn-primary, .btn-outline {
   padding: 15px 34px;
   border-radius: var(--radius-sm);
@@ -564,7 +552,6 @@ nav.header-hidden {
   animation: scrollLine 2.2s ease infinite;
 }
 
-/* Matrix Line Architecture */
 .grid-line { 
   position: absolute; 
   inset: 0; 
@@ -700,7 +687,6 @@ nav.header-hidden {
   line-height: 1.8;
 }
 
-/* Inline Feature Rows */
 .project-featured {
   margin-bottom: 24px;
   background: var(--bg3); 
@@ -783,7 +769,6 @@ nav.header-hidden {
   gap: 14px; 
 }
 
-/* Academic Thesis Highlights Core Flag */
 .project-featured.thesis-card,
 .proj-card.thesis-card { 
   border-color: var(--gold-dim); 
@@ -828,9 +813,6 @@ nav.header-hidden {
   max-width: 600px;
 }
 
-
-
-/* Section Group Aggregator Blocks */
 .project-group { 
   margin-bottom: 72px; 
 }
@@ -1044,7 +1026,6 @@ nav.header-hidden {
    12. CENTRALIZED INQUIRY & COMMUNICATIONS MODULE
    ========================================================================== */
 
-/* Standard Bottom Index Context Block */
 #contact { 
   padding: 100px 0; 
   background: var(--bg2); 
@@ -1093,7 +1074,6 @@ nav.header-hidden {
   color: var(--gold); 
 }
 
-/* Comprehensive Standalone Sub-page Configurations */
 .contact-page-section {
   padding: 140px 0 120px;
 }
@@ -1119,7 +1099,6 @@ nav.header-hidden {
   max-width: 440px; 
 }
 
-/* Card Platforms Components (Shared Values Refactored to Variables) */
 .socials-card, .inquiry-card {
   background: var(--card-bg);
   border: 1px solid var(--border-light);
@@ -1182,7 +1161,6 @@ nav.header-hidden {
   font-weight: 500; 
 }
 
-/* Location Sub-block */
 .location-block { 
   margin-top: 4px; 
 }
@@ -1202,7 +1180,6 @@ nav.header-hidden {
   font-weight: 500; 
 }
 
-/* Interactive Inquiry Elements Form Container */
 .inquiry-card { 
   padding: 40px; 
 }
@@ -1367,7 +1344,6 @@ footer p {
    15. RESPONSIVE MEDIA QUERIES (BREAKPOINTS CASCADE)
    ========================================================================== */
 
-/* Tablet Level Viewports */
 @media (max-width: 1024px) {
   nav { padding: 16px 36px; }
   .container { padding: 0 36px; }
@@ -1378,7 +1354,6 @@ footer p {
   .featured-title { font-size: 1.5rem; }
 }
 
-/* Phablet and Mid-Scale Viewports */
 @media (max-width: 860px) {
   .contact-page-grid { grid-template-columns: 1fr; gap: 40px; }
   .inquiry-card { padding: 28px 20px; }
@@ -1386,7 +1361,6 @@ footer p {
   .projects-card-grid { grid-template-columns: 1fr; }
 }
 
-/* Universal Mobile Viewports */
 @media (max-width: 768px) {
   nav { padding: 16px 24px; }
   .nav-links { display: none; }
@@ -1429,7 +1403,6 @@ footer p {
   .footer-left { align-items: center; }
 }
 
-/* Standardized Compact Mobile Breakpoints */
 @media (max-width: 640px) {
   .proj-card-img { aspect-ratio: 4 / 3; height: auto; }
   .proj-card-body { padding: 22px 20px 26px; }
@@ -1441,7 +1414,6 @@ footer p {
   .page-header { padding: 110px 0 36px; }
 }
 
-/* Micro Device Layouts */
 @media (max-width: 400px) {
   .hero-badge { font-size: 0.65rem; padding: 5px 12px; }
   .btn-primary, .btn-outline { padding: 13px 26px; font-size: 0.72rem; }

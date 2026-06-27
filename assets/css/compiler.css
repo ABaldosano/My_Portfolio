@@ -1,6 +1,6 @@
 /* ==========================================================================
-   portfolio :: compiler.css · Pyodide python compiler (add-on layer)
-   Self-contained. Reuses root design tokens only. Never edits chatbot.css.
+   portfolio : compiler.css, the Pyodide python compiler (add-on layer)
+   self-contained. it reuses root design tokens only tho and never edits chatbot.css
    ========================================================================== */
 
 #py-compiler {
@@ -48,7 +48,6 @@
   flex: 1 1 auto;
 }
 
-/* ── Header (reuses .terminal-dots / .chat-title-group from chatbot.css) ── */
 .compiler-widget-header {
   display: flex;
   align-items: center;
@@ -94,12 +93,10 @@
   white-space: nowrap;
 }
 
-/* ── Body ─────────────────────────────────────────────────────────────── */
 .compiler-body {
   padding: 22px 24px 26px;
 }
 
-/* ── Code editor shell: gutter + highlight overlay (textarea-on-pre trick) ── */
 .py-editor {
   display: flex;
   align-items: stretch;
@@ -176,7 +173,6 @@
   overflow: hidden;
 }
 
-/* ── Syntax token colors — VS Code-style, tuned for light and dark mode ──── */
 .tok-keyword   { color: #0000ff; }
 .tok-string    { color: #a31515; }
 .tok-comment   { color: #008000; font-style: italic; }
@@ -248,7 +244,6 @@
 .py-clear-btn:hover { border-color: var(--gold); color: var(--gold); }
 .py-clear-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-/* ── Snippet picker: detached from Run/Clear, anchored to the far right ── */
 .compiler-actions { flex-wrap: wrap; }
 
 .py-snippet-picker {
@@ -279,7 +274,6 @@
 
 .compiler-body--terminal { padding: 22px 24px 26px; }
 
-/* ── Output terminal ─────────────────────────────────────────────────── */
 .py-output-wrap {
   margin-top: 0;
   flex: 1 1 auto;
@@ -329,9 +323,6 @@
 .py-output .py-stderr { color: #c62828; }
 [data-theme="dark"] .py-output .py-stderr { color: #ef9a9a; }
 
-/* ── Hidden input: real focusable field so mobile/tablet keyboards open
-   when the script pauses on input(). A <pre> can never trigger an
-   on-screen keyboard on iOS/Android, only a real input/textarea can. ── */
 .py-hidden-input {
   position: absolute;
   width: 1px;
@@ -364,7 +355,6 @@
   .py-caret { animation: none; opacity: 1; }
 }
 
-/* ── Chatbot integration hooks (add-on only; chatbot.css stays untouched) ── */
 .chat-code-block { margin: 4px 0 2px; }
 
 .chat-code-block pre {
@@ -402,7 +392,6 @@
 .run-in-compiler-btn:hover { background: var(--gold); color: var(--bg); }
 .run-in-compiler-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-/* ── Responsive ──────────────────────────────────────────────────────── */
 @media (max-width: 980px) {
   .compiler-shell { flex-direction: column; padding: 0 18px; }
   .compiler-pane  { flex: 1 1 auto; }
@@ -415,9 +404,6 @@
   .py-editor              { min-height: 140px; max-height: 280px; }
   .py-output              { min-height: 200px; }
 
-  /* 16px+ stops iOS/Android from auto-zooming the page on focus.
-     Gutter + highlight layer must match so line numbers and tokens
-     stay pixel-aligned with the (invisible) textarea text on top. */
   .py-gutter,
   .py-highlight,
   .py-input {

@@ -1,5 +1,6 @@
 /* ==========================================================================
-   portfolio :: consent-banner.js — index.html thin bar variant
+   portfolio: consent-banner.js
+   this one is for index.html only, this is the thin bar variant.
    ========================================================================== */
 
 (function () {

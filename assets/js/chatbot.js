@@ -1,5 +1,5 @@
 /* ==========================================================================
-   portfolio :: chatbot.js · dual-mode edition (AI + Terminal)
+   portfolio: chatbot.js the dual-mode edition AI plus the terminal CLI
    ========================================================================== */
 
 const CHAT_ENDPOINT       = 'https://arthurr-portfolio-chatbot.arthurbaldosano.workers.dev/api/chat';
@@ -93,7 +93,6 @@ function renderMarkdown(raw) {
   return html || '<p></p>';
 }
 
-// ── Device ID (UUID stored in localStorage AND a 365-day cookie) ─────────────
 function getCookie(name) {
   const m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]*)'));
   return m ? decodeURIComponent(m[1]) : null;
@@ -122,7 +121,6 @@ function getOrCreateDeviceId() {
   return id;
 }
 
-// ── Browser fingerprint ───────────────────────────────────────────────────────
 function getCanvasFingerprint() {
   try {
     const c = document.createElement('canvas');
@@ -154,7 +152,6 @@ async function generateFingerprint() {
   } catch { return 'no-fp'; }
 }
 
-// ── Session tracking ─────────────────────────────────────────────────────────
 function getSession() {
   try {
     const raw = localStorage.getItem(SESSION_KEY);
@@ -288,11 +285,10 @@ Student Leadership`,
 
   let history        = [];
   let isSending      = false;
-  let currentMode    = 'ai'; // 'ai' | 'terminal'
+  let currentMode    = 'ai';
   let aiLimitReached = false;
   let countdownInterval = null;
 
-  // ── Mode Selector ────────────────────────────────────────────────────────
   modeSelectorBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     const isOpen = !modeDropdown.hasAttribute('hidden');
@@ -332,7 +328,6 @@ Student Leadership`,
     const modeTag = document.getElementById('chatModeTag');
     if (modeTag) modeTag.textContent = isTerminal ? 'TERMINAL' : 'AI';
 
-    // Always re-enable input and send when switching modes
     inputEl.disabled = false;
     sendBtn.disabled = false;
 
@@ -340,7 +335,6 @@ Student Leadership`,
       appendSystemMessage('Terminal mode active. Type help to see available commands.');
     } else {
       appendSystemMessage('AI mode active. Ask me anything about Arthur.');
-      // Re-show limit banner if AI limit was already hit
       if (aiLimitReached) showLimitReached();
     }
 
@@ -348,7 +342,6 @@ Student Leadership`,
     inputEl.focus();
   }
 
-  // ── Toggle open / close ──────────────────────────────────────────────────
   let hasOpened = false;
 
   toggleBtn.addEventListener('click', () => {
@@ -387,7 +380,6 @@ Student Leadership`,
     }
   });
 
-  // ── Keep focus / keyboard locked to the input ────────────────────────────
   sendBtn.addEventListener('mousedown', (e) => e.preventDefault());
 
   inputEl.addEventListener('focus', () => {
@@ -396,7 +388,6 @@ Student Leadership`,
     }, 280);
   });
 
-  // ── Utilities ────────────────────────────────────────────────────────────
   function getTime() {
     return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
   }
@@ -510,7 +501,6 @@ Student Leadership`,
     scrollToBottom();
   }
 
-  // Shows the limit banner once; subsequent AI submits show the red error instead
   function showLimitReached() {
     const existing = document.getElementById('chatLimitBanner');
     if (existing) return;
@@ -541,7 +531,6 @@ Student Leadership`,
     });
   }
 
-  // ── Terminal Mode Handler ────────────────────────────────────────────────
   function handleTerminalCommand(raw) {
     const input = raw.trim().toLowerCase();
     const cmd = input.split(' ')[0];
@@ -561,7 +550,6 @@ Student Leadership`,
     }
   }
 
-  // ── Submit ───────────────────────────────────────────────────────────────
   formEl.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (isSending) return;
@@ -572,16 +560,14 @@ Student Leadership`,
     appendUserMessage(message);
     inputEl.value = '';
 
-    // Terminal mode: always works, no limits
     if (currentMode === 'terminal') {
       handleTerminalCommand(message);
       inputEl.focus();
       return;
     }
 
-    // AI mode: if limit already hit, remind the user each time they try
     if (aiLimitReached) {
-      showLimitReached(); // no-op if banner already visible
+      showLimitReached();
       showError('Limit reached. Switch to Terminal Mode or try again tomorrow.');
       inputEl.focus();
       return;

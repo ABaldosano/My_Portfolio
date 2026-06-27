@@ -1,10 +1,9 @@
 /* ==========================================================================
-   portfolio :: consent.css
-   Two variants: #cookie-banner (index — thin bar, scrollable)
-                 #cookie-modal + #cookie-overlay (sub-pages — required popup)
+   portfolio: consent.css
+   two variants: #cookie-banner (index.html, the thin bar, scrollable)
+                 #cookie-modal + #cookie-overlay (sub-pages, the required popup)
    ========================================================================== */
 
-/* ── Shared button styles ─────────────────────────────────────────────────── */
 .cookie-actions {
   display: flex;
   align-items: center;
@@ -59,7 +58,6 @@
 .cookie-decline-btn:hover { border-color: var(--gold); color: var(--gold); }
 .cookie-decline-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-/* ── Index: thin bottom bar ───────────────────────────────────────────────── */
 #cookie-banner {
   position: fixed;
   bottom: 0;
@@ -91,7 +89,6 @@
   to   { opacity: 0; transform: translateY(100%); }
 }
 
-/* ── Sub-pages: required centered modal ───────────────────────────────────── */
 #cookie-overlay {
   position: fixed;
   inset: 0;
@@ -177,7 +174,6 @@
   border-top: 1px solid var(--border);
 }
 
-/* ── Responsive ───────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   #cookie-banner { padding: 12px 24px; gap: 16px; }
   #cookie-banner .cookie-text { font-size: 0.74rem; }
