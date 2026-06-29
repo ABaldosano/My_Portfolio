@@ -247,8 +247,11 @@ Student Leadership`,
 * Project Management Essentials Certified (PMEC)
 * Kickoff: Predictive and Agile Project Management (PMI)
 * Developing, Mentoring, and Supporting Youth Leadership
-* Introduction to Modern AI (Cisco)
+* Career Essentials in Generative AI (LinkedIn Learning & Microsoft)
 * AI Fundamentals (IBM SkillsBuild)
+* Introduction to Modern AI (Cisco)
+* Apply AI: Update Your Resume (Cisco)
+* Apply AI: Analyze Customer Reviews (Cisco)
 * Data Analytics Essentials (Cisco)
 * Google Analytics 2026 Certified
 * SEO Certified
