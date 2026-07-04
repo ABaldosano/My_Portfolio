@@ -133,30 +133,30 @@ document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
   });
 })();
 
-document.addEventListener('contextmenu', (e) => e.preventDefault());
+//document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-document.addEventListener('keydown', (e) => {
-  const ctrl  = e.ctrlKey;
-  const meta  = e.metaKey;
-  const shift = e.shiftKey;
-  const alt   = e.altKey;
-  const key   = e.key.toLowerCase();
+//document.addEventListener('keydown', (e) => {
+//  const ctrl  = e.ctrlKey;
+//  const meta  = e.metaKey;
+//  const shift = e.shiftKey;
+//  const alt   = e.altKey;
+//  const key   = e.key.toLowerCase();
 
-  if (e.key === 'F12') { e.preventDefault(); return; }
+//  if (e.key === 'F12') { e.preventDefault(); return; }
 
-  if (ctrl && shift && (key === 'i' || key === 'c' || key === 'j')) {
-    e.preventDefault(); return;
-  }
+//  if (ctrl && shift && (key === 'i' || key === 'c' || key === 'j')) {
+//    e.preventDefault(); return;
+//  }
 
-  if (ctrl && !shift && !alt && key === 'u') {
-    e.preventDefault(); return;
-  }
+//  if (ctrl && !shift && !alt && key === 'u') {
+//    e.preventDefault(); return;
+//  }
 
-  if (meta && alt && (key === 'i' || key === 'c' || key === 'u')) {
-    e.preventDefault(); return;
-  }
-
-  if (meta && shift && (key === 'i' || key === 'c' || key === 'j')) {
-    e.preventDefault(); return;
-  }
-});
+//  if (meta && alt && (key === 'i' || key === 'c' || key === 'u')) {
+//    e.preventDefault(); return;
+//  }
+//
+//  if (meta && shift && (key === 'i' || key === 'c' || key === 'j')) {
+//    e.preventDefault(); return;
+//  }
+//});
