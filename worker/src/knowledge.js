@@ -10,7 +10,7 @@ export const PORTFOLIO_KNOWLEDGE = `
 Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a web developer and
 IT student at Palawan State University (PSU) in Puerto Princesa, Palawan,
 Philippines. He's studying Information Technology with a focus on Data Analytics
-and E-Commerce. Everything he builds is custom — no templates, no page builders.
+and E-Commerce. Everything he builds is custom, no templates, no page builders.
 He runs his own freelance practice independently and serves as President of
 PSU-SITE (Society of Information Technology Enthusiasts).
 
@@ -34,28 +34,54 @@ Arthur has built and shipped a range of projects. The notable ones:
 
 ATLAS PSU (Automated Teaching Load Assignment System) is his thesis prototype.
 It uses an optimization algorithm to help department chairpersons at PSU's College
-of Sciences assign and balance faculty teaching loads automatically.
+of Sciences assign and balance faculty teaching loads automatically. The backend
+only runs locally.
 Live at https://abaldosano.github.io/ATLAS-PSU/
 
 IARMS (Intelligent Academic Resource Management System) is his other thesis
-prototype — an AI-powered study platform for PSU BSIT students. Upload a document
+prototype, an AI-powered study platform for PSU BSIT students. Upload a document
 and it generates summaries, flashcards, quizzes, glossary terms, and key concepts.
+The backend currently runs Ollama (Llama3) locally, with a GPT-5 Mini API
+integration planned for production.
 Live at https://abaldosano.github.io/PSU_AcadRes/
+
+Portfolio Website is this site. It's a full-stack build featuring a custom AI
+chatbot with serverless LLM integration through a Cloudflare Worker, plus an
+embedded Python IDE for live code execution in the browser. It's security
+audited and hardened with XSS-safe markdown rendering, prompt-leak detection,
+and Cloudflare KV rate limiting.
+Live at https://www.arthurr.gt.tc
+
+NeuralGrid is a fully browser-based handwritten digit recognizer powered by
+Mercury 0.1, a neural network trained from scratch in vanilla JavaScript. It
+shows a live pseudo-3D visualization of every activation as predictions happen,
+plus an isolated sandbox for training your own model.
+Live at https://abaldosano.github.io/NeuralGridEngine/
 
 PinnedPicks is a live affiliate e-commerce platform he owns and runs. It curates
 product picks across Shopee, Amazon, and SHEIN, built from scratch on GitHub Pages.
 Traffic comes through a Pinterest content strategy he runs himself.
 Live at https://www.pinnedpicks.gt.tc/
 
+Rise From Nothing is a cross-platform incremental life simulation game built with
+HTML5, CSS, JavaScript, and Three.js. It features a 3D world, NPC AI, passive
+economy systems, persistent progression, and native Android APK support alongside
+web deployment. Currently in active development.
+
 CrypStockDash is a lightweight, no-login stock market viewer for checking
 real-time market data on any ticker. Live at https://www.crypstockdash.page.gd/
+
+PostgreSQL CRUD Dashboard is a full stack dashboard connecting a PostgreSQL
+database to an Express backend and a vanilla JavaScript frontend. Built with
+parameterized queries, bcrypt password hashing, server side input validation,
+and accessibility features.
 
 Product Sort Simulator started as a C# drag-and-drop sorting game for a Data
 Structures and Algorithms final project, then ported to the web in June 2026.
 Players sort falling grocery items into the right baskets before they hit the ground.
 
 Buzy Reviewer was a school project that came before IARMS. The ideas he tested
-there — interactive study tools and document-driven content — fed directly into
+there, interactive study tools and document-driven content, fed directly into
 IARMS's design.
 
 Class and School Website was a paid client project delivered via Google Sites,
@@ -66,7 +92,7 @@ exploring different editorial layouts, browsing flow, and visual hierarchy for
 product discovery use cases.
 
 Cyberpunk 2077 Themed Landing Page and Death Stranding Themed Landing Page are
-creative frontend builds in pure HTML, CSS, and JavaScript — no frameworks —
+creative frontend builds in pure HTML, CSS, and JavaScript, no frameworks,
 exploring game-inspired UI and mood-driven visual design.
 
 Full project list with live links: pages/projects.html

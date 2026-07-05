@@ -31,8 +31,8 @@
 
 [data-theme="dark"] {
   --bg: #0a0a0a;
-  --bg2: #141414;
-  --bg3: #1f1f1f;
+  --bg2: #1a1a1a;
+  --bg3: #0a0a0a;
   --card-bg: rgba(255, 255, 255, 0.04);
   --gold: #e5e5e5;
   --gold-dim: #737373;
@@ -205,6 +205,7 @@ nav {
   align-items: center;
   padding: 18px 60px;
   background: var(--nav-bg);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   transition: background 0.3s, border-color 0.3s, transform 0.3s ease;
@@ -301,6 +302,7 @@ nav.header-hidden {
   right: 0; 
   bottom: 0;
   background: var(--nav-bg);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   z-index: 490; 
   padding: 100px 40px 60px;
@@ -959,6 +961,16 @@ nav.header-hidden {
   background: var(--bg3);
   transition: background 0.3s;
 }
+#ai-assistant {
+  background: var(--bg2);
+  padding: 100px 0;
+  transition: background 0.3s;
+}
+#py-compiler {
+  background: var(--bg3);
+  padding: 100px 0;
+  transition: background 0.3s;
+}
 #featured-projects .projects-card-grid {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -1316,7 +1328,7 @@ textarea.inquiry-field {
 
 footer {
   padding: 32px 60px; 
-  background: var(--bg);
+  background: var(--bg2);
   display: flex; 
   justify-content: space-between; 
   align-items: center;
@@ -1454,6 +1466,30 @@ footer p {
   .project-featured-img { min-height: 220px; }
   .project-featured-content { padding: 28px 24px; }
   .featured-title { font-size: 1.4rem; }
+
+  #featured-projects .projects-card-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-bottom: 12px;
+    margin-bottom: 0;
+  }
+  #featured-projects .proj-card {
+    flex: 0 0 85% !important;
+    width: 85% !important;
+    scroll-snap-align: start;
+  }
+  #featured-projects .projects-card-grid::-webkit-scrollbar {
+    height: 4px;
+  }
+  #featured-projects .projects-card-grid::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
   
   #contact { padding: 64px 0; }
   .contact-links { flex-direction: column; align-items: stretch; }
