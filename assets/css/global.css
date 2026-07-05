@@ -951,6 +951,65 @@ nav.header-hidden {
 }
 
 /* ==========================================================================
+   8c. INDEX FEATURED PROJECTS TEASER (SCALED-DOWN 3-COLUMN PREVIEW)
+   ========================================================================== */
+
+#featured-projects {
+  padding: 100px 0 84px;
+  background: var(--bg3);
+  transition: background 0.3s;
+}
+#featured-projects .projects-card-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+#featured-projects .proj-card {
+  background: var(--bg2);
+}
+#featured-projects .proj-card-img {
+  aspect-ratio: 16 / 10;
+}
+#featured-projects .proj-card-body {
+  padding: 20px 22px 24px;
+}
+#featured-projects .proj-card-badge {
+  font-size: 0.6rem;
+  margin-bottom: 8px;
+}
+#featured-projects .proj-card-title {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+}
+#featured-projects .proj-card-desc {
+  font-size: 0.83rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  -webkit-line-clamp: 4;
+  min-height: calc(0.83rem * 1.7 * 4);
+}
+#featured-projects .proj-card-tags {
+  gap: 6px;
+  margin-bottom: 18px;
+}
+#featured-projects .proj-card-tags .tag {
+  font-size: 0.62rem;
+  padding: 4px 9px;
+}
+#featured-projects .proj-card-links {
+  padding-top: 12px;
+}
+#featured-projects .proj-card-link {
+  font-size: 0.7rem;
+}
+.featured-view-all {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* ==========================================================================
    11. PROFESSIONAL CERTIFICATIONS ENGINE
    ========================================================================== */
 
@@ -1352,6 +1411,7 @@ footer p {
   .project-featured-content { padding: 36px; }
   .about-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
   .featured-title { font-size: 1.5rem; }
+  #featured-projects .projects-card-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
 }
 
 @media (max-width: 860px) {
@@ -1385,6 +1445,7 @@ footer p {
   .stat-num { font-size: 2rem; }
   
   #projects { padding: 64px 0; }
+  #featured-projects { padding: 64px 0 48px; }
   #certifications { padding: 48px 0 80px; }
   .section-intro { margin-bottom: 36px; }
   .projects-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 36px; }
