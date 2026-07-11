@@ -7,18 +7,19 @@
 import personality from './arthur-personality.json';
 
 export const PORTFOLIO_KNOWLEDGE = `
-Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a web developer and
-IT student at Palawan State University (PSU) in Puerto Princesa, Palawan,
-Philippines. He's studying Information Technology with a focus on Data Analytics
-and E-Commerce. Everything he builds is custom, no templates, no page builders.
-He runs his own freelance practice independently and serves as President of
-PSU-SITE (Society of Information Technology Enthusiasts).
+Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a systems and data
+analyst and IT student at Palawan State University (PSU) in Puerto Princesa,
+Palawan, Philippines. He's studying Information Technology with a focus on
+Data Analytics and E-Commerce. Everything he builds is custom, no templates,
+no page builders. He runs his own freelance practice independently and serves
+as President of PSU-SITE (Society of Information Technology Enthusiasts).
 
-His work covers full-stack web applications, e-commerce platforms, and
-AI-powered academic tools. He writes mostly in HTML, CSS, JavaScript, and Python
-(FastAPI for backends). He uses Git and GitHub for version control, has solid
-experience in system design and data analytics, and has integrated AI into
-several of his projects.
+He specializes in breaking down requirements and designing systems, then
+directs that design into full-stack web applications, e-commerce platforms,
+and AI-powered academic tools. He writes mostly in HTML, CSS, JavaScript, and
+Python (FastAPI for backends). He uses Git and GitHub for version control, has
+solid experience in system design and data analytics, and has integrated AI
+into several of his projects.
 
 CONTACT
 Email: arthurjuniorbaldosano@gmail.com

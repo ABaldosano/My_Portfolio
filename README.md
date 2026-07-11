@@ -4,7 +4,7 @@
 
 # Arthur Baldosano Jr.
 
-**Full-Stack Developer · E-Commerce Builder · PSU-SITE President · Puerto Princesa, Palawan**
+**Systems & Data Analyst · Full-Stack Builder · PSU-SITE President · Puerto Princesa, Palawan**
 
 *Building custom web systems, AI-powered academic tools, and e-commerce platforms from scratch. No templates.*
 
@@ -22,13 +22,13 @@
 
 ## What Is This?
 
-This is the personal portfolio of **Arthur Baldosano Jr.**, a Full-Stack Web Developer and IT student at Palawan State University (PSU), currently serving as President of PSU-SITE. The portfolio documents real, shipped projects: custom web systems, AI-powered academic tools, e-commerce platforms, and freelance deliverables. All built from scratch, none from templates.
+This is the personal portfolio of **Arthur Baldosano Jr.**, a Systems & Data Analyst and IT student at Palawan State University (PSU), currently serving as President of PSU-SITE. The portfolio documents real, shipped projects: custom web systems, AI-powered academic tools, e-commerce platforms, and freelance deliverables. All built from scratch, none from templates.
 
 ---
 
 ## About
 
-Arthur is a web developer and systems builder based in Puerto Princesa, Palawan. He specializes in full-stack web applications, e-commerce platforms, and academic systems. Available for freelance projects in web development, e-commerce, and custom web systems, working remotely with clients worldwide.
+Arthur is a systems and data analyst based in Puerto Princesa, Palawan. He specializes in breaking down requirements and designing systems, then directing that design into full-stack web applications, e-commerce platforms, and academic systems. Available for freelance projects in systems analysis, e-commerce, and custom web systems, working remotely with clients worldwide.
 
 **Skills & Expertise**
 
@@ -36,7 +36,7 @@ Arthur is a web developer and systems builder based in Puerto Princesa, Palawan.
 |----------|-------|
 | Languages | HTML / CSS / JavaScript |
 | Backend | Python / FastAPI |
-| Disciplines | Full-Stack Development, E-Commerce Platforms, System Design, Data Analytics, AI Integration |
+| Disciplines | Data Analytics, System Design, Full-Stack Development, E-Commerce Platforms, AI Integration |
 | Tooling | Git / GitHub |
 | Leadership | Student Leadership (PSU-SITE President) |
 
@@ -259,7 +259,7 @@ The underlying HTML/CSS/JS structure is independently developed by **Arthur Bald
 
 <div align="center">
 
-**Arthur Baldosano Jr.** · IT Student & Full-Stack Developer · PSU-SITE President · Puerto Princesa, Palawan 🇵🇭
+**Arthur Baldosano Jr.** · IT Student & Systems/Data Analyst · PSU-SITE President · Puerto Princesa, Palawan 🇵🇭
 
 © 2026 · Designed and Built by Arthur Baldosano Jr.
 
