@@ -596,6 +596,15 @@
   border-color: rgba(239, 154, 154, 0.22);
 }
 
+.chat-privacy-note {
+  font-size: 0.68rem;
+  color: var(--muted);
+  opacity: 0.65;
+  text-align: center;
+  padding: 4px 16px 0;
+  margin: 0;
+}
+
 .chat-footer {
   display: flex;
   align-items: center;
