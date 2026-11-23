@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="/assets/images/favicon.png" alt="Arthur Baldosano Jr. Logo" width="72" />
+<img src="/favicon.svg" alt="Arthur Baldosano Jr. Logo" width="72" />
 
 # Arthur Baldosano Jr.
 

@@ -21,3 +21,4 @@ Notes
 - After a successful run, `git status` should show only .webp/.png additions, deleted originals and edited html/json/md.
 - If you re-add a big PNG/JPG later, just run the two --write commands again.
 - width/height attributes are not added by default (they can stretch images). Opt in with `update-refs.mjs --write --dims`.
+- The icon PNGs are regenerated from favicon.svg with `node make-icons.mjs` (circular, transparent corners; apple-touch-icon stays an opaque square because iOS rounds it itself).
