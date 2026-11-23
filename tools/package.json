@@ -1,0 +1,7 @@
+{
+  "name": "portfolio-tools",
+  "private": true,
+  "type": "module",
+  "description": "Local-only image optimization helpers. Not deployed.",
+  "dependencies": { "sharp": "^0.34.0" }
+}
