@@ -3,5 +3,11 @@
   "private": true,
   "type": "module",
   "description": "Local-only image optimization helpers. Not deployed.",
-  "dependencies": { "sharp": "^0.34.0" }
+  "dependencies": {
+    "sharp": "^0.34.0"
+  },
+  "scripts": {
+    "webp": "node png-to-webp.mjs",
+    "webp:dry": "node png-to-webp.mjs --dry"
+  }
 }

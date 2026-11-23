@@ -2,7 +2,9 @@
 
 Image shrink + reference rewiring. Needs Node 18+.
 
-Run these from the `tools` folder, in this order:
+**Day to day (new PNGs):** from the repo root run `node tools\png-to-webp.mjs`. It converts every PNG in assets/images to WebP at the same pixel size, moves the originals to ..\images_original_backup, and rewires references. Add `--dry` to preview.
+
+**First-time bulk conversion** (also from the `tools` folder), in this order:
 
     npm install
     node optimize-images.mjs                dry run, shows the size report
