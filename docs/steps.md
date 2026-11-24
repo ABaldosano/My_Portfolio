@@ -6,7 +6,7 @@ Read `docs/plan.md` first. It holds the decisions (D-1 to D-7), the exact copy, 
 
 - [x] H-1 Decisions settled (you)
 - [ ] H-2 Screenshots captured (you)
-- [ ] H-2b Event photos picked (you)
+- [x] H-2b Event photos picked (you): `capstone-event-1..6.jpg` are in the folder, uncropped (1 to 4 are portrait 1536x2048, 5 and 6 are landscape 2048x1536)
 - [x] H-3 Images generated (you): `atlas-cover.png`, `atlas-logo.png`, `og-cover.jpg` are in the folder
 - [ ] H-4 Converted to WebP (you)
 - [x] A-01 index ATLAS card
@@ -62,6 +62,7 @@ Corrections (2026-11-24, made after A-01 to C-01 were run; they override anythin
 - C-5: SETTLED 2026-11-24, "Featured" nav item added (desktop and mobile) after Projects on index and the six pages. plan.md D-8 asks for a nav item on all six pages, but A-03 says no nav item and none was added. Decide before D-03.
 - C-6: At the time of A-01 to A-04, `atlas-cover.webp`, `atlas-shot-1..6.webp`, and all `capstone-event-N.webp` were not in `assets/images/`. The event gallery was left out of featured.html until the photos exist. Pages already reference `atlas-cover.webp` and the six shots.
 - C-8 (2026-11-24): `atlas-og.jpg` is dropped, so A-06 uses `atlas-cover.webp` only (1448x1086, so width 1448 and height 1086). The ATLAS logo is the one from the ATLAS repo (`atlas-logo.png`, 1119x1119). `og-cover.jpg` was regenerated (1200x630, stays JPG). Screenshots `atlas-shot-1..6` and event photos are still pending.
+- C-9 (2026-11-24): event photos are JPG and not cropped. The gallery CSS must handle mixed portrait and landscape (fixed aspect ratio with object-fit cover, object-position center, so nothing is distorted). Photo 3 is portrait, so show it as a single figure with a max-width, not stretched. `atlas-shot-1..6` are still pending.
 - C-7 (2026-11-24, later): H-2, H-2b, H-3, H-4 were ticked by mistake and are reopened. The images are still missing. New steps A-05 (event gallery) and A-06 (og:image size) run only after H-4 is done.
 - D-3: Jestone Jaranilla and VJ Diamante are named as co-programmers; all 13 authors from the Zenodo citation are listed.
 - D-6: project title follows the published paper (Teaching Load Assignment and Management System).
