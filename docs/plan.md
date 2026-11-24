@@ -46,11 +46,11 @@ D-1, D-2, D-3 were settled by you on 2026-11-24. D-6 is settled by the published
 | D-1 | Awards (SETTLED) | "1st Place Award", "Most Innovative Study Award", "Best Presenter Award", 4th PAL-SU IT Department UI/UX Design Case Study Competition, 2026-11-09. | Your certificate wording differs. Use the certificate text exactly. No score numbers are published. |
 | D-2 | Case study page (SETTLED) | Yes: `pages/capstone.html`. A showcase of your BSIT capstone, kept apart from the regular projects. It holds event photos, the team, screenshots, and the paper. Temporary by design: update or replace it if the capstone is pursued further or after about a year. | Never, unless you drop it. |
 | D-3 | Team credit (SETTLED) | Name Jestone Jaranilla and VJ Diamante as co-programmers, and list all 13 authors exactly as in the Zenodo citation. Roles are only stated for the three people whose roles are confirmed (you, Jestone, VJ). | You tell the agent other members' full names and roles. Let the group know before it goes live. |
-| D-4 | Public demo access (the live site needs a login) | Capstone page says "Sign-in required. Request demo access by email." No credentials in the repo. | You create a read-only demo account and accept publishing it. |
-| D-5 | OG cover photo | Use the `pfp.webp` style portrait. The old event photo reads as the leadership brand being removed. | You prefer the event photo. |
+| D-4 | Public demo access (SETTLED) (the live site needs a login) | Capstone page says "Sign-in required. Request demo access by email." No credentials in the repo. |
+| D-5 | OG cover photo (SETTLED) | Use the old event photo reads as the leadership brand But the user will provide a new one. |
 | D-6 | Official title (SETTLED by the paper) | Paper title: "ATLAS PSU: A Teaching Load Assignment and Management System for Department Chairpersons of the College of Sciences at Palawan State University". Card title: "ATLAS PSU: Teaching Load Assignment and Management System". Short name: ATLAS PSU. | The abstract or defense used another name. |
-| D-7 | Render plan | Add a small note "First load can take up to a minute while the server wakes". | You are on an always-on paid plan. Drop the note. |
-| D-8 | Navigation | No new nav item. The capstone page is reached from the ATLAS cards (home and projects), the research page, and the footer-free home link in the featured section. | You want a "Capstone" item in the nav on all six pages. |
+| D-7 | Render plan (SETTLED) | Add a small note "First load can take up to a minute while the server wakes". Yes note this in the link|
+| D-8 | Navigation (SETTLED) | You want a "Capstone" item in the nav on all six pages. |
 | D-9 | Group and event photos | Use only photos you supply, captioned with the event name and date, and names from the citation. | Someone asks to be left out. |
 
 ## 4. Positioning (single source of truth for copy)
