@@ -5,13 +5,16 @@ Read `docs/plan.md` first. It holds the decisions (D-1 to D-7), the exact copy, 
 ## Status board (the agent ticks these in this file and returns the file in the zip)
 
 - [x] H-1 Decisions settled (you)
-- [x] H-2 Screenshots captured (you)
-- [x] H-3 Images generated (you)
-- [x] H-4 Converted to WebP (you)
+- [ ] H-2 Screenshots captured (you)
+- [ ] H-2b Event photos picked (you)
+- [x] H-3 Images generated (you): `atlas-cover.png`, `atlas-logo.png`, `og-cover.jpg` are in the folder
+- [ ] H-4 Converted to WebP (you)
 - [x] A-01 index ATLAS card
 - [x] A-02 projects ATLAS card and schema
 - [x] A-03 featured.html case study page
 - [x] A-04 research page: ATLAS paper
+- [ ] A-05 featured.html event gallery and team photo (after H-2b and H-4)
+- [ ] A-06 featured.html og:image size (after H-4)
 - [x] B-01 index head and schema
 - [x] B-02 index body
 - [x] B-03 other pages meta
@@ -58,6 +61,8 @@ Corrections (2026-11-24, made after A-01 to C-01 were run; they override anythin
 - C-4: Done by the agent on request, not in the plan: the "What kind of systems has Arthur built?" FAQ answer on index now names ATLAS PSU (CP-SAT and genetic algorithm), and the skills grid and schema follow plan.md section 4 (16 items, no C#). Chatbot `projects` lists IARMS by name only, with Portfolio Website and PostgreSQL CRUD Dashboard descriptors written by the agent.
 - C-5: SETTLED 2026-11-24, "Featured" nav item added (desktop and mobile) after Projects on index and the six pages. plan.md D-8 asks for a nav item on all six pages, but A-03 says no nav item and none was added. Decide before D-03.
 - C-6: At the time of A-01 to A-04, `atlas-cover.webp`, `atlas-shot-1..6.webp`, and all `capstone-event-N.webp` were not in `assets/images/`. The event gallery was left out of featured.html until the photos exist. Pages already reference `atlas-cover.webp` and the six shots.
+- C-8 (2026-11-24): `atlas-og.jpg` is dropped, so A-06 uses `atlas-cover.webp` only (1448x1086, so width 1448 and height 1086). The ATLAS logo is the one from the ATLAS repo (`atlas-logo.png`, 1119x1119). `og-cover.jpg` was regenerated (1200x630, stays JPG). Screenshots `atlas-shot-1..6` and event photos are still pending.
+- C-7 (2026-11-24, later): H-2, H-2b, H-3, H-4 were ticked by mistake and are reopened. The images are still missing. New steps A-05 (event gallery) and A-06 (og:image size) run only after H-4 is done.
 - D-3: Jestone Jaranilla and VJ Diamante are named as co-programmers; all 13 authors from the Zenodo citation are listed.
 - D-6: project title follows the published paper (Teaching Load Assignment and Management System).
 
@@ -65,13 +70,23 @@ Corrections (2026-11-24, made after A-01 to C-01 were run; they override anythin
 From https://atlas-psu.onrender.com with pseudonym data only. Six images listed in plan.md section 7. Desktop 1440x900, phone 390x844. Hide anything that is a real name, real email, token, or password. Save as PNG named `atlas-shot-1.png` to `atlas-shot-6.png`.
 
 ### H-2b Event and group photos
-Pick 3 to 8 real photos from the Nov 9 event and the group. Save as `capstone-event-1.png` and so on, at most 1600 px wide. Tell the group before they go live.
+Pick 6 real photos from the Nov 9 event and the group, landscape, at most 1600 px wide. Save as `capstone-event-1` to `capstone-event-6` (PNG or JPG). Tell the group before they go live. Where each goes on `pages/featured.html` (added by A-05):
+- 1: presenter on stage with the slide behind (gallery "The Event")
+- 2: audience and panel wide shot (gallery)
+- 3: the whole team, ideally with the trophies (top of "The Team", not in the gallery)
+- 4: close-up of the three awards (gallery)
+- 5: question and answer with the panel (gallery)
+- 6: the team during the demo (gallery)
+Skip any photo that shows a screen with real names, emails, or passwords.
 
 ### H-3 Generate logo, cover, OG
 Use prompts A1, A2, A3 from plan.md Appendix A. Save `atlas-logo.png`, `atlas-cover.png`, `og-cover.jpg` (1200x630).
 
 ### H-4 Convert
-Put all PNGs in `assets/images/`, then from the repo root: `node tools\png-to-webp.mjs`. Confirm `atlas-cover.webp`, `atlas-logo.webp`, `atlas-shot-1.webp` to `atlas-shot-6.webp`, and the `capstone-event-N.webp` files exist and `og-cover.jpg` is 1200x630. Send the repo to the agent only after this.
+Put all images in `assets/images/` first, then run ONE script from the tools folder (run `npm install` there once if it says it cannot find `sharp`):
+- Everything is PNG: from the repo root, `node tools\png-to-webp.mjs`. It converts only .png files, keeps the exact pixel size, moves the originals to `..\images_original_backup`, and skips the four icon PNGs and any name that already has a .webp.
+- Any photo is JPG (phone photos are): from the tools folder, `node optimize-images.mjs --max-width=1600` for a dry run, then `node optimize-images.mjs --write --max-width=1600`. It converts every PNG and JPG, fixes phone rotation, and shrinks anything wider than 1600 px. Do not run both scripts.
+Do not put `atlas-og.jpg` in the folder until after the script has run, because `optimize-images.mjs` would turn it into WebP. Confirm `atlas-cover.webp`, `atlas-shot-1.webp` to `atlas-shot-6.webp`, and `capstone-event-1.webp` to `capstone-event-6.webp` exist. Send the repo to the agent only after this.
 
 ---
 
@@ -125,6 +140,27 @@ Files: `pages/research.html` (card grid and the ItemList JSON-LD only).
 1. Add a new card as the first card in "Published Papers": image `../assets/images/atlas-cover.webp`, alt "ATLAS PSU teaching load assignment dashboard", badge `Research Paper · 2026`, title = the published paper title, description "Case study paper by a team of 13 students documenting ATLAS PSU, a CP-SAT and genetic algorithm teaching load system for department chairpersons of the College of Sciences at Palawan State University. First author.", tags `Systems Analysis`, `Constraint Programming`, `Genetic Algorithm`, `Academic Systems`, links `Read Paper` to `https://doi.org/10.5281/zenodo.24479345` and a dim `Featured Page` link to `featured.html`. No PDF link.
 2. JSON-LD: add a `ScholarlyArticle` as position 1 (`@id` ending `#research-atlas`, `datePublished` `2026`, all 13 authors as `Person` in citation order, publisher Zenodo, url the DOI), renumber the other two, set `numberOfItems` 3.
 Check: search `pages/research.html` for `24479345`; it must appear in the card and the JSON-LD.
+
+### A-05 pages/featured.html: event gallery and team photo
+Files: `pages/featured.html` only. The CSS classes `case-gallery` and `case-section` already exist.
+Run only after H-2b and H-4. List `assets/images/` first and use only `capstone-event-N.webp` files that exist.
+1. Insert a new `case-section reveal` block labelled `The Event` right after the `Screens` section and before `The Team`. Lead line: `4th PAL-SU IT Department UI/UX Design Case Study Competition, November 9, 2026.` Then a `case-gallery` of figures for photos 1, 2, 4, 5, 6 in that order, same markup as the Screens figures (`../assets/images/...`, `loading="lazy" decoding="async"`), with these captions and matching alt text:
+   - 1: `Presenting ATLAS PSU at the competition.`
+   - 2: `The audience and panel during the presentations.`
+   - 4: `The three awards from the competition.`
+   - 5: `Question and answer with the panel.`
+   - 6: `The team during the demo.`
+2. If `capstone-event-3.webp` exists, add one figure (class `case-gallery`) at the top of `The Team` section, above the names, with caption `The ATLAS PSU team after the competition.`
+3. Add no names, claims, or text beyond the above. The captions follow the H-2b shot list, and the owner confirms they match the photos.
+Check: every `capstone-event-` path in `featured.html` exists in `assets/images/`.
+
+### A-06 pages/featured.html: og:image size
+Files: `pages/featured.html` head only.
+Run only after H-4.
+1. Read the real pixel size of `assets/images/atlas-cover.webp` (for example `python3 -I -c "from PIL import Image; print(Image.open('assets/images/atlas-cover.webp').size)"`). Insert after the `og:image:secure_url` line: `<meta property="og:image:width" content="W" />` and `<meta property="og:image:height" content="H" />` using the measured numbers.
+2. Skipped (see C-8, `atlas-og.jpg` is dropped). Only if `assets/images/atlas-og.jpg` exists (1200x630), use it instead for `og:image`, `og:image:secure_url`, and `twitter:image`, set `og:image:type` to `image/jpeg`, width 1200, height 630. Leave `atlas-cover.webp` in the page JSON-LD and on the cards.
+3. D-03 check 6 (1200x630 on all pages) applies to `featured.html` only when it uses `atlas-og.jpg`.
+Check: `featured.html` contains numeric `og:image:width` and `og:image:height` that match the file named in `og:image`.
 
 ---
 
