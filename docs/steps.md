@@ -8,19 +8,19 @@ Read `docs/plan.md` first. It holds the decisions (D-1 to D-7), the exact copy, 
 - [x] H-2 Screenshots captured (you)
 - [x] H-3 Images generated (you)
 - [x] H-4 Converted to WebP (you)
-- [ ] A-01 index ATLAS card
-- [ ] A-02 projects ATLAS card and schema
-- [ ] A-03 capstone.html capstone page
-- [ ] A-04 research page: ATLAS paper
-- [ ] B-01 index head and schema
-- [ ] B-02 index body
-- [ ] B-03 other pages meta
-- [ ] B-04 certifications and projects schema fixes
-- [ ] C-01 chatbot.js terminal knowledge
-- [ ] C-02 Worker files: knowledge.js and index.js (separate session, targeted edits)
-- [ ] D-01 sitemap, manifest, dates
-- [ ] D-02 README
-- [ ] D-03 final sweep
+- [x] A-01 index ATLAS card
+- [x] A-02 projects ATLAS card and schema
+- [x] A-03 featured.html case study page
+- [x] A-04 research page: ATLAS paper
+- [x] B-01 index head and schema
+- [x] B-02 index body
+- [x] B-03 other pages meta
+- [x] B-04 certifications and projects schema fixes
+- [x] C-01 chatbot.js terminal knowledge
+- [x] C-02 Worker files: knowledge.js and index.js (separate session, targeted edits)
+- [x] D-01 sitemap, manifest, dates
+- [x] D-02 README
+- [x] D-03 final sweep
 
 ## Agent rules (paste this block at the top of every prompt)
 
@@ -49,7 +49,15 @@ Open `docs/plan.md` section 3. D-1, D-2, D-3, D-6 are already settled. If you ch
 
 Decision overrides (2026-11-24):
 - D-1: awards are 1st Place Award, Most Innovative Study Award, Best Presenter Award.
-- D-2: capstone page is `pages/capstone.html`, not atlas-psu.html.
+- D-2: the page is `pages/featured.html` (renamed from capstone.html, and atlas-psu.html before that). Links to it read "Featured Page".
+
+Corrections (2026-11-24, made after A-01 to C-01 were run; they override anything older in this file or in plan.md):
+- C-1: The ATLAS PSU paper is a CASE STUDY paper. It was submitted and defended as a case study. It is NOT Arthur's capstone. A capstone is only planned for the future, and ATLAS may be pursued as that capstone title later. Never write "BSIT capstone", "capstone paper", or "capstone work" about ATLAS PSU anywhere (site, README, chatbot, knowledge.js, schema). Use "case study".
+- C-2: Page file is `pages/featured.html`. Page header label is "Case Study", page title starts "Case Study: ATLAS PSU ...", breadcrumb name is "Case Study". All links to it from index, projects, and research read "Featured Page". The source comment says to review it if the study is pursued as a capstone (reminder: Nov 2027).
+- C-3: Sitemap, README, chatbot, and knowledge.js use `featured.html` and the words "featured page" and "case study". Image files keep their names (`capstone-event-N`, `atlas-*`).
+- C-4: Done by the agent on request, not in the plan: the "What kind of systems has Arthur built?" FAQ answer on index now names ATLAS PSU (CP-SAT and genetic algorithm), and the skills grid and schema follow plan.md section 4 (16 items, no C#). Chatbot `projects` lists IARMS by name only, with Portfolio Website and PostgreSQL CRUD Dashboard descriptors written by the agent.
+- C-5: SETTLED 2026-11-24, "Featured" nav item added (desktop and mobile) after Projects on index and the six pages. plan.md D-8 asks for a nav item on all six pages, but A-03 says no nav item and none was added. Decide before D-03.
+- C-6: At the time of A-01 to A-04, `atlas-cover.webp`, `atlas-shot-1..6.webp`, and all `capstone-event-N.webp` were not in `assets/images/`. The event gallery was left out of featured.html until the photos exist. Pages already reference `atlas-cover.webp` and the six shots.
 - D-3: Jestone Jaranilla and VJ Diamante are named as co-programmers; all 13 authors from the Zenodo citation are listed.
 - D-6: project title follows the published paper (Teaching Load Assignment and Management System).
 
@@ -77,26 +85,26 @@ Files: `index.html` (only the ATLAS card inside `#featured-projects`, and the se
    - Title `ATLAS PSU: Teaching Load Assignment and Management System` (D-6).
    - Description: the one-line from plan.md section 5 (230 characters max, do not exceed).
    - Tags: `Python / Flask`, `CP-SAT`, `Genetic Algorithm`, `PostgreSQL (Supabase)`, `Render`.
-   - Links: `Live System` to `https://atlas-psu.onrender.com`. Add a second link `Capstone Page` to `pages/capstone.html` using class `proj-card-link dim`.
+   - Links: `Live System` to `https://atlas-psu.onrender.com`. Add a second link `Featured Page` to `pages/featured.html` using class `proj-card-link dim`.
 2. Replace the `section-intro-desc` paragraph with the "Featured intro" copy from plan.md section 4.
 Check (one command): search `index.html` for `ATLAS-PSU/` and `atlas.webp`; both must return nothing.
 
 ### A-02 projects.html: ATLAS card and its schema
 Files: `pages/projects.html` (ATLAS card in "Top Live Projects", and the ATLAS entry in the ItemList JSON-LD).
-1. Replace the ATLAS card the same way as A-01. Badge: `Primary Featured · Award-Winning · Live System`. Remove the sentence "Backend only runs locally". Image path uses `../assets/images/atlas-cover.webp`. Link `https://atlas-psu.onrender.com`, plus a `Capstone Page` link to `capstone.html` (class `proj-card-link dim`).
+1. Replace the ATLAS card the same way as A-01. Badge: `Primary Featured · Award-Winning · Live System`. Remove the sentence "Backend only runs locally". Image path uses `../assets/images/atlas-cover.webp`. Link `https://atlas-psu.onrender.com`, plus a `Featured Page` link to `featured.html` (class `proj-card-link dim`).
 2. In the JSON-LD `project-atlas` entry: name `ATLAS PSU: Teaching Load Assignment and Management System`, description = the long description from plan.md section 5, url `https://atlas-psu.onrender.com`, add `"image": "https://www.arthurr.gt.tc/assets/images/atlas-cover.webp"`, `"programmingLanguage": ["Python", "JavaScript", "SQL"]`, `"award": ["1st Place Award", "Most Innovative Study Award", "Best Presenter Award"]`, and `"citation": "https://doi.org/10.5281/zenodo.24479345"`, `"keywords": "CP-SAT, genetic algorithm, Flask, Supabase, Render, teaching load, scheduling"`.
 Check: search `pages/projects.html` for `ATLAS-PSU/`, `atlas.webp`, `runs locally`; all must return nothing.
 
-### A-03 pages/capstone.html: BSIT capstone page
-Files: new `pages/capstone.html`; append a small block to the end of `assets/css/global.css`.
-Purpose: a showcase of the BSIT capstone, kept apart from the regular projects. It is temporary by design. Put this HTML comment at the top of the main content: `Capstone showcase. Review and update when the capstone changes (reminder: Nov 2027).`
+### A-03 pages/featured.html: ATLAS PSU case study page
+Files: new `pages/featured.html`; append a small block to the end of `assets/css/global.css`.
+Purpose: a showcase of the ATLAS PSU case study, kept apart from the regular projects. It is temporary by design. Put this HTML comment at the top of the main content: `Case study showcase. Review and update when the study is pursued as a capstone (reminder: Nov 2027).`
 Build by copying the head, nav, footer, scripts, and cookie modal structure from `pages/contact.html` (same relative paths with `../`). Do not add a nav item (D-8). Then:
-- `<title>`: `Capstone: ATLAS PSU Teaching Load Assignment System | Arthur Baldosano Jr.`
-- Meta description (max 160 chars): `BSIT capstone of Arthur Baldosano Jr.: ATLAS PSU, a live CP-SAT and genetic algorithm system that assigns teaching loads at Palawan State University.`
+- `<title>`: `Case Study: ATLAS PSU Teaching Load Assignment System | Arthur Baldosano Jr.`
+- Meta description (max 160 chars): `Case study of Arthur Baldosano Jr.: ATLAS PSU, a live CP-SAT and genetic algorithm system that assigns teaching loads at Palawan State University.`
 - Canonical, hreflang, OG, Twitter, DC tags following contact.html, with `og:image` set to `https://www.arthurr.gt.tc/assets/images/atlas-cover.webp`.
 - JSON-LD: `SoftwareApplication` (same fields as A-02), `ScholarlyArticle` for the paper (headline = published title, url = the DOI, `datePublished` 2026, publisher Zenodo, all 13 authors as `Person`), `BreadcrumbList` (Home, Capstone), `WebPage`. No FAQPage.
 - Body, in this order, using existing classes (`page-header`, `container`, `section-label`, `section-title`, `proj-card` styles):
-  1. Header: label `BSIT Capstone`, title `ATLAS PSU`, the one-line description from plan.md section 5.
+  1. Header: label `Case Study`, title `ATLAS PSU`, the one-line description from plan.md section 5.
   2. Recognition strip: `1st Place Award`, `Most Innovative Study Award`, `Best Presenter Award`, with the line "4th PAL-SU IT Department UI/UX Design Case Study Competition, November 9, 2026". No score numbers.
   3. Facts row: Role (team leader, backend and optimization engine, full-stack), Status (Live), Stack, Hosting, Paper.
   4. Problem and context: chairpersons assign teaching loads by hand across College of Sciences departments (2 short paragraphs from the plan.md safe facts only).
@@ -114,7 +122,7 @@ Check: search the new file for em dash (U+2014) and en dash (U+2013) characters,
 
 ### A-04 pages/research.html: add the ATLAS paper
 Files: `pages/research.html` (card grid and the ItemList JSON-LD only).
-1. Add a new card as the first card in "Published Papers": image `../assets/images/atlas-cover.webp`, alt "ATLAS PSU teaching load assignment dashboard", badge `Research Paper · 2026`, title = the published paper title, description "Capstone paper by a team of 13 students documenting ATLAS PSU, a CP-SAT and genetic algorithm teaching load system for department chairpersons of the College of Sciences at Palawan State University. First author.", tags `Systems Analysis`, `Constraint Programming`, `Genetic Algorithm`, `Academic Systems`, links `Read Paper` to `https://doi.org/10.5281/zenodo.24479345` and a dim `Capstone Page` link to `capstone.html`. No PDF link.
+1. Add a new card as the first card in "Published Papers": image `../assets/images/atlas-cover.webp`, alt "ATLAS PSU teaching load assignment dashboard", badge `Research Paper · 2026`, title = the published paper title, description "Case study paper by a team of 13 students documenting ATLAS PSU, a CP-SAT and genetic algorithm teaching load system for department chairpersons of the College of Sciences at Palawan State University. First author.", tags `Systems Analysis`, `Constraint Programming`, `Genetic Algorithm`, `Academic Systems`, links `Read Paper` to `https://doi.org/10.5281/zenodo.24479345` and a dim `Featured Page` link to `featured.html`. No PDF link.
 2. JSON-LD: add a `ScholarlyArticle` as position 1 (`@id` ending `#research-atlas`, `datePublished` `2026`, all 13 authors as `Person` in citation order, publisher Zenodo, url the DOI), renumber the other two, set `numberOfItems` 3.
 Check: search `pages/research.html` for `24479345`; it must appear in the card and the JSON-LD.
 
@@ -163,7 +171,7 @@ Files: `assets/js/chatbot.js` (only the `TERMINAL_KNOWLEDGE` object, plus the `D
 4. Add a `services` entry (the Appendix B services list, one per line) and add `services` to the `help` text.
 5. `certifications`: add `* Introduction to Data Science (Cisco Networking Academy)` so it matches 16.
 6. `research`: add the ATLAS paper as entry [1] (title as published, 2026, first author of 13, Zenodo DOI `https://doi.org/10.5281/zenodo.24479345`) and renumber the other two.
-7. `projects` entry [1] points to `https://atlas-psu.onrender.com` and mentions the capstone page `pages/capstone.html`.
+7. `projects` entry [1] points to `https://atlas-psu.onrender.com` and mentions the featured page `pages/featured.html`.
 Keep the template-literal style and the 80-column wrapping. No other function changes.
 Check: search `chatbot.js` for `SITE`, `President`, `Student Leadership`, `ATLAS-PSU/`; all must return nothing.
 
@@ -174,7 +182,7 @@ Prompt for the agent:
 ```
 Apply docs/plan.md Appendix C exactly. Read the three attached files first. Edit knowledge.js (K-1 to K-9) and index.js (W-1, W-2) by anchor, as targeted find-and-replace edits only. Do not rewrite or reformat either file. If any anchor is not found exactly once, stop and tell me which one. Do not touch LEAK_MARKERS, limits, CORS, logging, the Gemini payload, the import line, or the personality append code. Skip OPT-1 unless I say so. Use no em dashes, no en dashes, no backticks inside the template literal. No tests. Return the modified files with their full paths first, then run the search checks listed at the end of Appendix C.
 ```
-After you receive the files: put them back in `worker/src/`, run `wrangler deploy` from the worker folder, then ask the chatbot on the live site: "Who is Arthur?", "What is ATLAS PSU?", "Is he the PSU-SITE president?", and "How much does he charge?" Expected: SEO and analyst identity, the capstone with awards and the Render link, an honest "served in PSU-SITE during A.Y. 2024-2026, including as president, and has since stepped down", and no rate.
+After you receive the files: put them back in `worker/src/`, run `wrangler deploy` from the worker folder, then ask the chatbot on the live site: "Who is Arthur?", "What is ATLAS PSU?", "Is he the PSU-SITE president?", and "How much does he charge?" Expected: SEO and analyst identity, the ATLAS PSU case study with awards and the Render link, an honest "served in PSU-SITE during A.Y. 2024-2026, including as president, and has since stepped down", and no rate.
 
 ---
 
@@ -182,7 +190,7 @@ After you receive the files: put them back in `worker/src/`, run `wrangler deplo
 
 ### D-01 sitemap, manifest, dates
 Files: `sitemap.xml`, `manifest.json`.
-1. `sitemap.xml`: every `lastmod` becomes `2026-11-24`. Add `https://www.arthurr.gt.tc/pages/capstone.html` with priority 0.8, changefreq monthly.
+1. `sitemap.xml`: every `lastmod` becomes `2026-11-24`. Add `https://www.arthurr.gt.tc/pages/featured.html` with priority 0.8, changefreq monthly.
 2. `manifest.json` description: `Technical SEO specialist and Systems & Data Analyst and IT student at Palawan State University. SEO audits, GA4 and GTM tracking, and custom web systems from Puerto Princesa, Palawan.` Screenshot entry stays.
 Check: search `sitemap.xml` for `2026-06-16`; must return nothing.
 
@@ -194,9 +202,9 @@ Rewrite to match the site, keeping the existing structure and badges:
 - Skills table: add rows for Technical SEO (GA4, GTM, Search Console, schema markup), Optimization (CP-SAT, genetic algorithms), Databases (PostgreSQL, Supabase), Hosting (GitHub Pages, Cloudflare Workers, Render).
 - At a Glance: 15 projects, 3 freelance builds, 16 certifications.
 - Research: add the ATLAS paper with the citation from plan.md section 5 (3 papers).
-- Projects: ATLAS first with the new description, tags, live link, and capstone page link; list all 15 in site order. Fix PinnedPicks to Shopee only. Remove the dead GitHub Pages link for ATLAS.
+- Projects: ATLAS first with the new description, tags, live link, and featured page link; list all 15 in site order. Fix PinnedPicks to Shopee only. Remove the dead GitHub Pages link for ATLAS.
 - Certifications: replace the "in progress" table with the 16 credentials grouped as on the site.
-- SEO and Discoverability section: list the actual schema types and the sitemap covering seven pages (including the capstone page).
+- SEO and Discoverability section: list the actual schema types and the sitemap covering seven pages (including the featured page).
 - Footer line: remove "PSU-SITE President".
 - Keep the "Adding Images" section if present, keep License.
 Check: search `README.md` for `SITE`, `President`, `9+`, `Amazon`, `ATLAS-PSU/`; all must return nothing.

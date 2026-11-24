@@ -371,7 +371,7 @@ nav.header-hidden {
 [data-theme="dark"] .t-moon { opacity: 1; color: #fafafa; }
 
 /* ==========================================================================
-   5. CUSTOM DESKTOP INTERACTIVITY UI (CURSORS) — disabled for usability
+   5. CUSTOM DESKTOP INTERACTIVITY UI (CURSORS): disabled for usability
    ========================================================================== */
 
 .cursor, .cursor-ring { 
@@ -1535,4 +1535,110 @@ footer p {
   .hero-badge { font-size: 0.65rem; padding: 5px 12px; }
   .btn-primary, .btn-outline { padding: 13px 26px; font-size: 0.72rem; }
   .hero-cta { gap: 12px; }
+}
+
+/* ==========================================================================
+   CAPSTONE PAGE
+   ========================================================================== */
+
+.case-section { margin-bottom: 56px; }
+.case-text {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 14px;
+  max-width: 760px;
+}
+.case-text a, .case-facts a { color: var(--gold); }
+.case-awards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.case-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.case-facts > div {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  padding: 16px 18px;
+  min-width: 0;
+}
+.case-facts dt {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.case-facts dd {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.case-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+.case-table th, .case-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.6;
+}
+.case-table th { width: 28%; color: var(--text); font-weight: 600; }
+.case-table td { color: var(--muted); }
+.case-table tr:last-child th, .case-table tr:last-child td { border-bottom: none; }
+.case-team {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.case-team li {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.case-team strong { display: block; color: var(--text); font-weight: 600; }
+.case-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.case-gallery figure {
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card-bg);
+}
+.case-gallery img { display: block; width: 100%; height: auto; }
+.case-gallery figcaption {
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 700px) {
+  .case-facts, .case-team, .case-gallery { grid-template-columns: 1fr; }
+  .case-table th, .case-table td { display: block; width: 100%; }
+  .case-table th { padding-bottom: 0; border-bottom: none; }
 }

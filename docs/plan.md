@@ -12,8 +12,14 @@ No tests are part of this update. Verification is by search and by opening the p
 5. Update the chatbot knowledge: `TERMINAL_KNOWLEDGE` in `assets/js/chatbot.js` (in repo) and `knowledge.js` (in the Cloudflare Worker, NOT in this repo).
 6. Fix stale facts found during the read (section 4).
 7. Produce image assets (logo, cover, real screenshots, event photos, OG cover) from the prompts in Appendix A.
-8. Build `pages/capstone.html`, a dedicated showcase of the BSIT capstone, separate from the regular project list and temporary by design (updated or replaced later).
+8. Build `pages/featured.html`, a dedicated showcase of the ATLAS PSU case study, separate from the regular project list and temporary by design (updated or replaced later).
 9. Add the published ATLAS paper (Zenodo) to the research page and cite it everywhere ATLAS is described.
+
+## Corrections (2026-11-24, override anything below)
+
+- The ATLAS PSU paper is a CASE STUDY paper, submitted and defended as a case study. It is not Arthur's capstone. A capstone is only planned for the future, and ATLAS may be pursued as that capstone title later. Do not call ATLAS his capstone anywhere (site, README, chatbot, knowledge.js, schema). Use "case study".
+- The page `pages/capstone.html` is named `pages/featured.html`. Links to it read "Featured Page". Its header label is "Case Study".
+- steps.md "Corrections" block lists the full set (C-1 to C-6), including the open nav item decision (D-8).
 
 ## 2. Findings that shape the plan
 
@@ -33,7 +39,7 @@ No tests are part of this update. Verification is by search and by opening the p
 | F12 | `chatbot.js` terminal `skills` and `projects` lists are shorter than the site. | Sync. |
 | F13 | Bio says he "manages his own freelance IT practice independently". Freelance on Upwork is just starting. | Reword to "open to freelance work". No client results or ranking claims anywhere. |
 | F14 | The site contains zero em dashes (only one inside a CSS comment). | Keep it that way. No em dashes or en dashes in any new text. |
-| F15 | The ATLAS paper is published on Zenodo (DOI 10.5281/zenodo.24479345, 13 authors) but the research page and its JSON-LD list only 2 papers. | Add it as a third entry (step A-04), cite it on the capstone page, README, chatbot, and knowledge.js. |
+| F15 | The ATLAS paper is published on Zenodo (DOI 10.5281/zenodo.24479345, 13 authors) but the research page and its JSON-LD list only 2 papers. | Add it as a third entry (step A-04), cite it on the featured page, README, chatbot, and knowledge.js. |
 | F16 | The project name differs by source: site says "Automated Teaching Load Assignment System", the old poster says "Automatic ...", the published paper says "A Teaching Load Assignment and Management System". | Use the published paper wording everywhere (D-6). |
 | F17 | Stack check against the repo (section 4): Flask, CP-SAT, genetic algorithm, Supabase, Render, pytest, Figma, role-based access, and audit log appear nowhere on the site today. The 16 certifications and most languages are already there. | Only the genuinely new items are added. No duplicates. |
 
@@ -44,13 +50,13 @@ D-1, D-2, D-3 were settled by you on 2026-11-24. D-6 is settled by the published
 | ID | Decision | Value used in steps.md | Change it if |
 |----|----------|------------------------|--------------|
 | D-1 | Awards (SETTLED) | "1st Place Award", "Most Innovative Study Award", "Best Presenter Award", 4th PAL-SU IT Department UI/UX Design Case Study Competition, 2026-11-09. | Your certificate wording differs. Use the certificate text exactly. No score numbers are published. |
-| D-2 | Case study page (SETTLED) | Yes: `pages/capstone.html`. A showcase of your BSIT capstone, kept apart from the regular projects. It holds event photos, the team, screenshots, and the paper. Temporary by design: update or replace it if the capstone is pursued further or after about a year. | Never, unless you drop it. |
+| D-2 | Case study page (SETTLED) | Yes: `pages/featured.html`. A showcase of the ATLAS PSU case study, kept apart from the regular projects. It holds event photos, the team, screenshots, and the paper. Temporary by design: update or replace it if the capstone is pursued further or after about a year. | Never, unless you drop it. |
 | D-3 | Team credit (SETTLED) | Name Jestone Jaranilla and VJ Diamante as co-programmers, and list all 13 authors exactly as in the Zenodo citation. Roles are only stated for the three people whose roles are confirmed (you, Jestone, VJ). | You tell the agent other members' full names and roles. Let the group know before it goes live. |
-| D-4 | Public demo access (SETTLED) (the live site needs a login) | Capstone page says "Sign-in required. Request demo access by email." No credentials in the repo. |
+| D-4 | Public demo access (SETTLED) (the live site needs a login) | Featured page says "Sign-in required. Request demo access by email." No credentials in the repo. |
 | D-5 | OG cover photo (SETTLED) | Use the old event photo reads as the leadership brand But the user will provide a new one. |
 | D-6 | Official title (SETTLED by the paper) | Paper title: "ATLAS PSU: A Teaching Load Assignment and Management System for Department Chairpersons of the College of Sciences at Palawan State University". Card title: "ATLAS PSU: Teaching Load Assignment and Management System". Short name: ATLAS PSU. | The abstract or defense used another name. |
 | D-7 | Render plan (SETTLED) | Add a small note "First load can take up to a minute while the server wakes". Yes note this in the link|
-| D-8 | Navigation (SETTLED) | You want a "Capstone" item in the nav on all six pages. |
+| D-8 | Navigation (SETTLED) | You want a nav item on all six pages (OPEN: not added; A-03 says no nav item). |
 | D-9 | Group and event photos | Use only photos you supply, captioned with the event name and date, and names from the citation. | Someone asks to be left out. |
 
 ## 4. Positioning (single source of truth for copy)
@@ -79,7 +85,7 @@ Do not publish: hourly rate, traffic or ranking numbers, Pinterest or affiliate 
 | Cloudflare Workers, KV, Gemini, Pyodide, GA4 through GTM, schema types | README only, not in the skills grid, schema, or chatbot | Keep in README. Surface the SEO items through the Technical SEO skills. |
 | Technical SEO, Google Search Console, GA4 and Google Tag Manager as skills, Schema Markup as a skill | No (only the GTM container id in the page head, one README row, and "SEO Certified" in the chatbot list) | NEW |
 | Flask, CP-SAT, genetic algorithm, Supabase, Render, pytest, Figma | No (zero matches in html, js, json, md) | NEW |
-| Role-based access, audit log, department-scoped data | No (only the old poster image, which is replaced) | NEW, used on the capstone page, ATLAS schema, chatbot, knowledge.js |
+| Role-based access, audit log, department-scoped data | No (only the old poster image, which is replaced) | NEW, used on the featured page, ATLAS schema, chatbot, knowledge.js |
 | The 16 certifications | Already on the certifications page (16 cards). The certifications JSON-LD and chatbot list only 15. | NOT new. Add only Introduction to Data Science to the JSON-LD and chatbot, and show "16" in the stats. |
 | Student Leadership, PSU-SITE President | Yes | REMOVE |
 
@@ -111,7 +117,7 @@ Long description (case study page, JSON-LD, chatbot):
 
 Badge text: `Award-Winning · Live System`
 Tags: `Python / Flask`, `CP-SAT`, `Genetic Algorithm`, `PostgreSQL (Supabase)`, `Render`
-Links: Live system -> https://atlas-psu.onrender.com ; Capstone page -> pages/capstone.html ; Paper -> https://doi.org/10.5281/zenodo.24479345
+Links: Live system -> https://atlas-psu.onrender.com ; Featured page -> pages/featured.html ; Paper -> https://doi.org/10.5281/zenodo.24479345
 Image alt: "ATLAS PSU teaching load assignment dashboard and weekly timetable".
 
 ### Newly used stack (from ATLAS, to appear in skills, schema, README, chatbot)
@@ -128,7 +134,7 @@ Image alt: "ATLAS PSU teaching load assignment dashboard and weekly timetable".
 
 ### Facts safe to state publicly
 
-- Completed capstone work April to July 2026; final paper submitted 2026-11-04.
+- Completed case study work April to July 2026; final paper submitted 2026-11-04.
 - Competition: 4th PAL-SU IT Department UI/UX Design Case Study Competition, 8 case studies, 2026-11-09. Awards: 1st Place Award, Most Innovative Study Award, Best Presenter Award (D-1).
 - Scope: College of Sciences departments (IT, CS, Marine Biology, Medical Biology, Environmental Science). Faculty-taught courses only.
 - Privacy by design: no student personal data, no stored passwords of our own, no IP tracking, no leave reasons.
@@ -147,7 +153,7 @@ Cite exactly:
 
 > Baldosano Jr., A., Diamante, V., Jaranilla, J., Camacho, R., Bantillo, J., Tragico, E., Rovalo, J., Ortega, R., Torres, R. J., Jalane, A. L., Zambales, Z., Ferrer, J. A., & Aumenta, G. E. (2026). ATLAS PSU: A Teaching Load Assignment and Management System for Department Chairpersons of the College of Sciences at Palawan State University. Zenodo. https://doi.org/10.5281/zenodo.24479345
 
-Use it on the capstone page, the research page (third entry, first author), README, chatbot, and knowledge.js. No PDF download link is known, so link the DOI only.
+Use it on the featured page, the research page (third entry, first author), README, chatbot, and knowledge.js. No PDF download link is known, so link the DOI only.
 
 ### Not safe to state
 
@@ -161,7 +167,7 @@ Line numbers are approximate, from the 2026-11-23 zip. Agents must search by str
 |------|---------|
 | `index.html` | Title, description, keywords (drop "PSU SITE President"), DC.*, OG and Twitter text, Person JSON-LD (jobTitle, description, knowsAbout, seeks), skills ItemList (13 to 16), Service schema (add Technical SEO offers), FAQPage (identity, technologies, freelance), hero eyebrow/desc/badges, About, skills grid, stats, ATLAS featured card (~lines 610-632), featured intro, `DC.date` and `og:updated_time`. |
 | `pages/projects.html` | Title and descriptions, ATLAS card (~lines 256-277), PinnedPicks description in JSON-LD, ItemList add Rise From Nothing and set 15, `og:description` "9+" to "15", dates. |
-| `pages/capstone.html` | New (D-2). Capstone showcase page. |
+| `pages/featured.html` | New (D-2). Featured page (case study showcase). |
 | `pages/contact.html` | Title, meta, DC, OG, ContactPage and FAQ text: add Technical SEO. |
 | `pages/articles.html` | Meta description only: "Technical SEO specialist and Systems & Data Analyst". |
 | `pages/research.html` | Meta description, plus the ATLAS paper as a new card and ScholarlyArticle (3 items). |
@@ -169,8 +175,8 @@ Line numbers are approximate, from the 2026-11-23 zip. Agents must search by str
 | `assets/js/chatbot.js` | `TERMINAL_KNOWLEDGE`: bio, skills, projects (new ATLAS link and full list), add `services` command and help entry. Remove "President of PSU-SITE" and "Student Leadership". |
 | Worker `knowledge.js` and `index.js` | Not in the repo. Targeted edits only, listed in Appendix C. `arthur-personality.json` needs no change. |
 | `assets/js/greetings.json` | No change. |
-| `assets/css/global.css` | Append a small capstone block (facts row, awards strip, team grid, gallery, spec table). |
-| `sitemap.xml` | lastmod 2026-11-24, add capstone.html. |
+| `assets/css/global.css` | Append a small case study block (facts row, awards strip, team grid, gallery, spec table). |
+| `sitemap.xml` | lastmod 2026-11-24, add featured.html. |
 | `manifest.json` | description. |
 | `README.md` | Rewrite sections: tagline, About, skills table, stats, Projects (15), Research (3), Certifications (16), SEO section, Technologies, footer. Remove SITE. |
 | `assets/images/` | Add `atlas-cover.webp`, `atlas-logo.webp`, `atlas-shot-1..6.webp`, `capstone-event-1..N.webp`; replace `og-cover.jpg` (1200x630). Remove `atlas.webp` only after nothing references it. |
@@ -200,7 +206,7 @@ Workflow: drop the PNGs into `assets/images/`, then from the repo root run `node
 | Phase | Steps | Who |
 |-------|-------|-----|
 | 0 Prep | H-1 decisions, H-2 screenshots, H-3 GPT images, H-4 convert to WebP | You |
-| A ATLAS | A-01 index card, A-02 projects card and schema, A-03 capstone page, A-04 research page paper | Agent |
+| A ATLAS | A-01 index card, A-02 projects card and schema, A-03 featured page, A-04 research page paper | Agent |
 | B Positioning | B-01 index head and schema, B-02 index body, B-03 other pages, B-04 certifications and projects schema fixes | Agent |
 | C Chatbot | C-01 `chatbot.js`, C-02 `knowledge.js` | Agent (C-02 separate session with the Worker file) |
 | D Housekeeping | D-01 sitemap/manifest/dates, D-02 README, D-03 final sweep | Agent |
@@ -213,7 +219,7 @@ Order: A and B can run in either order, but C and D come last. H-3 and H-4 must 
 - The old poster used the PSU seal. Do not use the seal in the new logo or cover.
 - Render free instances sleep. A visitor can wait about a minute on first load (D-7).
 - You are naming teammates before asking them (D-3). Tell the group in chat before the page goes live.
-- The capstone page is temporary by design. Put a review reminder for about Nov 2027.
+- The featured page is temporary by design. Put a review reminder for about Nov 2027.
 - `knowledge.js` changes do nothing until you redeploy the Worker.
 - Claims drift: if a fact is not in section 5 or Appendix B, the agent must not add it.
 
@@ -290,7 +296,7 @@ Arthur Baldosano Jr. (goes by Arthur). Technical SEO specialist and Systems & Da
 Technical SEO audits, GA4 and Google Tag Manager tracking setup, schema markup (JSON-LD), Google Search Console, on-page SEO, landing pages, systems analysis and design, data analytics, custom full-stack web systems, e-commerce platforms, AI-integrated tools. Quotes are given on request. Do not state rates.
 
 **Flagship: ATLAS PSU**
-Use the long description from section 5, the live link https://atlas-psu.onrender.com, the stack table, and the safe facts list. Sign-in is required (say demo access can be requested by email). Awards: 1st Place Award, Most Innovative Study Award, and Best Presenter Award at the 4th PAL-SU IT Department UI/UX Design Case Study Competition (2026-11-09). It is Arthur's BSIT capstone, built by a team of 13 students: Arthur led it and built the backend and optimization engine, and Jestone Jaranilla and VJ Diamante co-programmed the UI. Published on Zenodo: Baldosano Jr., A., Diamante, V., Jaranilla, J., Camacho, R., Bantillo, J., Tragico, E., Rovalo, J., Ortega, R., Torres, R. J., Jalane, A. L., Zambales, Z., Ferrer, J. A., & Aumenta, G. E. (2026). ATLAS PSU: A Teaching Load Assignment and Management System for Department Chairpersons of the College of Sciences at Palawan State University. Zenodo. https://doi.org/10.5281/zenodo.24479345
+Use the long description from section 5, the live link https://atlas-psu.onrender.com, the stack table, and the safe facts list. Sign-in is required (say demo access can be requested by email). Awards: 1st Place Award, Most Innovative Study Award, and Best Presenter Award at the 4th PAL-SU IT Department UI/UX Design Case Study Competition (2026-11-09). It is a case study project (not his capstone; a capstone is only planned for later), built by a team of 13 students: Arthur led it and built the backend and optimization engine, and Jestone Jaranilla and VJ Diamante co-programmed the UI. Published on Zenodo: Baldosano Jr., A., Diamante, V., Jaranilla, J., Camacho, R., Bantillo, J., Tragico, E., Rovalo, J., Ortega, R., Torres, R. J., Jalane, A. L., Zambales, Z., Ferrer, J. A., & Aumenta, G. E. (2026). ATLAS PSU: A Teaching Load Assignment and Management System for Department Chairpersons of the College of Sciences at Palawan State University. Zenodo. https://doi.org/10.5281/zenodo.24479345
 
 **Other projects (current)**
 IARMS (AI academic resource system, Python, FastAPI, Ollama), Portfolio Website (Cloudflare Worker chatbot, Pyodide IDE, full structured data), NeuralGrid (browser neural network from scratch, Mercury models), PinnedPicks (Shopee affiliate catalog, PostgreSQL backend, Involve Asia intake pipeline, technical SEO), Rise From Nothing (Three.js incremental game, in development), PostgreSQL CRUD Dashboard, CrypStockDash, Product Sort Simulator (C#, ported to web), Buzy Reviewer, freelance builds (Class and School Website, Product Discovery Formats 1 and 2), Cyberpunk 2077 and Death Stranding themed landing pages.
@@ -365,7 +371,7 @@ has integrated AI into several of his projects.
 **K-3. ATLAS paragraph.** Block starts `ATLAS PSU (Automated Teaching Load Assignment System) is his thesis prototype.` and ends `Live at https://abaldosano.github.io/ATLAS-PSU/`. Replace with:
 
 ```
-ATLAS PSU (Teaching Load Assignment and Management System) is his BSIT capstone,
+ATLAS PSU (Teaching Load Assignment and Management System) is a case study project,
 built by a team of 13 students. It is a live decision-support system that builds
 and balances faculty teaching loads for department chairpersons in PSU's College
 of Sciences. A CP-SAT constraint model produces feasible schedules under hard
@@ -384,7 +390,7 @@ access is by request through email, and the first load can take up to a minute
 while the server wakes. Honest limits: not every chairperson was interviewed and
 a faculty survey was not pursued.
 Live at https://atlas-psu.onrender.com
-Capstone page: pages/capstone.html
+Featured page: pages/featured.html
 Published paper: https://doi.org/10.5281/zenodo.24479345
 ```
 

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    var _consent = localStorage.getItem('portfolio_consent');
+    if (_consent === '1') {
+      gtag('consent', 'default', { analytics_storage: 'granted', ad_storage: 'denied', functionality_storage: 'granted', personalization_storage: 'denied', security_storage: 'granted' });
+    } else if (_consent === '0') {
+      gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', functionality_storage: 'denied', personalization_storage: 'denied', security_storage: 'granted' });
+    } else {
+      gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', functionality_storage: 'denied', personalization_storage: 'denied', security_storage: 'granted', wait_for_update: 500 });
+    }
+  </script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WHQ474NX');</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6XEX1LX6ZM');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Case Study: ATLAS PSU Teaching Load Assignment System | Arthur Baldosano Jr.</title>
+  <meta name="description" content="Case study of Arthur Baldosano Jr.: ATLAS PSU, a live CP-SAT and genetic algorithm system that assigns teaching loads at Palawan State University." />
+  <meta name="keywords" content="ATLAS PSU, case study, teaching load assignment, CP-SAT, genetic algorithm, Palawan State University, Arthur Baldosano Jr." />
+  <meta name="author" content="Arthur Baldosano Jr." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://www.arthurr.gt.tc/pages/featured.html" />
+  <link rel="alternate" hreflang="en"        href="https://www.arthurr.gt.tc/pages/featured.html" />
+  <link rel="alternate" hreflang="en-PH"     href="https://www.arthurr.gt.tc/pages/featured.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.arthurr.gt.tc/pages/featured.html" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://www.arthurr.gt.tc/sitemap.xml" />
+
+  <meta name="language" content="English" />
+  <meta http-equiv="content-language" content="en-PH" />
+  <meta name="geo.region" content="PH-PLW" />
+  <meta name="geo.placename" content="Puerto Princesa, Palawan, Philippines" />
+
+  <meta name="DC.title" content="Case Study: ATLAS PSU Teaching Load Assignment System" />
+  <meta name="DC.creator" content="Arthur Baldosano Jr." />
+  <meta name="DC.subject" content="Case Study, Teaching Load Assignment, Constraint Programming, Genetic Algorithm" />
+  <meta name="DC.description" content="Case study of Arthur Baldosano Jr.: ATLAS PSU, a live CP-SAT and genetic algorithm system that assigns teaching loads at Palawan State University." />
+  <meta name="DC.publisher" content="Arthur Baldosano Jr." />
+  <meta name="DC.type" content="InteractiveResource" />
+  <meta name="DC.format" content="text/html" />
+  <meta name="DC.language" content="en" />
+  <meta name="DC.coverage" content="Worldwide" />
+  <meta name="DC.rights" content="© 2026 Arthur Baldosano Jr." />
+  <meta name="DC.date" content="2026-11-24" />
+
+  <meta name="revisit-after" content="7 days" />
+  <meta name="rating" content="general" />
+  <meta name="category" content="portfolio, case study, research, web development" />
+  <meta name="classification" content="Portfolio" />
+  <meta name="coverage" content="Philippines, Worldwide" />
+  <meta name="target" content="all" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+
+  <meta name="application-name" content="Arthur Baldosano Jr. Portfolio" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+  <meta name="msapplication-TileColor" content="#c9a96e" />
+  <meta name="msapplication-TileImage" content="/assets/images/icon-192.png" />
+  <meta name="msapplication-navbutton-color" content="#c9a96e" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <meta property="og:type"               content="website" />
+  <meta property="og:site_name"          content="Arthur Baldosano Jr." />
+  <meta property="og:title"              content="Case Study: ATLAS PSU Teaching Load Assignment System" />
+  <meta property="og:description"        content="Case study of Arthur Baldosano Jr.: ATLAS PSU, a live CP-SAT and genetic algorithm system that assigns teaching loads at Palawan State University." />
+  <meta property="og:url"                content="https://www.arthurr.gt.tc/pages/featured.html" />
+  <meta property="og:locale"             content="en_PH" />
+  <meta property="og:locale:alternate"   content="fil_PH" />
+  <meta property="og:image"             content="https://www.arthurr.gt.tc/assets/images/atlas-cover.webp" />
+  <meta property="og:image:secure_url"  content="https://www.arthurr.gt.tc/assets/images/atlas-cover.webp" />
+  <meta property="og:image:alt"         content="ATLAS PSU teaching load assignment dashboard and weekly timetable" />
+  <meta property="og:image:type"        content="image/webp" />
+  <meta property="og:updated_time"      content="2026-11-24T00:00:00+08:00" />
+
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Case Study: ATLAS PSU Teaching Load Assignment System" />
+  <meta name="twitter:description" content="Case study of Arthur Baldosano Jr.: ATLAS PSU, a live CP-SAT and genetic algorithm system that assigns teaching loads at Palawan State University." />
+  <meta name="twitter:image"       content="https://www.arthurr.gt.tc/assets/images/atlas-cover.webp" />
+  <meta name="twitter:image:alt"   content="ATLAS PSU teaching load assignment dashboard and weekly timetable" />
+
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Arthur Baldosano" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.arthurr.gt.tc/pages/featured.html#webpage",
+        "url": "https://www.arthurr.gt.tc/pages/featured.html",
+        "name": "Case Study: ATLAS PSU Teaching Load Assignment System | Arthur Baldosano Jr.",
+        "description": "Case study of Arthur Baldosano Jr.: ATLAS PSU, a live CP-SAT and genetic algorithm system that assigns teaching loads at Palawan State University.",
+        "inLanguage": "en-PH",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Arthur Baldosano Jr. Portfolio",
+          "url": "https://www.arthurr.gt.tc/"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://www.arthurr.gt.tc/assets/images/atlas-cover.webp"
+        },
+        "about": {
+          "@id": "https://www.arthurr.gt.tc/pages/featured.html#atlas"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://www.arthurr.gt.tc/pages/featured.html#atlas",
+        "name": "ATLAS PSU: Teaching Load Assignment and Management System",
+        "description": "ATLAS PSU is a live decision-support system that builds and balances faculty teaching loads for department chairpersons in Palawan State University's College of Sciences. A CP-SAT constraint model produces feasible schedules under hard rules (rooms, blocks, faculty availability and leave), and a genetic algorithm improves balance across faculty. Chairpersons work on a Monday to Saturday 30-minute timetable grid with drag and drop, saved and approved runs, printable and Excel timetables, and reports. Access is role based (chairperson, faculty, admin) with department-scoped data, an audit log, and an admin Test Lab that monitors CP-SAT, genetic algorithm, and validation runs live.",
+        "url": "https://atlas-psu.onrender.com",
+        "image": "https://www.arthurr.gt.tc/assets/images/atlas-cover.webp",
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "Web Browser",
+        "programmingLanguage": [
+          "Python",
+          "JavaScript",
+          "SQL"
+        ],
+        "award": [
+          "1st Place Award",
+          "Most Innovative Study Award",
+          "Best Presenter Award"
+        ],
+        "citation": "https://doi.org/10.5281/zenodo.24479345",
+        "keywords": "CP-SAT, genetic algorithm, Flask, Supabase, Render, teaching load, scheduling",
+        "author": {
+          "@type": "Person",
+          "name": "Arthur Baldosano Jr."
+        },
+        "creator": {
+          "@type": "Person",
+          "name": "Arthur Baldosano Jr."
+        }
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://www.arthurr.gt.tc/pages/featured.html#paper",
+        "headline": "ATLAS PSU: A Teaching Load Assignment and Management System for Department Chairpersons of the College of Sciences at Palawan State University",
+        "url": "https://doi.org/10.5281/zenodo.24479345",
+        "datePublished": "2026",
+        "inLanguage": "en",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Zenodo"
+        },
+        "author": [
+          {
+            "@type": "Person",
+            "name": "Arthur Baldosano Jr."
+          },
+          {
+            "@type": "Person",
+            "name": "V. Diamante"
+          },
+          {
+            "@type": "Person",
+            "name": "J. Jaranilla"
+          },
+          {
+            "@type": "Person",
+            "name": "R. Camacho"
+          },
+          {
+            "@type": "Person",
+            "name": "J. Bantillo"
+          },
+          {
+            "@type": "Person",
+            "name": "E. Tragico"
+          },
+          {
+            "@type": "Person",
+            "name": "J. Rovalo"
+          },
+          {
+            "@type": "Person",
+            "name": "R. Ortega"
+          },
+          {
+            "@type": "Person",
+            "name": "R. J. Torres"
+          },
+          {
+            "@type": "Person",
+            "name": "A. L. Jalane"
+          },
+          {
+            "@type": "Person",
+            "name": "Z. Zambales"
+          },
+          {
+            "@type": "Person",
+            "name": "J. A. Ferrer"
+          },
+          {
+            "@type": "Person",
+            "name": "G. E. Aumenta"
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.arthurr.gt.tc/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Case Study",
+            "item": "https://www.arthurr.gt.tc/pages/featured.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" />
+  </noscript>
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/consent.css" />
+
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html" onclick="closeMobileNav()">Home</a>
+    <a href="projects.html" onclick="closeMobileNav()">Projects</a>
+    <a href="featured.html" onclick="closeMobileNav()" class="active">Featured</a>
+    <a href="articles.html" onclick="closeMobileNav()">Articles</a>
+    <a href="research.html" onclick="closeMobileNav()">Research</a>
+    <a href="certifications.html" onclick="closeMobileNav()">Certifications</a>
+    <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  </div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">A.B.Jr</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="featured.html" class="active">Featured</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" title="Toggle dark / light mode">
+        <div class="toggle-thumb"></div>
+        <span class="t-icon t-sun">☀</span>
+        <span class="t-icon t-moon">☽</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+  <!-- Case study showcase. Review and update when the study is pursued as a capstone (reminder: Nov 2027). -->
+  <section class="page-header">
+    <div class="container">
+      <div class="page-header-content reveal">
+        <p class="section-label">Case Study</p>
+        <h1 class="section-title"><em>ATLAS PSU</em></h1>
+        <p class="page-header-desc">
+          A live system that assigns faculty teaching loads for College of Sciences chairpersons at Palawan State University, using CP-SAT and a genetic algorithm. 1st Place, Most Innovative Study, and Best Presenter.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 60px 0 100px; background: var(--bg);">
+    <div class="container">
+
+      <div class="case-section reveal">
+        <p class="project-group-label">Recognition</p>
+        <div class="case-awards">
+          <span class="tag">1st Place Award</span>
+          <span class="tag">Most Innovative Study Award</span>
+          <span class="tag">Best Presenter Award</span>
+        </div>
+        <p class="case-text">4th PAL-SU IT Department UI/UX Design Case Study Competition, November 9, 2026</p>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">At a Glance</p>
+        <dl class="case-facts">
+          <div><dt>Role</dt><dd>Team leader, backend and optimization engine, full-stack</dd></div>
+          <div><dt>Status</dt><dd>Live</dd></div>
+          <div><dt>Stack</dt><dd>Python / Flask, CP-SAT, Genetic Algorithm, PostgreSQL (Supabase)</dd></div>
+          <div><dt>Hosting</dt><dd>Render (web app), Supabase (database)</dd></div>
+          <div><dt>Paper</dt><dd><a href="https://doi.org/10.5281/zenodo.24479345" target="_blank" rel="noopener noreferrer">doi.org/10.5281/zenodo.24479345</a></dd></div>
+        </dl>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">Problem and Context</p>
+        <p class="case-text">Department chairpersons assign faculty teaching loads by hand. At Palawan State University's College of Sciences, that work spans several departments: IT, CS, Marine Biology, Medical Biology, and Environmental Science.</p>
+        <p class="case-text">ATLAS PSU covers faculty-taught courses only. It was built from April to July 2026, and the final case study paper was submitted on November 4, 2026. It is designed for privacy: no student personal data, no stored passwords of our own, no IP tracking, and no leave reasons.</p>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">How It Works</p>
+        <p class="case-text">A CP-SAT constraint model builds feasible schedules under hard rules: rooms, blocks, and faculty availability and leave. A genetic algorithm then improves balance across faculty.</p>
+        <p class="case-text">Chairpersons work on a Monday to Saturday 30-minute timetable grid with drag and drop. Runs can be saved and approved, and timetables can be printed or exported to Excel, with reports alongside.</p>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">The System</p>
+        <p class="case-text">Access is role based (chairperson, faculty, admin) with department-scoped data and an audit log. Data lives in Supabase PostgreSQL, with an RPC function protecting faculty reads. An admin Test Lab monitors CP-SAT, genetic algorithm, and validation runs live.</p>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">Stack</p>
+        <table class="case-table">
+          <tbody>
+            <tr><th scope="row">Languages</th><td>Python (Flask backend), vanilla JavaScript (frontend), SQL (PostgreSQL schema, seed and reset scripts, RPC functions)</td></tr>
+            <tr><th scope="row">Optimization</th><td>CP-SAT constraint programming (Google OR-Tools solver), genetic algorithm</td></tr>
+            <tr><th scope="row">Database</th><td>PostgreSQL on Supabase, with an RPC function protecting faculty data reads</td></tr>
+            <tr><th scope="row">Auth and security</th><td>Real logins, role-based access by department (chairperson, faculty, admin), audit log</td></tr>
+            <tr><th scope="row">Hosting</th><td>Render (web app), Supabase (database)</td></tr>
+            <tr><th scope="row">Tooling</th><td>pytest, Git branching with rollback tags, Figma (UI proposal), PWA manifest (installable), Excel and printable timetable export</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">Screens</p>
+        <div class="case-gallery">
+          <figure>
+            <img src="../assets/images/atlas-shot-1.webp" alt="ATLAS PSU Chairperson results overview showing the generated teaching load assignments" loading="lazy" decoding="async" />
+            <figcaption>Chairperson Results Overview.</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/images/atlas-shot-2.webp" alt="ATLAS PSU Weekly timetable grid with drag and drop editing" loading="lazy" decoding="async" />
+            <figcaption>Weekly timetable grid with drag and drop.</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/images/atlas-shot-3.webp" alt="ATLAS PSU Faculty and subjects inputs screen" loading="lazy" decoding="async" />
+            <figcaption>Faculty and Subjects inputs.</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/images/atlas-shot-4.webp" alt="ATLAS PSU Admin Test Lab live monitor of CP-SAT and genetic algorithm runs" loading="lazy" decoding="async" />
+            <figcaption>Admin Test Lab live monitor of CP-SAT and genetic algorithm runs.</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/images/atlas-shot-5.webp" alt="ATLAS PSU Reports and export screen" loading="lazy" decoding="async" />
+            <figcaption>Reports and Export.</figcaption>
+          </figure>
+          <figure>
+            <img src="../assets/images/atlas-shot-6.webp" alt="ATLAS PSU Faculty view on a phone with the bottom navigation bar" loading="lazy" decoding="async" />
+            <figcaption>Faculty view on phone with the bottom bar.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">The Team</p>
+        <ul class="case-team">
+          <li><strong>Arthur Baldosano Jr.</strong> Team leader, backend and optimization engine, full-stack</li>
+          <li><strong>Jestone Jaranilla</strong> Co-programmer and presenter</li>
+          <li><strong>VJ Diamante</strong> Co-programmer and presenter</li>
+        </ul>
+        <p class="case-text">Research team</p>
+        <ul class="case-team"><li>R. Camacho</li><li>J. Bantillo</li><li>E. Tragico</li><li>J. Rovalo</li><li>R. Ortega</li><li>R. J. Torres</li><li>A. L. Jalane</li><li>Z. Zambales</li><li>J. A. Ferrer</li><li>G. E. Aumenta</li></ul>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">Published Paper</p>
+        <p class="case-text">Baldosano Jr., A., Diamante, V., Jaranilla, J., Camacho, R., Bantillo, J., Tragico, E., Rovalo, J., Ortega, R., Torres, R. J., Jalane, A. L., Zambales, Z., Ferrer, J. A., &amp; Aumenta, G. E. (2026). ATLAS PSU: A Teaching Load Assignment and Management System for Department Chairpersons of the College of Sciences at Palawan State University. Zenodo. <a href="https://doi.org/10.5281/zenodo.24479345" target="_blank" rel="noopener noreferrer">https://doi.org/10.5281/zenodo.24479345</a></p>
+        <div class="proj-card-links">
+          <a href="research.html" class="proj-card-link">Research page <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">Honest Limitations</p>
+        <p class="case-text">Not every chairperson was interviewed. A faculty survey was not pursued. The faculty-side design rests on chairperson accounts.</p>
+      </div>
+
+      <div class="case-section reveal">
+        <p class="project-group-label">Access</p>
+        <p class="case-text">Sign-in required. Request demo access by email at <a href="mailto:arthurjuniorbaldosano@gmail.com">arthurjuniorbaldosano@gmail.com</a>.</p>
+        <p class="case-text">First load can take up to a minute while the server wakes.</p>
+        <div class="proj-card-links">
+          <a href="https://atlas-psu.onrender.com" target="_blank" rel="noopener noreferrer" class="proj-card-link">Open the live system <span>→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      <span class="footer-logo">Arthur Baldosano Jr.</span>
+      <div class="footer-icons">
+        <a href="mailto:arthurjuniorbaldosano@gmail.com" title="Email" class="footer-icon-link">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        </a>
+        <a href="https://github.com/ABaldosano" target="_blank" rel="noopener noreferrer" title="GitHub" class="footer-icon-link">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.6.07-.6 1 .07 1.52 1.02 1.52 1.02.89 1.52 2.33 1.08 2.9.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.26-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.11 2.5.33 1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.38.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/arthur-v-baldosano-jr-2b5607406" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="footer-icon-link">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zm2-3a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+        </a>
+        <a href="https://orcid.org/0009-0009-1013-900X" target="_blank" rel="noopener noreferrer" title="ORCiD" class="footer-icon-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="currentColor"/><circle cx="8.5" cy="7" r="1.1" fill="var(--bg)"/><rect x="7.7" y="9.2" width="1.6" height="7.8" rx="0.3" fill="var(--bg)"/><path d="M11.5 9.2h3.2c2.6 0 4.3 1.7 4.3 3.9s-1.7 3.9-4.3 3.9h-3.2V9.2zm1.6 1.5v4.8h1.5c1.6 0 2.7-1 2.7-2.4s-1.1-2.4-2.7-2.4h-1.5z" fill="var(--bg)"/></svg>
+        </a>
+        <a href="https://www.upwork.com/freelancers/~01746d5ba8ae90ffb9?mp_source=share" target="_blank" rel="noopener noreferrer" title="Upwork" class="footer-icon-link">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703 0 1.489-1.211 2.66-2.696 2.66zM18.56 3c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H8.386v7.31c0 1.457-1.187 2.644-2.644 2.644S3.1 10.241 3.1 8.784V1.474H.824v7.31C.824 11.439 3.04 13.63 5.742 13.63c2.703 0 4.919-2.191 4.919-4.846V7.71c.539 1.219 1.219 2.514 2.054 3.638l-1.733 8.152h2.312l1.26-5.922c1.139.783 2.411 1.226 3.807 1.226C21.327 14.804 24 12.133 24 8.784 24 5.433 21.327 3 18.561 3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <p>© 2026 - Designed and Built by Arthur Baldosano Jr.</p>
+    <p>Puerto Princesa, Palawan, Philippines</p>
+  </footer>
+
+  <script src="../assets/js/functions.js"></script>
+  <script src="../assets/js/functions.js"></script>
+
+  <div id="cookie-overlay" style="display:none;" aria-hidden="true"></div>
+  <div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie consent" style="display:none;">
+    <div>
+      <p class="cookie-modal-label">Cookie Notice</p>
+      <p class="cookie-text">This site uses cookies and analytics to improve your experience. By continuing to browse, you agree to our use of cookies.</p>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-decline-btn" id="cookieDeclineBtn" aria-label="Decline cookies">No</button>
+      <button class="cookie-accept-btn" id="cookieAcceptBtn" aria-label="Accept cookies">Yes</button>
+    </div>
+  </div>
+
+  <script src="../assets/js/consent-modal.js"></script>
+</body>
+</html>

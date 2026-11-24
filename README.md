@@ -4,9 +4,9 @@
 
 # Arthur Baldosano Jr.
 
-**Systems & Data Analyst · Full-Stack Builder · PSU-SITE President · Puerto Princesa, Palawan**
+**Technical SEO · Systems & Data Analyst · Puerto Princesa, Palawan**
 
-*Building custom web systems, AI-powered academic tools, and e-commerce platforms from scratch. No templates.*
+*Technical SEO audits, GA4 and GTM tracking, and custom web systems, AI-powered academic tools, and e-commerce platforms built from scratch. No templates.*
 
 [![Status](https://img.shields.io/badge/status-active%20development-c9a96e?style=flat-square)](https://www.arthurr.gt.tc/)
 [![Built With](https://img.shields.io/badge/built%20with-HTML%20%7C%20CSS%20%7C%20Vanilla%20JS-4a90d9?style=flat-square)](#technologies)
@@ -22,31 +22,34 @@
 
 ## What Is This?
 
-This is the personal portfolio of **Arthur Baldosano Jr.**, a Systems & Data Analyst and IT student at Palawan State University (PSU), currently serving as President of PSU-SITE. The portfolio documents real, shipped projects: custom web systems, AI-powered academic tools, e-commerce platforms, and freelance deliverables. All built from scratch, none from templates.
+This is the personal portfolio of **Arthur Baldosano Jr.**, a Technical SEO Specialist and Systems & Data Analyst, and a third-year Information Technology student at Palawan State University (PSU) specializing in Data Analytics and E-Commerce. The portfolio documents real, shipped projects: custom web systems, AI-powered academic tools, e-commerce platforms, and freelance deliverables. All built from scratch, none from templates.
 
 ---
 
 ## About
 
-Arthur is a systems and data analyst based in Puerto Princesa, Palawan. He specializes in breaking down requirements and designing systems, then directing that design into full-stack web applications, e-commerce platforms, and academic systems. Available for freelance projects in systems analysis, e-commerce, and custom web systems, working remotely with clients worldwide.
+Arthur is a technical SEO specialist and systems and data analyst based in Puerto Princesa, Palawan, Philippines. He works in two lanes. Technical SEO: site audits, GA4 and Google Tag Manager tracking, schema markup (JSON-LD), Google Search Console, on-page SEO, and landing pages. Systems and data analysis: breaking down requirements, designing the system, and directing that design into full-stack web applications, e-commerce platforms, and academic systems. Open to freelance work, remote, worldwide.
 
 **Skills & Expertise**
 
 | Category | Stack |
 |----------|-------|
-| Languages | HTML / CSS / JavaScript |
-| Backend | Python / FastAPI |
+| Technical SEO | GA4, Google Tag Manager, Google Search Console, schema markup (JSON-LD) |
+| Languages | HTML / CSS / JavaScript, SQL, C# |
+| Backend | Python / Flask / FastAPI, Node.js / Express |
+| Optimization | CP-SAT constraint programming, genetic algorithms |
+| Databases | PostgreSQL, Supabase |
+| Hosting | GitHub Pages, Cloudflare Workers, Render |
 | Disciplines | Data Analytics, System Design, Full-Stack Development, E-Commerce Platforms, AI Integration |
 | Tooling | Git / GitHub |
-| Leadership | Student Leadership (PSU-SITE President) |
 
 **At a Glance**
 
 | Stat | Value |
 |------|-------|
-| Live Projects | 9+ |
-| Freelance Builds | 3+ |
-| Role at PSU | SITE President |
+| Projects | 15 |
+| Freelance Builds | 3 |
+| Certifications | 16 |
 
 ---
 
@@ -56,35 +59,70 @@ Projects are organized into three groups: **Top Live Projects**, **Freelancing P
 
 ### Top Live Projects
 
-**ATLAS · Automated Teaching Load Assignment System** · *Primary Featured · Thesis Proposal Prototype*
-An automated decision-support system that uses an optimization algorithm to streamline and balance faculty teaching load assignments for department chairpersons at Palawan State University's College of Sciences.
-`HTML` `CSS` `JavaScript` `Python`
-[Live Demo](https://abaldosano.github.io/ATLAS-PSU/) · [GitHub](https://github.com/ABaldosano)
+**01 · ATLAS PSU: Teaching Load Assignment and Management System** · *Award-Winning · Live System*
+A live decision-support system that builds and balances faculty teaching loads for department chairpersons in Palawan State University's College of Sciences. A CP-SAT constraint model produces feasible schedules under hard rules (rooms, blocks, faculty availability and leave), and a genetic algorithm improves balance across faculty. Won the 1st Place Award, Most Innovative Study Award, and Best Presenter Award at the 4th PAL-SU IT Department UI/UX Design Case Study Competition. Sign-in is required, so demo access is by request through email.
+`Python / Flask` `CP-SAT` `Genetic Algorithm` `PostgreSQL (Supabase)` `Render`
+[Live System](https://atlas-psu.onrender.com) · [Featured Page](https://www.arthurr.gt.tc/pages/featured.html) · [Paper](https://doi.org/10.5281/zenodo.24479345)
 
 ---
 
-**01 · Intelligent Academic Resource Management System (IARMS)** · *Thesis Proposal Prototype*
+**02 · Intelligent Academic Resource Management System (IARMS)** · *Thesis Proposal Prototype*
 AI-powered academic resource platform for PSU's BSIT students. Generates summaries, flashcards, quizzes, glossary, and key concepts from uploaded documents. Backend runs Ollama (Llama3) locally; GPT-5 Mini API planned for production.
 `Python` `FastAPI` `Ollama LLM` `JavaScript` `Thesis`
 [View Prototype](https://abaldosano.github.io/PSU_AcadRes/)
 
 ---
 
-**02 · PinnedPicks Affiliate Platform** · *Live Business*
-Independently owned affiliate e-commerce platform curating picks across Shopee, Amazon, and SHEIN. Built from scratch on GitHub Pages. Traffic driven through a Pinterest-based social content strategy.
-`HTML` `CSS` `JavaScript` `E-Commerce` `Affiliate` `Web Design` `Social Strategy`
+**03 · Portfolio Website** · *Live Project*
+This site. A full-stack build with a custom AI chatbot using serverless LLM integration through a Cloudflare Worker, plus an embedded Python IDE for live code execution. Security audited and hardened.
+`HTML` `CSS` `JavaScript` `Cloudflare Workers` `Pyodide`
+[Visit Site](https://www.arthurr.gt.tc/)
+
+---
+
+**04 · NeuralGrid** · *Live Project*
+A fully browser-based handwritten digit recognizer powered by a neural network trained from scratch in vanilla JavaScript, with a live pseudo-3D visualization of every activation.
+`JavaScript` `Neural Network` `Canvas`
+[View Project](https://abaldosano.github.io/NeuralGridEngine/)
+
+---
+
+**05 · Rise From Nothing** · *In Development*
+Cross-platform incremental life simulation game with a 3D world, NPC AI, passive economy systems, persistent progression, and native Android APK support alongside web deployment.
+`HTML5` `CSS` `JavaScript` `Three.js`
+[View Project](https://abaldosano.github.io/RFN-Development/)
+
+---
+
+**06 · PinnedPicks Affiliate Platform** · *Live Business*
+Independently owned affiliate e-commerce catalog curating Shopee picks, with a PostgreSQL backend and Pinterest-led traffic.
+`HTML` `CSS` `JavaScript` `PostgreSQL` `E-Commerce` `Affiliate` `Technical SEO`
 [Visit Platform](https://www.pinnedpicks.gt.tc/)
 
 ---
 
-**03 · CrypStockDash** · *Live Project*
+**07 · PostgreSQL CRUD Dashboard** · *Project*
+Full stack CRUD dashboard connecting a PostgreSQL database to an Express backend and a vanilla JavaScript frontend, with parameterized queries, bcrypt hashing, and server-side validation.
+`PostgreSQL` `Express` `JavaScript`
+[View Project](https://abaldosano.github.io/Database-Practice/)
+
+---
+
+**08 · CrypStockDash** · *Live Project*
 Lightweight, no-login stock market viewer for instant access to real-time market data. Search any ticker symbol and view live info without creating an account. Built on the principle that financial data should be frictionless.
 `HTML` `CSS` `JavaScript` `Finance` `API`
 [Visit CrypStockDash](https://www.crypstockdash.page.gd/)
 
 ---
 
-**04 · Buzy Reviewer** · *Live Project*
+**09 · Product Sort Simulator** · *Project*
+A drag-and-drop sorting game built in C# for a Data Structures and Algorithms final project, later ported to the web, where players sort falling grocery items into correct baskets.
+`C#` `JavaScript` `Game`
+[View Project](https://abaldosano.github.io/ProductSortGame/)
+
+---
+
+**10 · Buzy Reviewer** · *Live Project*
 The direct predecessor to IARMS. Built as a foundational school project exploring interactive study tools. Served its academic purpose and directly informed the architecture and design decisions behind IARMS.
 `HTML` `CSS` `JavaScript`
 [Live Demo](https://abaldosano.github.io/Buzy-Reviewer/index.html) · [GitHub](https://github.com/ABaldosano)
@@ -93,21 +131,21 @@ The direct predecessor to IARMS. Built as a foundational school project explorin
 
 ### Freelancing Projects
 
-**05 · Class and School Website** · *Freelance · Paid*
+**11 · Class and School Website** · *Freelance · Paid*
 Complete class and school website delivered for a paying client using Google Sites. Covers all required content areas with clear navigation, organized layout, and a professional finish suited for an academic audience.
 `Freelance` `Google Sites` `Paid`
 [Visit Site](https://sites.google.com/view/helenbaldosano-schoolandclass?usp=sharing)
 
 ---
 
-**06 · Product Discovery Website Format 1** · *Freelance*
+**12 · Product Discovery Website Format 1** · *Freelance*
 Client-facing product discovery layout built as a freelance deliverable. Format 1 explores a structured editorial approach to product presentation, designed for clarity, ease of browsing, and clean visual hierarchy.
 `HTML` `CSS` `JavaScript` `Freelance`
 [View Project](https://abaldosano.github.io/productdiscoveryformat1/)
 
 ---
 
-**07 · Product Discovery Website Format 2** · *Freelance*
+**13 · Product Discovery Website Format 2** · *Freelance*
 Second iteration of the product discovery web format, exploring an alternative visual and structural direction. Format 2 refines layout density, browsing flow, and interaction patterns as a comparative freelance study.
 `HTML` `CSS` `JavaScript` `Freelance`
 [View Project](https://abaldosano.github.io/productdiscoveryformat2/)
@@ -116,30 +154,43 @@ Second iteration of the product discovery web format, exploring an alternative v
 
 ### For Fun Projects
 
-**08 · Cyberpunk 2077 Themed Landing Page** · *Personal · For Fun*
+**14 · Cyberpunk 2077 Themed Landing Page** · *Personal · For Fun*
 Creative frontend build inspired by Cyberpunk 2077, exploring immersive UI design, dynamic visual elements, and game-inspired interaction patterns. Built entirely in pure HTML, CSS, and JavaScript, no framework dependencies.
 `HTML` `CSS` `JavaScript` `Creative`
 [View Project](https://abaldosano.github.io/Cyberpunk2077/)
 
 ---
 
-**09 · Death Stranding Themed Landing Page** · *Personal · For Fun*
+**15 · Death Stranding Themed Landing Page** · *Personal · For Fun*
 Creative frontend build inspired by Death Stranding, experimenting with atmospheric visual design, layered UI elements, and game-inspired interaction flow. A deliberate exploration of mood-driven frontend aesthetics.
 `HTML` `CSS` `JavaScript` `Creative`
 [View Project](https://abaldosano.github.io/deathstranding/)
 
 ---
 
+## Research
+
+Three published research papers on Zenodo:
+
+1. Baldosano Jr., A., Diamante, V., Jaranilla, J., Camacho, R., Bantillo, J., Tragico, E., Rovalo, J., Ortega, R., Torres, R. J., Jalane, A. L., Zambales, Z., Ferrer, J. A., & Aumenta, G. E. (2026). *ATLAS PSU: A Teaching Load Assignment and Management System for Department Chairpersons of the College of Sciences at Palawan State University.* Zenodo. https://doi.org/10.5281/zenodo.24479345
+2. *An Experimental Comparison of Filtration, Distillation, and Chemical Treatment for Wastewater Purification in Puerto Princesa City, Palawan*
+3. *A Narrative Study on the Lived Experiences of a Mother Diagnosed with Adenomyosis*
+
+[View Research Page](https://www.arthurr.gt.tc/pages/research.html)
+
+---
+
 ## Certifications
 
-Certifications and credentials are currently in progress. Actively pursuing credentials across:
+Sixteen credentials across five tracks:
 
-| Track | Areas |
-|-------|-------|
-| Web Development | Frontend, Backend & Full-Stack |
-| Data Analytics | Tableau, Python & Statistics |
-| Marketing |   Digital Marketing & Freelancing |
-| Leadership & Management | Leadership Trainings & Management |
+| Track | Credentials |
+|-------|-------------|
+| Data Analytics | Data Analytics Essentials (Cisco), Introduction to Data Science (Cisco Networking Academy), Google Analytics 2026 Certified |
+| Artificial Intelligence | Career Essentials in Generative AI (LinkedIn Learning & Microsoft), AI Fundamentals (IBM SkillsBuild), Introduction to Modern AI (Cisco), Apply AI: Update Your Resume (Cisco), Apply AI: Analyze Customer Reviews (Cisco) |
+| Leadership & Management | Online Freelancing Mentorship Session 2: Business Registration and Labor Compliance, Project Management Essentials Certified, Kickoff: Predictive & Agile Project Management (PMI), Developing, Mentoring, and Supporting Youth Leadership |
+| Web Development | SEO Certified |
+| Marketing | Digital Marketing Certified, Content Marketing Certified, Email Marketing Certified |
 
 [View Certifications Page](https://www.arthurr.gt.tc/pages/certifications.html)
 
@@ -208,11 +259,11 @@ No external UI frameworks. No npm dependencies. No server-side rendering. The Cl
 
 ### 🔎 SEO & Discoverability
 - Full Open Graph and Twitter/X card metadata on every page
-- JSON-LD structured data: `Person`, `WebSite`, `CollectionPage`, `ContactPage`, `BreadcrumbList`, `SearchAction`
+- JSON-LD structured data: `Person`, `WebSite`, `ProfilePage`, `Service`, `FAQPage`, `ItemList`, `CollectionPage`, `ContactPage`, `BreadcrumbList`, `ScholarlyArticle`, `SoftwareApplication`
 - Geo metadata (Puerto Princesa, Palawan, `PH-PLW`)
 - Google Site Verification and Bing Webmaster Tools validation
 - Canonical URLs and `robots` directives
-- XML sitemap covering all four pages
+- XML sitemap covering all seven pages, including the featured page
 
 ### ✉️ Contact Form
 - Inquiry form (Name, Email, Subject, Message) on `contact.html`
@@ -259,7 +310,7 @@ The underlying HTML/CSS/JS structure is independently developed by **Arthur Bald
 
 <div align="center">
 
-**Arthur Baldosano Jr.** · IT Student & Systems/Data Analyst · PSU-SITE President · Puerto Princesa, Palawan 🇵🇭
+**Arthur Baldosano Jr.** · Technical SEO · Systems & Data Analyst · Puerto Princesa, Palawan 🇵🇭
 
 © 2026 · Designed and Built by Arthur Baldosano Jr.
 

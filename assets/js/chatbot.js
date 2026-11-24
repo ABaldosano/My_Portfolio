@@ -191,12 +191,12 @@ function updateSessionBar() {
 }
 
 const TERMINAL_KNOWLEDGE = {
-  bio: `Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a systems and
-data analyst and IT student at Palawan State University in Puerto Princesa,
-Palawan, Philippines. He studies Information Technology with a focus on Data
-Analytics and E-Commerce. Everything he builds is custom. No templates, no
-page builders. He runs his own freelance practice independently and serves as
-President of PSU-SITE (Society of Information Technology Enthusiasts).`,
+  bio: `Arthur Baldosano Jr. (also goes by Arthur Baldosano) is a technical SEO
+specialist and systems and data analyst based in Puerto Princesa, Palawan,
+Philippines. He is a third-year BSIT student at Palawan State University
+specializing in Data Analytics and E-Commerce. Everything he builds is custom.
+No templates, no page builders. He is open to freelance work, remote,
+worldwide.`,
 
   contact: `Email:    arthurjuniorbaldosano@gmail.com
 GitHub:   https://github.com/ABaldosano
@@ -205,35 +205,66 @@ ORCID:    https://orcid.org/0009-0009-1013-900X
 Upwork:   https://www.upwork.com/freelancers/~01746d5ba8ae90ffb9
 Location: Puerto Princesa, Palawan, Philippines`,
 
-  skills: `Data Analytics
-System Design
-HTML / CSS / JavaScript
-Python / FastAPI
+  skills: `Technical SEO
+GA4 and Google Tag Manager
+Schema Markup (JSON-LD)
+Google Search Console
+Data Analytics
+Systems Analysis and Design
 Full-Stack Development
 E-Commerce Platforms
+HTML / CSS / JavaScript
+Python / Flask / FastAPI
+Node.js / Express
+PostgreSQL / Supabase
+Constraint Programming (CP-SAT)
+Three.js / Canvas API
 Git / GitHub
-AI Integration
-Student Leadership`,
+AI Integration`,
 
-  projects: `[1]  ATLAS PSU (Automated Teaching Load Assignment System)
-      https://abaldosano.github.io/ATLAS-PSU/
+  services: `Technical SEO audits
+GA4 and Google Tag Manager tracking setup
+Schema markup (JSON-LD)
+Google Search Console
+On-page SEO
+Landing pages
+Systems analysis and design
+Data analytics
+Custom full-stack web systems
+E-commerce platforms
+AI-integrated tools
+->   Quotes are given on request. Contact: type contact`,
+
+  projects: `[1]  ATLAS PSU (Teaching Load Assignment and Management System), live
+      https://atlas-psu.onrender.com
+      Case study page: pages/featured.html
 [2]  IARMS (Intelligent Academic Resource Management System)
-      https://abaldosano.github.io/PSU_AcadRes/
-[3]  PinnedPicks Affiliate Platform
+[3]  Portfolio Website, with AI chatbot and embedded Python IDE
+[4]  NeuralGrid, browser neural network built from scratch
+      https://abaldosano.github.io/NeuralGridEngine/
+[5]  Rise From Nothing, Three.js incremental game, in development
+      https://abaldosano.github.io/RFN-Development/
+[6]  PinnedPicks Affiliate Platform
       https://www.pinnedpicks.gt.tc/
-[4]  CrypStockDash, real-time stock viewer, no login required
+[7]  PostgreSQL CRUD Dashboard
+[8]  CrypStockDash, real-time stock viewer, no login required
       https://www.crypstockdash.page.gd/
-[5]  Product Sort Simulator (C# school project, ported to web June 2026)
-[6]  Buzy Reviewer, study tools project and precursor to IARMS
-[7]  Class and School Website, paid client build on Google Sites
-[8]  Product Discovery Website Format 1 and Format 2, freelance builds
-[9]  Cyberpunk 2077 Themed Landing Page
-[10] Death Stranding Themed Landing Page
+[9]  Product Sort Simulator (C# school project, ported to web June 2026)
+[10] Buzy Reviewer, study tools project and precursor to IARMS
+[11] Class and School Website, paid client build on Google Sites
+[12] Product Discovery Website Format 1, freelance build
+[13] Product Discovery Website Format 2, freelance build
+[14] Cyberpunk 2077 Themed Landing Page
+[15] Death Stranding Themed Landing Page
 ->   Full list: pages/projects.html`,
 
-  research: `[1] "An Experimental Comparison of Filtration, Distillation, and Chemical
+  research: `[1] "ATLAS PSU: A Teaching Load Assignment and Management System for
+     Department Chairpersons of the College of Sciences at Palawan State
+     University" (2026, first author of 13, Zenodo)
+     https://doi.org/10.5281/zenodo.24479345
+[2] "An Experimental Comparison of Filtration, Distillation, and Chemical
      Treatment for Wastewater Purification in Puerto Princesa City, Palawan"
-[2] "A Narrative Study on the Lived Experiences of a Mother Diagnosed
+[3] "A Narrative Study on the Lived Experiences of a Mother Diagnosed
      with Adenomyosis"
 ->   Full list: pages/research.html`,
 
@@ -253,6 +284,7 @@ Student Leadership`,
 * Apply AI: Update Your Resume (Cisco)
 * Apply AI: Analyze Customer Reviews (Cisco)
 * Data Analytics Essentials (Cisco)
+* Introduction to Data Science (Cisco Networking Academy)
 * Google Analytics 2026 Certified
 * SEO Certified
 * Digital Marketing Certified
@@ -264,6 +296,7 @@ Student Leadership`,
   bio             Biography and background
   contact         Contact information and links
   skills          Technical and professional skills
+  services        Services offered
   projects        Featured and live projects
   research        Research publications
   articles        Published articles
