@@ -4,10 +4,10 @@ Read `docs/plan.md` first. It holds the decisions (D-1 to D-7), the exact copy, 
 
 ## Status board (the agent ticks these in this file and returns the file in the zip)
 
-- [ ] H-1 Decisions settled (you)
-- [ ] H-2 Screenshots captured (you)
-- [ ] H-3 Images generated (you)
-- [ ] H-4 Converted to WebP (you)
+- [x] H-1 Decisions settled (you)
+- [x] H-2 Screenshots captured (you)
+- [x] H-3 Images generated (you)
+- [x] H-4 Converted to WebP (you)
 - [ ] A-01 index ATLAS card
 - [ ] A-02 projects ATLAS card and schema
 - [ ] A-03 capstone.html capstone page
