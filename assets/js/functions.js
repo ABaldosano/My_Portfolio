@@ -114,6 +114,7 @@ document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
   const path = window.location.pathname;
   let activePage = 'home';
   if      (path.includes('projects'))      activePage = 'projects';
+  else if (path.includes('featured'))      activePage = 'featured';
   else if (path.includes('articles'))      activePage = 'articles';
   else if (path.includes('research'))      activePage = 'research';
   else if (path.includes('certifications')) activePage = 'certifications';
@@ -124,6 +125,7 @@ document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
     const isActive =
       (activePage === 'home'           && text === 'home') ||
       (activePage === 'projects'       && text === 'projects') ||
+      (activePage === 'featured'       && text === 'featured') ||
       (activePage === 'articles'       && text === 'articles') ||
       (activePage === 'research'       && text === 'research') ||
       (activePage === 'certifications' && text === 'certifications') ||
