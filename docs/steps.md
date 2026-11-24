@@ -13,8 +13,8 @@ Read `docs/plan.md` first. It holds the decisions (D-1 to D-7), the exact copy, 
 - [x] A-02 projects ATLAS card and schema
 - [x] A-03 featured.html case study page
 - [x] A-04 research page: ATLAS paper
-- [ ] A-05 featured.html event gallery and team photo (after H-2b and H-4)
-- [ ] A-06 featured.html og:image size (after H-4)
+- [x] A-05 featured.html event gallery and team photo (after H-2b and H-4)
+- [x] A-06 featured.html og:image size (after H-4)
 - [x] B-01 index head and schema
 - [x] B-02 index body
 - [x] B-03 other pages meta
