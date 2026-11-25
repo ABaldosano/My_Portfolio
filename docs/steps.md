@@ -8,7 +8,7 @@ Read `docs/plan.md` first. It holds the decisions (D-1 to D-7), the exact copy, 
 - [x] H-2 Screenshots captured (you): `atlas-shot-1..6.png` plus `atlas-shot-3b.png` and `atlas-shot-5b.png` (second screenshots for Faculty and Subjects, and Reports and Export)
 - [x] H-2b Event photos picked (you): `capstone-event-1..6.jpg` are in the folder, uncropped (1 to 4 are portrait 1536x2048, 5 and 6 are landscape 2048x1536)
 - [x] H-3 Images generated (you): `atlas-cover.png`, `atlas-logo.png`, `og-cover.jpg` are in the folder
-- [ ] H-4 Converted to WebP (you)
+- [x] H-4 Converted to WebP (you)
 - [x] A-01 index ATLAS card
 - [x] A-02 projects ATLAS card and schema
 - [x] A-03 featured.html case study page
@@ -68,6 +68,7 @@ Corrections (2026-11-24, made after A-01 to C-01 were run; they override anythin
 - C-12 (2026-11-25): A-05 and A-06 and the screenshots gallery were done by the planner directly in pages/featured.html and assets/css/global.css (new classes wide, phone, event, single). Gallery now has 8 screenshots (adds `atlas-shot-3b` and `atlas-shot-5b`) and The Event section. og:image width and height are 1448 and 1086. Only H-4 (WebP conversion of the new PNGs) is left, done by the owner. Do not redo these.
 - C-13 (2026-11-25): `capstone-event-3` is a new landscape photo (2048x1365) shown large and centered above The Team (`.case-gallery.single`, max-width 860px, centered). The owner converts it to WebP and deletes the JPG. Do not change this layout.
 - C-14 (2026-11-26): schema.org validator warnings fixed in index.html: Person `availableLanguage` replaced by `knowsLanguage` ["en","fil"], and ServiceChannel `serviceType` replaced by `name`. Already edited. Do not reintroduce them.
+- C-15 (2026-11-26): removed a duplicate `knowsLanguage` key in index.html Person JSON-LD (the Language objects version stays). All JSON-LD blocks in all pages were scanned for duplicate keys. Do not add a second knowsLanguage.
 - C-7 (2026-11-24, later): H-2, H-2b, H-3, H-4 were ticked by mistake and are reopened. The images are still missing. New steps A-05 (event gallery) and A-06 (og:image size) run only after H-4 is done.
 - D-3: Jestone Jaranilla and VJ Diamante are named as co-programmers; all 13 authors from the Zenodo citation are listed.
 - D-6: project title follows the published paper (Teaching Load Assignment and Management System).
