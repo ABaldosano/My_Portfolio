@@ -5,7 +5,7 @@ Read `docs/plan.md` first. It holds the decisions (D-1 to D-7), the exact copy, 
 ## Status board (the agent ticks these in this file and returns the file in the zip)
 
 - [x] H-1 Decisions settled (you)
-- [ ] H-2 Screenshots captured (you)
+- [x] H-2 Screenshots captured (you): `atlas-shot-1..6.png` plus `atlas-shot-3b.png` and `atlas-shot-5b.png` (second screenshots for Faculty and Subjects, and Reports and Export)
 - [x] H-2b Event photos picked (you): `capstone-event-1..6.jpg` are in the folder, uncropped (1 to 4 are portrait 1536x2048, 5 and 6 are landscape 2048x1536)
 - [x] H-3 Images generated (you): `atlas-cover.png`, `atlas-logo.png`, `og-cover.jpg` are in the folder
 - [ ] H-4 Converted to WebP (you)
@@ -65,6 +65,7 @@ Corrections (2026-11-24, made after A-01 to C-01 were run; they override anythin
 - C-9 (2026-11-24): event photos are JPG and not cropped. The gallery CSS must handle mixed portrait and landscape (fixed aspect ratio with object-fit cover, object-position center, so nothing is distorted). Photo 3 is portrait, so show it as a single figure with a max-width, not stretched. `atlas-shot-1..6` are still pending.
 - C-10 (2026-11-24): the research page paper card now uses `atlas-paper-cover.webp` (cover page of the paper, alt "Cover page of the ATLAS PSU case study paper"). Already edited in pages/research.html. Do not change it back to atlas-cover.webp. The paper card on index or projects pages keep their own images.
 - C-11 (2026-11-24): fixed in assets/js/functions.js: the nav active state now knows the Featured page (it used to highlight Home on featured.html). Already edited. Leave it as is.
+- C-12 (2026-11-25): A-05 and A-06 and the screenshots gallery were done by the planner directly in pages/featured.html and assets/css/global.css (new classes wide, phone, event, single). Gallery now has 8 screenshots (adds `atlas-shot-3b` and `atlas-shot-5b`) and The Event section. og:image width and height are 1448 and 1086. Only H-4 (WebP conversion of the new PNGs) is left, done by the owner. Do not redo these.
 - C-7 (2026-11-24, later): H-2, H-2b, H-3, H-4 were ticked by mistake and are reopened. The images are still missing. New steps A-05 (event gallery) and A-06 (og:image size) run only after H-4 is done.
 - D-3: Jestone Jaranilla and VJ Diamante are named as co-programmers; all 13 authors from the Zenodo citation are listed.
 - D-6: project title follows the published paper (Teaching Load Assignment and Management System).

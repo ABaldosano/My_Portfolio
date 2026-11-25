@@ -1629,9 +1629,7 @@ footer p {
   overflow: hidden;
   background: var(--card-bg);
 }
-.case-gallery img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; }
-.case-gallery.case-single { grid-template-columns: 1fr; margin-bottom: 18px; }
-.case-gallery.case-single img { aspect-ratio: 3 / 2; }
+.case-gallery img { display: block; width: 100%; height: auto; }
 .case-gallery figcaption {
   padding: 10px 14px;
   font-size: 0.8rem;
@@ -1639,8 +1637,15 @@ footer p {
   line-height: 1.5;
   border-top: 1px solid var(--border);
 }
+.case-gallery figure.wide  { grid-column: 1 / -1; }
+.case-gallery figure.phone { grid-column: 1 / -1; max-width: 340px; justify-self: center; }
+.case-gallery.event { grid-template-columns: repeat(6, 1fr); }
+.case-gallery.event figure.p { grid-column: span 2; }
+.case-gallery.event figure.l { grid-column: span 3; }
+.case-gallery.single { grid-template-columns: 1fr; max-width: 420px; margin-bottom: 22px; }
 @media (max-width: 700px) {
-  .case-facts, .case-team, .case-gallery { grid-template-columns: 1fr; }
+  .case-facts, .case-team, .case-gallery, .case-gallery.event, .case-gallery.single { grid-template-columns: 1fr; }
+  .case-gallery.event figure.p, .case-gallery.event figure.l { grid-column: auto; }
   .case-table th, .case-table td { display: block; width: 100%; }
   .case-table th { padding-bottom: 0; border-bottom: none; }
 }
