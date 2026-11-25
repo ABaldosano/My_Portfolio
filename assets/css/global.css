@@ -1642,7 +1642,7 @@ footer p {
 .case-gallery.event { grid-template-columns: repeat(6, 1fr); }
 .case-gallery.event figure.p { grid-column: span 2; }
 .case-gallery.event figure.l { grid-column: span 3; }
-.case-gallery.single { grid-template-columns: 1fr; max-width: 420px; margin-bottom: 22px; }
+.case-gallery.single { grid-template-columns: 1fr; max-width: 860px; margin: 0 auto 28px; }
 @media (max-width: 700px) {
   .case-facts, .case-team, .case-gallery, .case-gallery.event, .case-gallery.single { grid-template-columns: 1fr; }
   .case-gallery.event figure.p, .case-gallery.event figure.l { grid-column: auto; }
