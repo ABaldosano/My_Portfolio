@@ -6,32 +6,24 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
 
-    var _consent = localStorage.getItem('portfolio_consent');
+    /* Always start denied. Returning visitors who accepted are restored below with an update. */
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      functionality_storage: 'denied',
+      personalization_storage: 'denied',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
 
+    var _consent = null;
+    try { _consent = localStorage.getItem('portfolio_consent'); } catch (e) {}
     if (_consent === '1') {
-      gtag('consent', 'default', {
+      gtag('consent', 'update', {
         analytics_storage: 'granted',
-        ad_storage: 'denied',
-        functionality_storage: 'granted',
-        personalization_storage: 'denied',
-        security_storage: 'granted'
-      });
-    } else if (_consent === '0') {
-      gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        functionality_storage: 'denied',
-        personalization_storage: 'denied',
-        security_storage: 'granted'
-      });
-    } else {
-      gtag('consent', 'default', {
-        analytics_storage: 'denied',
-        ad_storage: 'denied',
-        functionality_storage: 'denied',
-        personalization_storage: 'denied',
-        security_storage: 'granted',
-        wait_for_update: 500
+        functionality_storage: 'granted'
       });
     }
   </script>
@@ -920,7 +912,7 @@
   <script src="assets/js/compiler.js"></script>
 
   <div id="cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;">
-    <p class="cookie-text">This site uses cookies and analytics to improve your experience. By continuing to browse, you agree to our use of cookies.</p>
+    <p class="cookie-text">This site uses analytics cookies only if you accept. Choose Yes or No.</p>
     <div class="cookie-actions">
       <button class="cookie-decline-btn" id="cookieDeclineBtn" aria-label="Decline cookies">No</button>
       <button class="cookie-accept-btn" id="cookieAcceptBtn" aria-label="Accept cookies">Yes</button>
